@@ -33,3 +33,15 @@ Newest at the bottom. Every build session appends an entry: date · step · what
 - Done-test passed: `claude -p "list the scripts in tools/"` listed all 18 scripts.
 - Andrew learned: the difference between the Claude desktop app, Claude Code, and Claude on the web; `CLAUDE.md` is the standing-orders file Claude reads every session.
 - **Next:** step 0.3 — the GitHub repo.
+
+## 2026-10-25 · Step 0.3 — GitHub repo
+- `C:\Rainbow` is now the git repo; first commit pushed to `github.com/Rainbow-Printing-AI/rainbow-ai` (private), branch `main` (renamed from `master`). Git identity: `Andrew (Rainbow) <rainbowincline@gmail.com>`.
+- Allow-list `.gitignore`: ignores everything at the top level, then tracks only `tools/`, `PriceBook/` (minus `private/`), `.claude/` (minus `settings.local.json`), `app/`, `docs/`, `CLAUDE.md`, `BUILD-LOG.md`, `.gitignore`, `.gitattributes`. Always ignored anywhere: `secrets/`, `*.env`, `credentials*.json`, `token*.json`, `__pycache__/`, `.venv/`. Top-level `README-WINDOWS.md` is ignored (same-name copy tracked in `tools/windows/`).
+- Kept out on Andrew's call: owner/staff phone numbers and supplier account numbers — `PriceBook/data/contacts.csv`, `source/contacts_v1.py`, `source/scan_*.pdf`, `source/crops/p15_*`, `build/*.pdf`, `build/*.xlsx`. A fresh clone (the Mac) won't have the phone list or built books until we decide how to carry them (private/ via USB, like the logins).
+- Also ignored: files `run_tests.sh` regenerates every run (`tools/tests/out/`, `*_tmp.pdf`, `merge_t.*`, `passport_synth*`) and `tools/windows/setup_log.txt`.
+- Found and fixed before the first commit: `pricebook.py validate` and `tests/test_pricebook.py` had real login/tax-ID fragments written in the code. They now live in `PriceBook/private/secret_check.txt` (git-ignored); the check works the same. Mark's home number blanked to `831-xxxx` in the conflict-sheet example text (`conflicts.json`, `cards_v1.py`); the privacy test now reads internal numbers from `contacts.csv` when present. Price-book tests 10/10 OK, `validate` PASS.
+- `.gitattributes` `* -text`: git never converts line endings, so PDFs, `.sh` (LF) and `.cmd`/`.ps1` (CRLF) stay byte-exact on both machines. Checked all files byte-for-byte after commit.
+- Push from Claude's shell couldn't show the GitHub sign-in window; Andrew ran the first push in Git Bash himself. The login is now saved by Git Credential Manager.
+- **Problem found:** `bash tools/tests/run_tests.sh` now fails at the first test — Windows refuses to start `pdftoppm.exe` (exit `0xC0E90002`, code-integrity block, almost certainly Smart App Control on Windows 11 Home). Passed on 2026-10-22. Not caused by this step (no `tools/` changes).
+- Andrew learned: repo, commit, staging, push/pull, remote/`origin`, branch, allow-list `.gitignore`, why secrets and personal numbers never go in git (history keeps them even after deletion), line endings, amending an unpushed commit.
+- **Next:** fix the `pdftoppm` block (Smart App Control / Windows Security → App & browser control) and get `run_tests.sh` green again; then step 0.4 — skills into `.claude/skills/`.
