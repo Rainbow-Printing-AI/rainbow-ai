@@ -1,0 +1,433 @@
+when,who,action,table,id,field,old,new,source,note
+2026-09-30 00:00,Claude,import,all,*,,,"403 prices, 65 contacts, 26 cards",scan_147.pdf + scan_149.pdf,"Initial import (source/seed_v1.py, cards_v1.py, contacts_v1.py). Pen list: red-pen sheet is current per Andrew 2026-09-30."
+2026-10-01 19:32,Andrew,set,prices,lf-bw-24x36-walkin,price,,2.50,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C01
+2026-10-01 19:32,Andrew,status,prices,lf-bw-24x36-walkin,status,unpriced,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C01
+2026-10-01 19:32,Andrew,resolve,cards,C01,answer,,"{""a"": ""2.50""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,lf-bw-30x42-walkin,price,3.50,3.50,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C02
+2026-10-01 19:32,Andrew,status,prices,lf-bw-30x42-walkin,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C02
+2026-10-01 19:32,Andrew,resolve,cards,C02,answer,,"{""a"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,lf-bw-other-sqft,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C03
+2026-10-01 19:32,Andrew,resolve,cards,C03,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,lf-color-24x36,price,12.95,12.95,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,status,prices,lf-color-24x36,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,set,prices,lf-color-30x42,price,15.95,15.95,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,status,prices,lf-color-30x42,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,set,prices,lf-color-36x48,price,19.95,19.95,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,status,prices,lf-color-36x48,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,set,prices,lf-color-bond-sqft,price,3.00,3.00,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,status,prices,lf-color-bond-sqft,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C04
+2026-10-01 19:32,Andrew,resolve,cards,C04,answer,,"{""a"": ""ok"", ""b"": ""ok"", ""c"": ""ok"", ""d"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,lf-color-18x24,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C05
+2026-10-01 19:32,Andrew,resolve,cards,C05,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,bw-8.5x11-simplex-21-99,price,,0.15,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C06
+2026-10-01 19:32,Andrew,status,prices,bw-8.5x11-simplex-21-99,status,unpriced,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C06
+2026-10-01 19:32,Andrew,set,prices,bw-8.5x11-simplex-100up,price,,0.15,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C06
+2026-10-01 19:32,Andrew,status,prices,bw-8.5x11-simplex-100up,status,unpriced,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C06
+2026-10-01 19:32,Andrew,resolve,cards,C06,answer,,"{""a"": ""0.15"", ""b"": ""0.15""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,labels-5160-black-120,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-color-120,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-black-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-color-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-black-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-color-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-black-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-5160-color-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,status,prices,labels-clear-stock,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C07
+2026-10-01 19:32,Andrew,resolve,cards,C07,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,photo-12x18,price,14.99,14.99,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C08
+2026-10-01 19:32,Andrew,status,prices,photo-12x18,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C08
+2026-10-01 19:32,Andrew,set,prices,photo-18x24,price,19.99,19.99,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C08
+2026-10-01 19:32,Andrew,status,prices,photo-18x24,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C08
+2026-10-01 19:32,Andrew,set,prices,photo-24x36,price,36.00,36.00,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C08
+2026-10-01 19:32,Andrew,status,prices,photo-24x36,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C08
+2026-10-01 19:32,Andrew,resolve,cards,C08,answer,,"{""a"": ""ok"", ""b"": ""ok"", ""c"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,photo-8.5x11,price,5.99,5.99,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C09
+2026-10-01 19:32,Andrew,status,prices,photo-8.5x11,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C09
+2026-10-01 19:32,Andrew,retire,prices,photo-10x14,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C09
+2026-10-01 19:32,Andrew,retire,prices,photo-11x17,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C09
+2026-10-01 19:32,Andrew,set,prices,photo-36x48,price,72.99,72.99,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C09
+2026-10-01 19:32,Andrew,status,prices,photo-36x48,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C09
+2026-10-01 19:32,Andrew,resolve,cards,C09,answer,,"{""a"": ""ok"", ""b"": ""remove"", ""c"": ""remove"", ""d"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,lf-color-photo-sqft,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C10
+2026-10-01 19:32,Andrew,resolve,cards,C10,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2-part-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2-part-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2-part-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2-part-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-3-part-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-3-part-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-3-part-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-3-part-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-4-part-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-4-part-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-4-part-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-4-part-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2ndside-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2ndside-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2ndside-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2ndside-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2-part-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2-part-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2-part-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2-part-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-3-part-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-3-part-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-3-part-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-3-part-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-4-part-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-4-part-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-4-part-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-4-part-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2ndside-125,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2ndside-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2ndside-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2ndside-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-wove-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-wove-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-wove-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-laid-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-laid-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-laid-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-linen-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-linen-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-linen-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-white-catalog-250,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-white-catalog-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,env-white-catalog-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ink-standard,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ink-pms,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ink-metallic,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,status,prices,ink-close-reg,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C11
+2026-10-01 19:32,Andrew,resolve,cards,C11,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2-part-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-3-part-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-4-part-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x11-2ndside-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2-part-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-3-part-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-4-part-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,ncr-8.5x14-2ndside-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,env-wove-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,env-laid-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,env-linen-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,status,prices,env-white-catalog-addl-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C12
+2026-10-01 19:32,Andrew,resolve,cards,C12,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,laminate-card,price,1.50,1.85,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,status,prices,laminate-card,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,set,prices,laminate-8.5x11,price,2.00,2.00,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,status,prices,laminate-8.5x11,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,set,prices,laminate-8.5x14,price,3.00,3.00,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,status,prices,laminate-8.5x14,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,set,prices,laminate-11x17,price,4.00,4.00,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,status,prices,laminate-11x17,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C13
+2026-10-01 19:32,Andrew,resolve,cards,C13,answer,,"{""a"": ""1.85"", ""b"": ""ok"", ""c"": ""ok"", ""d"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,scoring-per-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C14
+2026-10-01 19:32,Andrew,status,prices,scoring-per-500,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C14
+2026-10-01 19:32,Andrew,resolve,cards,C14,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,numbering-per-1000,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C15
+2026-10-01 19:32,Andrew,status,prices,numbering-per-page,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C15
+2026-10-01 19:32,Andrew,resolve,cards,C15,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,resolve,cards,C16,answer,,"{""opt"": ""2""}","conflict sheet v1 marked up (scan_153, 2026-10-01)","option 2 ('Ask Mark to re-check against 4over') is not the proposal - apply by hand, then: pricebook.py close C16"
+2026-10-01 19:32,Andrew,resolve,cards,C17,answer,,"{""opt"": ""3"", ""text"": ""Remove. We don't burn CDs anymore""}","conflict sheet v1 marked up (scan_153, 2026-10-01)","option 3 ('Other: ____________________') is not the proposal - apply by hand, then: pricebook.py close C17"
+2026-10-01 19:32,Andrew,set,prices,pen-papermate-profile-89465,price,1.99,1.99,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-profile-89465,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,set,prices,pen-sharpie-super-twin-tip-36201,price,3.69,3.69,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-super-twin-tip-36201,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,set,prices,pen-uniball-deluxe-60052,price,4.39,4.39,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-deluxe-60052,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,set,prices,pen-sakura-micron-xsdk005-49,price,2.89,2.89,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,status,prices,pen-sakura-micron-xsdk005-49,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C18
+2026-10-01 19:32,Andrew,resolve,cards,C18,answer,,"{""a"": ""ok"", ""b"": ""ok"", ""c"": ""ok"", ""d"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,pen-bic-velocity,price,1.75,1.75,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,status,prices,pen-bic-velocity,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,set,prices,pen-pentel-energel-margin,price,3.49,3.49,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-energel-margin,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,set,prices,pen-pentel-twist-erase-express,price,2.09,2.09,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-twist-erase-express,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,set,prices,pen-pentel-twist-erase-gt,price,2.66,2.66,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-twist-erase-gt,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,set,prices,pen-pilot-g-tec,price,2.64,2.64,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-g-tec,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C19
+2026-10-01 19:32,Andrew,resolve,cards,C19,answer,,"{""a"": ""ok"", ""b"": ""ok"", ""c"": ""ok"", ""d"": ""ok"", ""e"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,retire,prices,pen-bic-widebody-scwb11-bk,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C20
+2026-10-01 19:32,Andrew,retire,prices,pen-ergotwist-bk99a-a,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C20
+2026-10-01 19:32,Andrew,retire,prices,pen-pentel-twist-erase-qe107a,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C20
+2026-10-01 19:32,Andrew,retire,prices,pen-sanford-calligraphy,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C20
+2026-10-01 19:32,Andrew,resolve,cards,C20,answer,,"{""a"": ""ok"", ""b"": ""ok"", ""c"": ""ok"", ""d"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,pen-client-pen-bk910a-a,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-client-pencil-al905a,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-expo-dry-erase-83001,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-expo-finepoint-84001,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-expo-w-eraser-80788,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-flexgrip-elite-85582,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-itoya-doubleheader-cl10bk,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-liquid-expo-89081,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-liquid-expresso-31001bh,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-marvy-erasable-6666syw,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-flexgrip-ultra-w-cap-9630131,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-inkjoy-1781580,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-e-sharp,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-hyperg-kl257c,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-rsvp-rt,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-vicuna,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-g-2-mini,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-insight-1802658,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-zarasa-metallic,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-zebra-bible-highlighter,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-zebra-literite-81150,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-zebra-sarasa,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,status,prices,pen-zebra-zazzle-brights-71050,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C21
+2026-10-01 19:32,Andrew,resolve,cards,C21,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,prices,pen-bic-4-color-mm11-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-bic-briteliner-bl11yw-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-bic-pro-bp11bk-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-bic-velocity-pencil-mv711bk-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-energel-liquid-ink-bl57a-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-expo-dry-erase-83001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-expo-finepoint-84001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-expo-w-eraser-80788-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-flexgrip-elite-85582-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-frixion-clicker-31450-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-hi-liter-large-24000-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-hi-liter-pen-style-23591-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-icy-pentel-al25ta-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-itoya-doubleheader-cl10bk-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-jetstream-40173-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-liquid-expo-89081-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-liquid-expresso-31001bh-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-marks-a-lot-08-888-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-erasermate-3930158-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-flair-8430152-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-flexgrip-ultra-retractable-9680131-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-flexgrip-ultra-w-cap-9630131-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-inkjoy-1781580-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-papermate-profile-89465-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-hyperg-kl257c-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-rolling-writer-r100a-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-rsvp-w-cap-bk90a-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-vicuna-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pentel-wow-bk440a-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-better-retractable-bp-s-35011-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-easytouch-32001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-g-2-31020-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-g-6-31401-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-p500-38600-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-spotliter-45011-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-spotliter-supreme-16008-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-varsity-90011-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-pilot-v-ball-35470-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-precise-v5-v7-35334-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-precise-v5-v7-rt-26062-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sanford-uniball-gel-impact-silver-60658-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-accent-liquid-24425-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-extra-fine-35001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-fine-point-30001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-king-size-15001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-liquid-highlighter-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-magnum-44001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-metallic-39100-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-pen-1742663-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-pocket-accent-27025-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-retractable-32701-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-smear-guard-larger-25025-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-smear-guard-narrow-27025-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-super-twin-tip-36201-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-twin-tip-32001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-sharpie-ultra-fine-37001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-super-sharpie-33001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uni-power-tank-rt-42070-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-roller-micro-60151-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-deluxe-60052-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-gel-impact-65800-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-gel-impact-rt-65870-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-insight-1802658-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-onyx-60040-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-signo-61259-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-signo-gel-grip-65450-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-signo-impact-65870-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-vision-60106-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-uniball-vision-elite-61231-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-vis-a-vis-16001-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-zebra-literite-81150-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,status,prices,pen-zebra-zazzle-brights-71050-box,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C22
+2026-10-01 19:32,Andrew,resolve,cards,C22,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,status,contacts,rainbow-mark-home,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,rainbow-mark-cell,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,lori-lori-cell,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,rainbow-david-home,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,rainbow-david-cell,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,linda-linda-cell,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,wes-wes-cell,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,westside-westside-cell,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,westside-westside-home,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,aerospeed-aerospeed-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,jc-paper-doug-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,jc-paper-doug-fax,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,jc-paper-jc-paper-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,executive-printers-executive-printers-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,horizon-horizon-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,nv-rubber-stamp-nv-rubber-stamp-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,pak-mail-pak-mail-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,postal-express-postal-express-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,signs-by-tomorrow-signs-by-tomorrow-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,signs-by-tomorrow-signs-by-tomorrow-fax,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,status,contacts,wired-solutions-wired-solutions-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C23
+2026-10-01 19:32,Andrew,resolve,cards,C23,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,resolve,cards,C24,answer,,"{""opt"": ""2""}","conflict sheet v1 marked up (scan_153, 2026-10-01)","option 2 ('Reno closed: drop Reno phone/fax and Reno accounts') is not the proposal - apply by hand, then: pricebook.py close C24"
+2026-10-01 19:32,Andrew,status,contacts,inland-business-systems-lucas-sierra-a-xerox-company-inland-business-systems-phone,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C25
+2026-10-01 19:32,Andrew,status,contacts,inland-business-systems-lucas-sierra-a-xerox-company-inland-business-systems-phone-2,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C25
+2026-10-01 19:32,Andrew,status,contacts,inland-business-systems-lucas-sierra-a-xerox-company-inland-business-systems-web,status,pending,active,"conflict sheet v1 marked up (scan_153, 2026-10-01)",card C25
+2026-10-01 19:32,Andrew,resolve,cards,C25,answer,,"{""opt"": ""1""}","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,resolve,cards,C26,answer,,"{""a"": ""ok""}","conflict sheet v1 marked up (scan_153, 2026-10-01)","line a (Color copies, duplex (proposal: 2x the single-sided price)): OK '2x single' - no price row, apply by hand"
+2026-10-01 19:32,Andrew,edit,prices,lf-color-18x24,item,Large format color print,Large format color - blueprints / plans,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-18x24,variant,standard size,"color blueprints / plans, standard size","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-18x24,keywords,"large format color, poster, color plot, wide format, signage print, rendering","blueprint, blueprints, plans, plan set, construction drawings, architectural, engineering, color plans, large format color","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-18x24,notes,First digit overwritten; 2 of 3 reads say 7.95 (alt 9.95). Stray pen tick above '24'.,"Flat price for color blueprints/plans (Andrew, C04). Non-blueprint color work is priced by the sq ft.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-24x36,item,Large format color print,Large format color - blueprints / plans,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-24x36,variant,standard size,"color blueprints / plans, standard size","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-24x36,keywords,"large format color, poster, color plot, wide format, signage print, rendering","blueprint, blueprints, plans, plan set, construction drawings, architectural, engineering, color plans, large format color","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-24x36,notes,Handwritten on older LF sheet. p03 prices LF color by the sq ft instead.,"Flat price for color blueprints/plans (Andrew, C04). Non-blueprint color work is priced by the sq ft.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-30x42,item,Large format color print,Large format color - blueprints / plans,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-30x42,variant,standard size,"color blueprints / plans, standard size","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-30x42,keywords,"large format color, poster, color plot, wide format, signage print, rendering","blueprint, blueprints, plans, plan set, construction drawings, architectural, engineering, color plans, large format color","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-30x42,notes,Handwritten on older LF sheet. p03 prices LF color by the sq ft instead.,"Flat price for color blueprints/plans (Andrew, C04). Non-blueprint color work is priced by the sq ft.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-36x48,item,Large format color print,Large format color - blueprints / plans,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-36x48,variant,standard size,"color blueprints / plans, standard size","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-36x48,keywords,"large format color, poster, color plot, wide format, signage print, rendering","blueprint, blueprints, plans, plan set, construction drawings, architectural, engineering, color plans, large format color","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-36x48,notes,Handwritten on older LF sheet. p03 prices LF color by the sq ft instead.,"Flat price for color blueprints/plans (Andrew, C04). Non-blueprint color work is priced by the sq ft.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-bond-sqft,item,"Large format color print, other sizes",Large format color - posters / graphics (non-blueprint),"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-bond-sqft,variant,"bond, non-standard size","bond, any size, per sq ft","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-bond-sqft,keywords,"large format color, poster, color plot, wide format, signage print, rendering, custom size","large format color, poster, posters, color plot, signage print, rendering, graphics, banner paper, custom size","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-bond-sqft,notes,,"All non-blueprint large-format color on bond, any size (Andrew, C04). Blueprints/plans use the flat prices.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-photo-sqft,variant,"photo paper, non-standard size","photo paper, custom sizes only","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,lf-color-photo-sqft,notes,,Listed photo sizes use the Photo Prints list; $6/sq ft only for sizes not on that list (C10).,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,set,prices,bw-8.5x11-simplex-1-20,price,0.10,0.15,"Andrew, chat 2026-10-01",C06 follow-up: all tiers $0.15
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-1s-1ink-250,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2s-black-1std-250,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2color-250,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-1s-1ink-500,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2s-black-1std-500,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2color-500,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-1s-1ink-1000,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2s-black-1std-1000,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2color-1000,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-1s-1ink-addl-1000,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2s-black-1std-addl-1000,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,retire,prices,bc-trade-2color-addl-1000,status,superseded,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C11: trade-sheet business-card block retired
+2026-10-01 19:32,Andrew,edit,prices,numbering-per-1000,notes,,Numbering machine (C15).,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,numbering-per-page,notes,Plus copy cost.,Numbers printed on the press: copy cost plus $0.03 per page (C15).,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,banner-13oz,notes,Artwork/layout extra.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,banner-8oz-mesh,notes,Artwork/layout extra.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,foam-core,notes,Artwork/layout extra.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,coroplast-4mm,notes,Artwork/layout extra.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,coroplast-10mm,notes,Artwork/layout extra. Same price as 4 mm.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,aluminum-sandwich,notes,Artwork/layout extra.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,prices,car-magnet,notes,Artwork/layout extra.,"Mark to re-check against 4over (C16, 2026-10-01). Artwork/layout extra.","conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,retire,prices,scan-doc-extra-save,status,pending,retired,"Andrew, chat 2026-10-01",C17: no more CDs
+2026-10-01 19:32,Andrew,retire,prices,media-cd-copy,status,active,retired,"Andrew, chat 2026-10-01",C17: no more CDs
+2026-10-01 19:32,Andrew,retire,prices,media-dvd-copy,status,active,retired,"Andrew, chat 2026-10-01",C17: no more discs
+2026-10-01 19:32,Andrew,edit,prices,scan-doc-first,variant,first page (includes 1 CD),first page,"Andrew, chat 2026-10-01",C17: dropped 'includes 1 CD'
+2026-10-01 19:32,Andrew,edit,prices,scan-lf-extra-save,variant,multiple saves (each extra),multiple saves (each extra file),"Andrew, chat 2026-10-01",C17: kept; not a disc charge
+2026-10-01 19:32,Andrew,status,prices,scan-lf-extra-save,status,pending,active,"Andrew, chat 2026-10-01",card C17
+2026-10-01 19:32,Andrew,close,cards,C17,status,,resolved,"Andrew, chat 2026-10-01",
+2026-10-01 19:32,Andrew,edit,contacts,rainbow-reno-rainbow-reno-phone,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C24: Reno closed
+2026-10-01 19:32,Andrew,edit,contacts,rainbow-reno-rainbow-reno-fax,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C24: Reno closed
+2026-10-01 19:32,Andrew,edit,contacts,essendant-essendant-reno-account-account,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C24: Reno closed
+2026-10-01 19:32,Andrew,edit,contacts,essendant-essendant-reno-account-address,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C24: Reno closed
+2026-10-01 19:32,Andrew,edit,contacts,spr-spr-reno-account-account,status,pending,retired,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C24: Reno closed
+2026-10-01 19:32,Andrew,close,cards,C24,status,,resolved,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,contacts,inland-business-systems-lucas-sierra-a-xerox-company-inland-business-systems-phone,role,copier service & supplies,Versant 180 service & supplies,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,contacts,inland-business-systems-lucas-sierra-a-xerox-company-inland-business-systems-phone-2,role,copier service & supplies (toll free),Versant 180 service & supplies,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,edit,contacts,inland-business-systems-lucas-sierra-a-xerox-company-inland-business-systems-web,role,,Versant 180 service & supplies,"conflict sheet v1 marked up (scan_153, 2026-10-01)",
+2026-10-01 19:32,Andrew,add,prices,color-8.5x11-duplex-1-25,price,,1.38,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C26: 2x single-sided price
+2026-10-01 19:32,Andrew,add,prices,color-8.5x11-duplex-26up,price,,0.98,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C26: 2x single-sided price
+2026-10-01 19:32,Andrew,add,prices,color-8.5x14-duplex-1-25,price,,1.78,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C26: 2x single-sided price
+2026-10-01 19:32,Andrew,add,prices,color-8.5x14-duplex-26up,price,,1.38,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C26: 2x single-sided price
+2026-10-01 19:32,Andrew,add,prices,color-11x17-duplex-1-25,price,,2.76,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C26: 2x single-sided price
+2026-10-01 19:32,Andrew,add,prices,color-11x17-duplex-26up,price,,1.96,"conflict sheet v1 marked up (scan_153, 2026-10-01)",C26: 2x single-sided price
+2026-10-01 19:32,Claude,edit,cards,C16 C26,status_note,,set,scan_153 follow-up,short status for web banner
+2026-10-01 19:52,Andrew,retire,prices,lf-bw-18x24-account,status,active,retired,"Andrew, chat 2026-10-01",No account pricing; account customers pay full price
+2026-10-01 19:52,Andrew,edit,prices,lf-bw-18x24-walkin,variant,walk-in (no account),standard (all customers),"Andrew, chat 2026-10-01",account discount removed
+2026-10-01 19:52,Andrew,retire,prices,lf-bw-24x36-account,status,active,retired,"Andrew, chat 2026-10-01",No account pricing; account customers pay full price
+2026-10-01 19:52,Andrew,edit,prices,lf-bw-24x36-walkin,variant,walk-in (no account),standard (all customers),"Andrew, chat 2026-10-01",account discount removed
+2026-10-01 19:52,Andrew,retire,prices,lf-bw-30x42-account,status,active,retired,"Andrew, chat 2026-10-01",No account pricing; account customers pay full price
+2026-10-01 19:52,Andrew,edit,prices,lf-bw-30x42-walkin,variant,walk-in (no account),standard (all customers),"Andrew, chat 2026-10-01",account discount removed
+2026-10-01 19:52,Andrew,retire,prices,lf-bw-36x48-account,status,active,retired,"Andrew, chat 2026-10-01",No account pricing; account customers pay full price
+2026-10-01 19:52,Andrew,edit,prices,lf-bw-36x48-walkin,variant,walk-in (no account),standard (all customers),"Andrew, chat 2026-10-01",account discount removed
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x11-simplex-1-20,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x11-duplex-1-20,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x11-simplex-21-99,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x11-duplex-21-99,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x11-simplex-100up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x11-duplex-100up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x11-1-25,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x11-26up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x11-duplex-1-25,status,active,retired,"Andrew, chat 2026-10-01",No duplex price; charged per side
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x11-duplex-26up,status,active,retired,"Andrew, chat 2026-10-01",No duplex price; charged per side
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x14-simplex-1-20,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x14-duplex-1-20,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x14-simplex-21-99,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x14-duplex-21-99,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x14-simplex-100up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-8.5x14-duplex-100up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x14-1-25,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x14-26up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x14-duplex-1-25,status,active,retired,"Andrew, chat 2026-10-01",No duplex price; charged per side
+2026-10-01 19:52,Andrew,retire,prices,color-8.5x14-duplex-26up,status,active,retired,"Andrew, chat 2026-10-01",No duplex price; charged per side
+2026-10-01 19:52,Andrew,retire,prices,bw-11x17-simplex-1-20,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-11x17-duplex-1-20,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,bw-11x17-simplex-21-99,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-11x17-duplex-21-99,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,bw-11x17-simplex-100up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,bw-11x17-duplex-100up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing; no duplex price
+2026-10-01 19:52,Andrew,retire,prices,color-11x17-1-25,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,color-11x17-26up,status,active,retired,"Andrew, chat 2026-10-01",Replaced by per-side pricing
+2026-10-01 19:52,Andrew,retire,prices,color-11x17-duplex-1-25,status,active,retired,"Andrew, chat 2026-10-01",No duplex price; charged per side
+2026-10-01 19:52,Andrew,retire,prices,color-11x17-duplex-26up,status,active,retired,"Andrew, chat 2026-10-01",No duplex price; charged per side
+2026-10-01 19:52,Andrew,add,prices,bw-8.5x11-side,price,,0.15,"Andrew, chat 2026-10-01",Charged by total page count
+2026-10-01 19:52,Andrew,add,prices,bw-8.5x14-side,price,,0.20,"Andrew, chat 2026-10-01",Charged by total page count
+2026-10-01 19:52,Andrew,add,prices,bw-11x17-side,price,,0.30,"Andrew, chat 2026-10-01",Charged by total page count
+2026-10-01 19:52,Andrew,add,prices,color-8.5x11-side-1-20,price,,0.79,"Andrew, chat 2026-10-01",Up to 20 sides (Andrew: '<20 sides')
+2026-10-01 19:52,Andrew,add,prices,color-8.5x11-side-21up,price,,0.59,"Andrew, chat 2026-10-01",21 sides and up (Andrew: '>20 sides')
+2026-10-01 19:52,Andrew,add,prices,color-8.5x14-side-1-20,price,,0.99,"Andrew, chat 2026-10-01",Up to 20 sides (Andrew: '<20 sides')
+2026-10-01 19:52,Andrew,add,prices,color-8.5x14-side-21up,price,,0.79,"Andrew, chat 2026-10-01",21 sides and up (Andrew: '>20 sides')
+2026-10-01 19:52,Andrew,add,prices,color-11x17-side-1-20,price,,1.38,"Andrew, chat 2026-10-01",Up to 20 sides (Andrew: '<20 sides')
+2026-10-01 19:52,Andrew,add,prices,color-11x17-side-21up,price,,1.18,"Andrew, chat 2026-10-01",21 sides and up (Andrew: '>20 sides')
+2026-10-01 19:59,Andrew,set,prices,self-serve-copies,price,0.10,0.15,"Andrew, chat 2026-10-01",Self-serve copies now per side
+2026-10-01 19:59,Andrew,edit,prices,self-serve-copies,unit,each,side,"Andrew, chat 2026-10-01",
+2026-10-01 19:59,Andrew,edit,prices,self-serve-copies,variant,,per side (double-sided = 2 sides),"Andrew, chat 2026-10-01",
+2026-10-01 20:15,Claude,set,prices,scan-lf-color-add,price,5.00,2.00,"Andrew, chat 2026-10-01",
+2026-10-01 20:20,Claude,set,prices,self-serve-computer,price,0.30,0.40,"Andrew, chat 2026-10-01",
+2026-10-01 20:20,Claude,set,prices,coil-half-inch,price,3.50,4.88,"Andrew, chat 2026-10-01",
+2026-10-01 20:20,Claude,edit,prices,coil-half-inch,variant,1/2 in. book,"per book, any thickness, covers included","Andrew, chat 2026-10-01",
+2026-10-01 20:20,Claude,edit,prices,coil-half-inch,notes,Plus $0.69 per cover. 1 standard book with covers = $4.88.,"Flat $4.88 per book regardless of thickness; front/back covers included. No add-on charges (Andrew, 2026-10-01).","Andrew, chat 2026-10-01",
+2026-10-01 20:20,Claude,retire,prices,coil-add-half-inch,status,active,retired,"Andrew, chat 2026-10-01","Flat price, no thickness upcharge"
+2026-10-01 20:20,Claude,retire,prices,coil-cover,status,active,retired,"Andrew, chat 2026-10-01",Covers included in flat $4.88
+2026-10-01 20:26,Claude,set,prices,comb-half-inch,price,1.50,4.88,"Andrew, chat 2026-10-01",
+2026-10-01 20:26,Claude,edit,prices,comb-half-inch,variant,1/2 in. book,"per book, any thickness, covers included","Andrew, chat 2026-10-01",
+2026-10-01 20:26,Claude,edit,prices,comb-half-inch,notes,Plus $0.69 per cover. 1 standard book with covers = $2.88.,"Flat $4.88 per book regardless of thickness; front/back covers included. No add-on charges (Andrew, 2026-10-01).","Andrew, chat 2026-10-01",
+2026-10-01 20:26,Claude,retire,prices,comb-one-inch,status,active,retired,"Andrew, chat 2026-10-01","Comb now flat $4.88, covers included, no thickness pricing"
+2026-10-01 20:26,Claude,retire,prices,comb-add-half-inch,status,active,retired,"Andrew, chat 2026-10-01","Comb now flat $4.88, covers included, no thickness pricing"
+2026-10-01 20:26,Claude,retire,prices,comb-cover,status,active,retired,"Andrew, chat 2026-10-01","Comb now flat $4.88, covers included, no thickness pricing"
+2026-10-01 20:28,Claude,set,prices,mounting,price,10.00,20.00,"Andrew, chat 2026-10-01",
+2026-10-01 20:28,Claude,set,prices,laminate-24in-sqft,price,2.95,4.95,"Andrew, chat 2026-10-01",
+2026-10-01 23:19,Claude,add,prices,lf-color-transparency-sqft,price,,8.00,"Andrew, chat 2026-10-01",
+2026-10-08 17:46,Claude,set,prices,foam-core,price,11.50,12.00,"Andrew, scan_200 handwritten 2026-10-08",
+2026-10-08 17:46,Claude,status,prices,foam-core,status,pending,active,"Andrew, scan_200 handwritten 2026-10-08",
+2026-10-08 17:46,Claude,set,prices,coroplast-4mm,price,8.00,10.95,"Andrew, scan_200 handwritten 2026-10-08",handwritten '10.95 Retail'
+2026-10-08 17:46,Claude,status,prices,coroplast-4mm,status,pending,active,"Andrew, scan_200 handwritten 2026-10-08",handwritten '10.95 Retail'
+2026-10-08 17:46,Claude,retire,prices,coroplast-10mm,status,pending,retired,"Andrew, scan_200 handwritten 2026-10-08",10 mm coroplast no longer offered
+2026-10-08 17:46,Claude,status,prices,banner-13oz,status,pending,active,"Andrew, scan_200 handwritten 2026-10-08: unmarked 4over lines confirmed as printed",card C16
+2026-10-08 17:46,Claude,status,prices,banner-8oz-mesh,status,pending,active,"Andrew, scan_200 handwritten 2026-10-08: unmarked 4over lines confirmed as printed",card C16
+2026-10-08 17:46,Claude,status,prices,aluminum-sandwich,status,pending,active,"Andrew, scan_200 handwritten 2026-10-08: unmarked 4over lines confirmed as printed",card C16
+2026-10-08 17:46,Claude,status,prices,car-magnet,status,pending,active,"Andrew, scan_200 handwritten 2026-10-08: unmarked 4over lines confirmed as printed",card C16
+2026-10-08 17:46,Claude,close,cards,C16,status,,resolved,"Andrew, scan_200 handwritten 2026-10-08: unmarked 4over lines confirmed as printed",
+2026-10-08 17:46,Claude,add,prices,foam-core-18x24,price,,36.00,"Andrew, scan_200 handwritten 2026-10-08 (calculated)",Calculated: 3 sq ft x foam-core $/sq ft. Update when the sq-ft price changes.
+2026-10-08 17:46,Claude,edit,prices,foam-core-18x24,turnaround,,approx. 1 week,"Andrew, scan_200 handwritten 2026-10-08",
+2026-10-08 17:46,Claude,add,prices,foam-core-24x36,price,,72.00,"Andrew, scan_200 handwritten 2026-10-08 (calculated)",Calculated: 6 sq ft x foam-core $/sq ft. Update when the sq-ft price changes.
+2026-10-08 17:46,Claude,edit,prices,foam-core-24x36,turnaround,,approx. 1 week,"Andrew, scan_200 handwritten 2026-10-08",
+2026-10-08 17:46,Claude,add,prices,coroplast-4mm-18x24,price,,32.85,"Andrew, scan_200 handwritten 2026-10-08 (calculated)",Calculated: 3 sq ft x coroplast-4mm $/sq ft. Update when the sq-ft price changes.
+2026-10-08 17:46,Claude,edit,prices,coroplast-4mm-18x24,turnaround,,approx. 1 week,"Andrew, scan_200 handwritten 2026-10-08",
+2026-10-08 17:46,Claude,add,prices,coroplast-4mm-24x36,price,,65.70,"Andrew, scan_200 handwritten 2026-10-08 (calculated)",Calculated: 6 sq ft x coroplast-4mm $/sq ft. Update when the sq-ft price changes.
+2026-10-08 17:46,Claude,edit,prices,coroplast-4mm-24x36,turnaround,,approx. 1 week,"Andrew, scan_200 handwritten 2026-10-08",
+2026-10-17 18:01,Claude,add,prices,stock-100lb-cover-8.5x11,price,,0.40,"Andrew, chat 2026-10-17",Added on top of the per-side copy charge.

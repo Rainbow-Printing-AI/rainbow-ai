@@ -1,0 +1,3 @@
+# Never convert line endings: every file is stored and restored byte-for-byte
+# (protects PDFs, keeps .sh LF for the Mac and .cmd/.ps1 CRLF for Windows).
+* -text

@@ -1,0 +1,34 @@
+{
+ "sheet": {
+  "num": "07",
+  "name": "BusinessCards",
+  "title": "Prices for Printing Business Cards U.S Sizes",
+  "source": "scan_147 p07",
+  "covers": [
+   "Business Cards"
+  ]
+ },
+ "docx": "Rainbow_Sheet_07_BusinessCards.docx",
+ "generated": "2026-10-17T18:02:18",
+ "prices_csv": "/sessions/rcw-01qwgb3xtuqqp2grtkcucyet/mnt/Rainbow/PriceBook/data/prices.csv",
+ "used_ids": [
+  "bc-4over-100",
+  "bc-4over-250",
+  "bc-4over-500",
+  "bc-4over-1000",
+  "bc-inhouse-1s-100",
+  "bc-inhouse-2s-100",
+  "bc-inhouse-1s-200",
+  "bc-inhouse-2s-200",
+  "bc-inhouse-1s-250",
+  "bc-inhouse-2s-250",
+  "bc-inhouse-1s-500",
+  "bc-inhouse-2s-500",
+  "bc-inhouse-bleed-cutting"
+ ],
+ "pending_ids": [],
+ "excluded": {},
+ "rev": "2026-09-30",
+ "pdf": "Rainbow_Sheet_07_BusinessCards.pdf",
+ "pages": 1
+}

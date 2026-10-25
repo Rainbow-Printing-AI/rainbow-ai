@@ -1,0 +1,36 @@
+{
+ "sheet": {
+  "num": "09",
+  "name": "PhotoPrints",
+  "title": "Photo Print Pricing",
+  "source": "scan_147 p09",
+  "covers": [
+   "Photo Prints"
+  ]
+ },
+ "docx": "Rainbow_Sheet_09_PhotoPrints.docx",
+ "generated": "2026-10-17T18:02:20",
+ "prices_csv": "/sessions/rcw-01qwgb3xtuqqp2grtkcucyet/mnt/Rainbow/PriceBook/data/prices.csv",
+ "used_ids": [
+  "photo-4x6",
+  "photo-5x7",
+  "photo-8x10",
+  "photo-8.5x11",
+  "photo-11x14",
+  "photo-12x18",
+  "photo-16x20",
+  "photo-16x24",
+  "photo-18x24",
+  "photo-20x30",
+  "photo-24x30",
+  "photo-24x36",
+  "photo-36x48",
+  "photo-touchup",
+  "photo-cropping"
+ ],
+ "pending_ids": [],
+ "excluded": {},
+ "rev": "2026-10-01",
+ "pdf": "Rainbow_Sheet_09_PhotoPrints.pdf",
+ "pages": 1
+}

@@ -1,0 +1,17 @@
+# Rainbow tools - Python packages, pinned to the exact versions the Cowork VM (Mac) runs,
+# so output is byte-for-byte the same on every machine. Windows: py -3.12 -m pip install -r requirements.txt
+pikepdf==10.13.0.post1
+pypdf==6.18.0
+reportlab==5.0.1
+pillow==12.3.0
+numpy==2.2.6
+img2pdf==0.6.3
+pdfplumber==0.11.10
+pdfminer.six==20260107
+openpyxl==3.1.5
+fonttools==4.65.0
+python-docx==1.2.0
+# optional extras the VM installs per job: HEIC photos, banner logos/text (build_banner.py)
+pillow-heif==1.8.1
+uharfbuzz==0.56.3
+potracer==0.0.4

@@ -1,0 +1,31 @@
+{
+ "sheet": {
+  "num": "08",
+  "name": "SignsBanners",
+  "title": "Prices for Printing Vinyl Banners, Foam Core, Aluminum Sandwich Boards, Coroplast Signs and Car Magnets from 4-Over",
+  "source": "scan_147 p08",
+  "covers": [
+   "Signs & Banners (4over)"
+  ]
+ },
+ "docx": "Rainbow_Sheet_08_SignsBanners.docx",
+ "generated": "2026-10-17T18:02:19",
+ "prices_csv": "/sessions/rcw-01qwgb3xtuqqp2grtkcucyet/mnt/Rainbow/PriceBook/data/prices.csv",
+ "used_ids": [
+  "banner-13oz",
+  "banner-8oz-mesh",
+  "foam-core",
+  "foam-core-18x24",
+  "foam-core-24x36",
+  "coroplast-4mm",
+  "coroplast-4mm-18x24",
+  "coroplast-4mm-24x36",
+  "aluminum-sandwich",
+  "car-magnet"
+ ],
+ "pending_ids": [],
+ "excluded": {},
+ "rev": "2026-10-08",
+ "pdf": "Rainbow_Sheet_08_SignsBanners.pdf",
+ "pages": 1
+}

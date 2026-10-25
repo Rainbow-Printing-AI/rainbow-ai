@@ -1,0 +1,10 @@
+This is Rainbow's new Windows shop PC (RAINBOW-AI). The Rainbow folder was just moved here from the Mac and lives at C:\Rainbow. Check the port before any live job runs on this machine. Don't modify customer files and never touch Hot Folders.
+
+1. get_device_info: confirm C:\Rainbow is a connected folder and device_bash runs.
+2. device_bash: cd $HOME/mnt/Rainbow/tools && bash tests/run_tests.sh  -> must exit 0 (45 PASS lines on the first run of a fresh copy, 46 on re-runs - same as the Mac on 2026-10-17).
+3. device_bash: cd $HOME/mnt/Rainbow/PriceBook && python3 tests/test_pricebook.py && python3 pricebook.py validate && python3 sheets/audit_sheets.py  -> all PASS.
+4. python3 pricebook.py find 24x36 color  -> lf-color-24x36 (it was $12.95 on the Mac on 2026-10-17 unless I've changed it since).
+5. Read C:\Rainbow\tools\windows\setup_log.txt (the native Windows install and tests) and report its RESULT line and every FAIL.
+6. If customer job folders were copied over: re-run three recent jobs (an N-up, a booklet, labels) into your scratch folder, not the shop folder, and run verify_print.py on each.
+
+Reply with one table: check / PASS or FAIL / note. If anything fails, diagnose it; fixes go in tools/ only, then re-run tests/run_tests.sh and tell me exactly what changed.

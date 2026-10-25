@@ -1,0 +1,10 @@
+{
+  "press": "Xerox Versant 180 / Fiery \u2014 Rainbow",
+  "l_crush": 22,
+  "l_fix": 28,
+  "c_min": 10,
+  "flat_min": 0.01,
+  "_how": "crushcheck.py rule: a color is lifted only if chroma C* >= c_min (it is a color, not a black/gray) AND L* < l_crush (the press cannot show its hue). Lifted colors go to L* = l_fix, same hue. Everything else is untouched.",
+  "_calibrate": "python3 crushcheck.py --swatches versant_swatches.pdf, print it on the Versant on normal stock, find the lowest L* row where every hue still reads as a color next to its neutral, set l_crush to that row and l_fix about 6 above it.",
+  "calibrated": "2026-09-25 \u2014 swatch sheet printed on the Versant: rows L*10\u201320 crushed to black, L*22 was the lowest row where every hue still read. l_crush 22, l_fix 28."
+}

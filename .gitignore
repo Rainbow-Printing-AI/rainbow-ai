@@ -1,0 +1,44 @@
+# Rainbow AI — allow-list .gitignore
+# Rule 1 ignores everything at the top level. The "!" lines let back in only
+# what belongs in the repo. Later lines win over earlier ones.
+
+# --- Ignore everything at the top level by default ---
+/*
+
+# --- Allowed (tracked) ---
+!/.gitignore
+!/.gitattributes
+!/CLAUDE.md
+!/BUILD-LOG.md
+!/tools/
+!/docs/
+!/app/
+!/PriceBook/
+!/.claude/
+
+# --- Carve-outs inside allowed folders ---
+/PriceBook/private/
+/.claude/settings.local.json
+
+# --- Never tracked, anywhere in the tree (these beat the allow-list) ---
+secrets/
+*.env
+credentials*.json
+token*.json
+__pycache__/
+.venv/
+
+# --- Personal phone numbers (owners/staff) stay out of git for now ---
+/PriceBook/data/contacts.csv
+/PriceBook/source/contacts_v1.py
+/PriceBook/source/scan_*.pdf
+/PriceBook/source/crops/p15_*
+/PriceBook/build/*.pdf
+/PriceBook/build/*.xlsx
+
+# --- Files the tests regenerate on every run, and the local setup log ---
+/tools/tests/out/
+/tools/tests/*_tmp.pdf
+/tools/tests/merge_t.*
+/tools/tests/passport_synth*
+/tools/windows/setup_log.txt

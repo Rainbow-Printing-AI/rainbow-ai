@@ -1,0 +1,2247 @@
+{
+ "transcriber": "A",
+ "rows": [
+  {
+   "col": "L",
+   "seq": 1,
+   "item": "Bic 4 Color",
+   "sku": "MM11",
+   "printed_each": "2.89",
+   "printed_box": "30.12",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.74",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "3.14"
+     ],
+     "note": "2nd digit has a top bar + stem (read as 7); 4 is open-topped"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 2,
+   "item": "Bic Briteliner",
+   "sku": "BL11YW",
+   "printed_each": ".83",
+   "printed_box": "6.79",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.19",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 3,
+   "item": "BIC Pro",
+   "sku": "BP11BK",
+   "printed_each": "1.65",
+   "printed_box": "16.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 4,
+   "item": "Bic Velocity pencil",
+   "sku": "MV711BK",
+   "printed_each": "1.59",
+   "printed_box": "14.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.29",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 5,
+   "item": "Bic Widebody",
+   "sku": "SCWB11-BK",
+   "printed_each": "1.35",
+   "printed_box": "11.99",
+   "each_struck": true,
+   "box_struck": true,
+   "row_struck": true,
+   "handwritten": [],
+   "comment": "Red line through item name and a slanted red line through both 1.35 and 11.99. No replacement value written."
+  },
+  {
+   "col": "L",
+   "seq": 6,
+   "item": "Client Pen",
+   "sku": "BK910A-A",
+   "printed_each": "5.25",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 7,
+   "item": "Client Pencil",
+   "sku": "AL905A",
+   "printed_each": "5.59",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 8,
+   "item": "Energel Liquid Ink",
+   "sku": "BL57A",
+   "printed_each": "3.39",
+   "printed_box": "33.00",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.75",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 9,
+   "item": "Energize pencil",
+   "sku": "PL77A",
+   "printed_each": "3.49",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.75",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 10,
+   "item": "Ergotwist",
+   "sku": "BK99A-A",
+   "printed_each": "6.45",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": true,
+   "handwritten": [],
+   "comment": "Long red line runs under/through item name and through 6.45, ending inside the (blank) col-2 cell. No replacement value."
+  },
+  {
+   "col": "L",
+   "seq": 11,
+   "item": "Expo dry erase",
+   "sku": "83001",
+   "printed_each": "1.81",
+   "printed_box": "16.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 12,
+   "item": "Expo finepoint",
+   "sku": "84001",
+   "printed_each": "1.48",
+   "printed_box": "14.85",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 13,
+   "item": "Expo w/eraser",
+   "sku": "80788",
+   "printed_each": "2.45",
+   "printed_box": "21.48",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 14,
+   "item": "Flexgrip Elite",
+   "sku": "85582",
+   "printed_each": "1.59",
+   "printed_box": "14.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 15,
+   "item": "Frixion clicker",
+   "sku": "31450",
+   "printed_each": "2.93",
+   "printed_box": "27.48",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.05",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 16,
+   "item": "Frixion Highlighter",
+   "sku": "",
+   "printed_each": "1.50",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.79",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 17,
+   "item": "Gelly roll pen",
+   "sku": "",
+   "printed_each": "1.99",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "5 red scribble lines through printed 1.99; 3.99 overlaps col-1 border"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 18,
+   "item": "Hi-liter (large)",
+   "sku": "24000",
+   "printed_each": ".94",
+   "printed_box": "8.11",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.09",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed .94 struck with red slash."
+  },
+  {
+   "col": "L",
+   "seq": 19,
+   "item": "Hi-liter, pen style",
+   "sku": "23591",
+   "printed_each": ".81",
+   "printed_box": "6.99",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed .81 struck with red slashes."
+  },
+  {
+   "col": "L",
+   "seq": 20,
+   "item": "Icy Pentel",
+   "sku": "AL25TA",
+   "printed_each": "1.70",
+   "printed_box": "16.29",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.29",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 21,
+   "item": "Itoya Doubleheader",
+   "sku": "CL10BK",
+   "printed_each": "2.59",
+   "printed_box": "21.48",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 22,
+   "item": "Jetstream",
+   "sku": "40173",
+   "printed_each": "2.88",
+   "printed_box": "32.28",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "349",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "3.49"
+     ],
+     "note": "No decimal point visible between 3 and 4"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 23,
+   "item": "Liquid Expo",
+   "sku": "89081",
+   "printed_each": "2.37",
+   "printed_box": "26.28",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 24,
+   "item": "Liquid Expresso",
+   "sku": "31001BH",
+   "printed_each": "2.33",
+   "printed_box": "20.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 25,
+   "item": "Marks-A-Lot",
+   "sku": "08-888",
+   "printed_each": "1.48",
+   "printed_box": "9.99",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.85",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed 1.48 struck with red slashes."
+  },
+  {
+   "col": "L",
+   "seq": 26,
+   "item": "Marvy Calligraphy",
+   "sku": "6000FS1",
+   "printed_each": "1.49",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.89",
+     "ink": "black",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "black pen; written just left of / touching col-1 border"
+    }
+   ],
+   "comment": "Printed 1.49 struck with BLACK line (not red)."
+  },
+  {
+   "col": "L",
+   "seq": 27,
+   "item": "Marvy Erasable",
+   "sku": "6666SYW",
+   "printed_each": "2.19",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 28,
+   "item": "Marvy LePen",
+   "sku": "43001S1",
+   "printed_each": "1.39",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Red strike over 1.39 extends into the blank col-2 cell."
+  },
+  {
+   "col": "L",
+   "seq": 29,
+   "item": "Meanstreak",
+   "sku": "85005",
+   "printed_each": "6.15",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "8.60",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed 6.15 struck with red line."
+  },
+  {
+   "col": "L",
+   "seq": 30,
+   "item": "Papermate Erasermate",
+   "sku": "3930158",
+   "printed_each": ".98",
+   "printed_box": "8.29",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.29",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed .98 struck with red scribble."
+  },
+  {
+   "col": "L",
+   "seq": 31,
+   "item": "Papermate Flair",
+   "sku": "8430152",
+   "printed_each": "1.33",
+   "printed_box": "14.91",
+   "each_struck": true,
+   "box_struck": true,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.52",
+     "ink": "black",
+     "position": "left of col 1, overlapping col-1 border",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "black pen; final 2 runs into the strike line through 1.33"
+    },
+    {
+     "value": "19.99",
+     "ink": "black",
+     "position": "right of col 2, straddling/over the table's right border (spills into gap before R column)",
+     "applies_to": "box",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "9.99"
+     ],
+     "note": "Leading '1' is a tall slanted stroke on the col-2 right border; remaining 9.99 is clear. Tail of last 9 overlaps the R-column row label 'Uniball (Roller)(Micro)'."
+    }
+   ],
+   "comment": "BLACK-pen strike lines through both 1.33 and 14.91. The 19.99 lies outside the table, right of col 2 (only fully visible on full-res page; L strip clips it at x=1340)."
+  },
+  {
+   "col": "L",
+   "seq": 32,
+   "item": "Papermate Flexgrip Ultra, retractable",
+   "sku": "9680131",
+   "printed_each": "1.65",
+   "printed_box": "11.23",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.09",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Two-line row; SKU 9680131 printed on second line."
+  },
+  {
+   "col": "L",
+   "seq": 33,
+   "item": "Papermate Flexgrip Ultra, w/cap",
+   "sku": "9630131",
+   "printed_each": "1.65",
+   "printed_box": "11.23",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 34,
+   "item": "Papermate Inkjoy",
+   "sku": "1781580",
+   "printed_each": "1.95",
+   "printed_box": "19.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 35,
+   "item": "Papermate Profile",
+   "sku": "89465",
+   "printed_each": "1.18",
+   "printed_box": "10.99",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "Elite: 2.33",
+     "ink": "black",
+     "position": "in item-name cell, right of SKU, left of col 1 (beneath the red number)",
+     "applies_to": "unclear",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "Elite: 2.53",
+      "Elite: 2.35"
+     ],
+     "note": "Dark gray/black pencil-or-pen, smudgy. Word 'Elite' plus a colon and a price; looks like a price for an 'Elite' variant rather than for the printed Profile item."
+    },
+    {
+     "value": "1.99",
+     "ink": "red",
+     "position": "left of col 1, written over the black 'Elite: 2.33' price",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "1.39"
+     ],
+     "note": "Overlaps the black note; first-digit/decimal partly hidden by black dot."
+    }
+   ],
+   "comment": "Printed 1.18 struck with red slash."
+  },
+  {
+   "col": "L",
+   "seq": 36,
+   "item": "Pentel e-sharp",
+   "sku": "",
+   "printed_each": "2.68",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 37,
+   "item": "Pentel HyperG",
+   "sku": "KL257C",
+   "printed_each": "2.29",
+   "printed_box": "22.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 38,
+   "item": "Pentel Rolling Writer",
+   "sku": "R100A",
+   "printed_each": "1.60",
+   "printed_box": "11.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.16",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 39,
+   "item": "Pentel RSVP RT",
+   "sku": "",
+   "printed_each": "1.25",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 40,
+   "item": "Pentel RSVP w/cap",
+   "sku": "BK90A",
+   "printed_each": "1.15",
+   "printed_box": "8.99",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.39",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "1.89"
+     ],
+     "note": "middle digit has open arc on top like a 3 but closed lower bowl like an 8"
+    }
+   ],
+   "comment": "Printed 1.15 struck with red slash that runs to the col-1/col-2 border."
+  },
+  {
+   "col": "L",
+   "seq": 41,
+   "item": "Pentel Twist Erase",
+   "sku": "QE107A",
+   "printed_each": ".95",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": true,
+   "handwritten": [],
+   "comment": "BLACK wavy line runs through item name, through .95 and on across the blank col-2 cell to beyond the right border. No replacement value (see loose notes for 'Twist Erase' prices written below table)."
+  },
+  {
+   "col": "L",
+   "seq": 42,
+   "item": "Pentel Vicuna",
+   "sku": "",
+   "printed_each": "2.20",
+   "printed_box": "25.79",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 43,
+   "item": "Pentel WOW",
+   "sku": "BK440A",
+   "printed_each": ".65",
+   "printed_box": "6.49",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "95",
+     "ink": "red",
+     "position": "left of col 1, straddling col-1 border (written over the pencil '95')",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      ".95"
+     ],
+     "note": "No decimal point visible."
+    },
+    {
+     "value": "95",
+     "ink": "pencil",
+     "position": "left of col 1, beneath red 95",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      ".95"
+     ],
+     "note": "Gray pencil, same position as red 95; red traced over it."
+    }
+   ],
+   "comment": "Printed .65 is scribbled over with gray pencil (oval smear) rather than a straight line; treated as struck."
+  },
+  {
+   "col": "L",
+   "seq": 44,
+   "item": "Pilot Better Retractable & BP-S",
+   "sku": "35011",
+   "printed_each": "1.25",
+   "printed_box": "16.99",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.59",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "starts immediately after printed SKU '35011'"
+    }
+   ],
+   "comment": "Printed 1.25 struck with red slash. Small stray tick above the '1' of printed 16.99."
+  },
+  {
+   "col": "L",
+   "seq": 45,
+   "item": "Pilot EasyTouch",
+   "sku": "32001",
+   "printed_each": ".98",
+   "printed_box": "9.49",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed .98 struck with red slash."
+  },
+  {
+   "col": "L",
+   "seq": 46,
+   "item": "Pilot B2p bottle pen",
+   "sku": "",
+   "printed_each": "2.29",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.59",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed 2.29 struck with red slash."
+  },
+  {
+   "col": "L",
+   "seq": 47,
+   "item": "Pilot G-2",
+   "sku": "31020",
+   "printed_each": "",
+   "printed_box": "16.22",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    },
+    {
+     "value": "2.20",
+     "ink": "pencil",
+     "position": "inside the col-1 (each) cell, hand-lettered where the printed value would be",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [],
+     "note": "Gray pencil, not printed typeface (slanted 2, round 0); left border of the cell is broken/whited. Not struck."
+    }
+   ],
+   "comment": "Col-1 cell contains a hand-lettered gray '2.20' and no printed value is visible; I left printed_each blank rather than assume 2.20 was printed."
+  },
+  {
+   "col": "L",
+   "seq": 48,
+   "item": "Pilot G-2 Fashion",
+   "sku": "",
+   "printed_each": "2.40",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "2.67"
+     ],
+     "note": "last digit overlaps col-1 border; tail runs along border; row-above tail overlaps"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "L",
+   "seq": 49,
+   "item": "Pilot G-2 metallic",
+   "sku": "",
+   "printed_each": "2.33",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "2.67"
+     ],
+     "note": "last digit overlaps col-1 border"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 1,
+   "item": "Pilot G-2 mini",
+   "sku": "",
+   "printed_each": "1.98",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 2,
+   "item": "Pilot G-6",
+   "sku": "31401",
+   "printed_each": "2.79",
+   "printed_box": "26.28",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.19",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 3,
+   "item": "Pilot p500",
+   "sku": "38600",
+   "printed_each": "2.25",
+   "printed_box": "19.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 4,
+   "item": "Pilot Spotliter",
+   "sku": "45011",
+   "printed_each": "1.15",
+   "printed_box": "13.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.29",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 5,
+   "item": "Pilot Spotliter Supreme",
+   "sku": "16008",
+   "printed_each": "1.91",
+   "printed_box": "22.69",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.29",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 6,
+   "item": "Pilot Varsity",
+   "sku": "90011",
+   "printed_each": "3.37",
+   "printed_box": "34.68",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.79",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 7,
+   "item": "Pilot V-Ball",
+   "sku": "35470",
+   "printed_each": "2.80",
+   "printed_box": "26.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.19",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 8,
+   "item": "Precise V5, V7",
+   "sku": "35334",
+   "printed_each": "",
+   "printed_box": "19.49",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.75",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "2.15"
+     ],
+     "note": "second digit has top bar (7)"
+    },
+    {
+     "value": "2.43",
+     "ink": "pencil",
+     "position": "inside col-1 (each) cell, hand-lettered where printed value would be",
+     "applies_to": "each",
+     "struck": true,
+     "confidence": "medium",
+     "alt_readings": [
+      "2.93"
+     ],
+     "note": "Faint gray pencil with ':'-style decimal; struck through by red line."
+    }
+   ],
+   "comment": "Col-1 cell holds a hand-lettered gray pencil value (read 2.43) struck by a red slash; no printed typeface value visible there, so printed_each left blank."
+  },
+  {
+   "col": "R",
+   "seq": 9,
+   "item": "Precise V5,V7 RT",
+   "sku": "26062",
+   "printed_each": "2.79",
+   "printed_box": "23.88",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.25",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 10,
+   "item": "Sakura Micron",
+   "sku": "xsdk005-49",
+   "printed_each": "2.69",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.89",
+     "ink": "black",
+     "position": "in the col-2 (box) cell; last 9 spills over the table's right border",
+     "applies_to": "unclear",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "Thick black marker. Digits clear, but it sits in col 2 while col 1 is blacked out, so it may be the new each price."
+    }
+   ],
+   "comment": "Col-1 cell is obliterated by black marker scribble; printed value underneath is only faintly legible (read 2.69, LOW confidence; alt 2.60, 2.68). Small stray black dash/tick near the right end of the item name."
+  },
+  {
+   "col": "R",
+   "seq": 11,
+   "item": "Sanford Calligraphy",
+   "sku": "",
+   "printed_each": "1.49",
+   "printed_box": "",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": "Printed 1.49 struck with two red lines. No replacement value."
+  },
+  {
+   "col": "R",
+   "seq": 12,
+   "item": "Sanford Uniball Gel Impact",
+   "sku": "60658",
+   "printed_each": "3.40",
+   "printed_box": "28.20",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "4.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "4.60"
+     ],
+     "note": "overlaps printed '(silver)'; 4 partly hidden by the text; 9 has loop + tail along border"
+    }
+   ],
+   "comment": "Printed name continues '(silver)' after the SKU. Printed 3.40 struck with red slashes."
+  },
+  {
+   "col": "R",
+   "seq": 13,
+   "item": "Sharpie Accent Liquid",
+   "sku": "24425",
+   "printed_each": "1.81",
+   "printed_box": "14.99",
+   "each_struck": true,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.59",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed 1.81 struck with red slash."
+  },
+  {
+   "col": "R",
+   "seq": 14,
+   "item": "Sharpie Extra Fine",
+   "sku": "35001",
+   "printed_each": "1.49",
+   "printed_box": "10.29",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    },
+    {
+     "value": "6",
+     "ink": "black",
+     "position": "over the tens-cent digit inside printed col-1 '1.49' (over the 4)",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "low",
+     "alt_readings": [
+      "4"
+     ],
+     "note": "Heavy black marker overwrite on the 4. Shape is a slanted stroke with filled bowl; printed 4's vertical stem still shows at right. Cell therefore reads 1.69 (alt: unchanged 1.49)."
+    }
+   ],
+   "comment": "Single-digit black overwrite in printed each. printed_each recorded as 1.49 (printed 4 still visible under it)."
+  },
+  {
+   "col": "R",
+   "seq": 15,
+   "item": "Sharpie Fine Point",
+   "sku": "30001",
+   "printed_each": "1.49",
+   "printed_box": "9.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    },
+    {
+     "value": "6",
+     "ink": "black",
+     "position": "over the tens-cent digit inside printed col-1 '1.49' (over the 4)",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "4"
+     ],
+     "note": "Heavy black marker 6 drawn over printed 4 (stem of 4 visible at right). Cell reads 1.69 (alt 1.49)."
+    }
+   ],
+   "comment": "Single-digit black overwrite in printed each. printed_each recorded as 1.49."
+  },
+  {
+   "col": "R",
+   "seq": 16,
+   "item": "Sharpie King Size",
+   "sku": "15001",
+   "printed_each": "2.05",
+   "printed_box": "16.46",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.25",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 17,
+   "item": "Sharpie liquid highlighter",
+   "sku": "",
+   "printed_each": "1.81",
+   "printed_box": "13.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 18,
+   "item": "Sharpie Magnum",
+   "sku": "44001",
+   "printed_each": "4.67",
+   "printed_box": "40.68",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "6.52",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "stray trailing dot after the 2"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 19,
+   "item": "Sharpie Metallic",
+   "sku": "39100",
+   "printed_each": "2.10",
+   "printed_box": "17.29",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.00",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 20,
+   "item": "Sharpie Pen",
+   "sku": "1742663",
+   "printed_each": "2.37",
+   "printed_box": "19.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.00",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "last 0 overlaps col-1 border"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 21,
+   "item": "Sharpie Pocket Accent",
+   "sku": "27025",
+   "printed_each": ".93",
+   "printed_box": "7.79",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Printed name has a tiny speck/acute-like mark above the first c of 'Accent'; treated as a scan speck."
+  },
+  {
+   "col": "R",
+   "seq": 22,
+   "item": "Sharpie Retractable",
+   "sku": "32701",
+   "printed_each": "2.81",
+   "printed_box": "21.48",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 23,
+   "item": "Sharpie Smear Guard (larger)",
+   "sku": "25025",
+   "printed_each": ".93",
+   "printed_box": "7.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.39",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "1.29",
+      "1.59"
+     ],
+     "note": "digits 3 and 9 are overwritten/tangled; a big 3-like stroke drops into the next row"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 24,
+   "item": "Sharpie Smear Guard RT highlighter",
+   "sku": "28025",
+   "printed_each": "1.59",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "Two-line row; SKU 28025 printed on second line."
+  },
+  {
+   "col": "R",
+   "seq": 25,
+   "item": "Sharpie Smear Guard, narrow",
+   "sku": "27025",
+   "printed_each": ".93",
+   "printed_box": "8.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.39",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "1.29"
+     ],
+     "note": "3 and 9 run into the col-1 border"
+    }
+   ],
+   "comment": "SKU 27025 printed here is the same number as Sharpie Pocket Accent (seq 21); recorded as printed."
+  },
+  {
+   "col": "R",
+   "seq": 26,
+   "item": "Sharpie Super Twin Tip",
+   "sku": "36201",
+   "printed_each": "2.74",
+   "printed_box": "30.00",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.69",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 27,
+   "item": "Sharpie Twin Tip",
+   "sku": "32001",
+   "printed_each": "2.74",
+   "printed_box": "23.40",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.29",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": "SKU 32001 printed here is the same number as Pilot EasyTouch (L seq 45); recorded as printed."
+  },
+  {
+   "col": "R",
+   "seq": 28,
+   "item": "Sharpie Ultra Fine",
+   "sku": "37001",
+   "printed_each": "1.49",
+   "printed_box": "9.79",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 29,
+   "item": "Super Sharpie",
+   "sku": "33001",
+   "printed_each": "1.96",
+   "printed_box": "16.79",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.00",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "last 0 is large and crosses col-1 border"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 30,
+   "item": "Uni Power Tank RT",
+   "sku": "42070",
+   "printed_each": "2.67",
+   "printed_box": "30.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 31,
+   "item": "Uniball (Roller)(Micro)",
+   "sku": "60151",
+   "printed_each": "1.63",
+   "printed_box": "8.79",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.39",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "2.29",
+      "2.59"
+     ],
+     "note": "a diagonal stroke crosses the 3; 9 overlaps"
+    }
+   ],
+   "comment": "Left end of this row label is overlapped by the tail of the black '19.99' written beside Papermate Flair (L seq 31)."
+  },
+  {
+   "col": "R",
+   "seq": 32,
+   "item": "Uniball Deluxe",
+   "sku": "60052",
+   "printed_each": "3.24",
+   "printed_box": "21.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "4.39",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "4.59"
+     ],
+     "note": "long 4 stem runs into neighboring rows"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 33,
+   "item": "Uniball Gel Impact",
+   "sku": "65800",
+   "printed_each": "3.40",
+   "printed_box": "28.56",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "4.60",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "4.69"
+     ],
+     "note": "last digit is a large closed oval (0) crossing the border"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 34,
+   "item": "Uniball Gel Impact RT",
+   "sku": "65870",
+   "printed_each": "3.69",
+   "printed_box": "29.88",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "4.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "4.91",
+      "4.98"
+     ],
+     "note": "final digits have extra overlapping vertical strokes"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 35,
+   "item": "Uniball Insight",
+   "sku": "1802658",
+   "printed_each": "2.10",
+   "printed_box": "16.68",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 36,
+   "item": "Uniball Onyx",
+   "sku": "60040",
+   "printed_each": "1.12",
+   "printed_box": "7.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "1.89",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 37,
+   "item": "Uniball Signo",
+   "sku": "61259",
+   "printed_each": "2.25",
+   "printed_box": "17.88",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 38,
+   "item": "Uniball Signo Gel Grip",
+   "sku": "65450",
+   "printed_each": "1.86",
+   "printed_box": "17.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.19",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "medium",
+     "alt_readings": [
+      "2.79"
+     ],
+     "note": "2nd digit has a diagonal flag, no clear top bar (1 vs 7); 9 overlaps border"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 39,
+   "item": "Uniball Signo Impact",
+   "sku": "65870",
+   "printed_each": "3.69",
+   "printed_box": "29.88",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "4.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "stray red dot above the last 9"
+    }
+   ],
+   "comment": "SKU 65870 printed here is the same number as Uniball Gel Impact RT (seq 34); recorded as printed."
+  },
+  {
+   "col": "R",
+   "seq": 40,
+   "item": "Uniball Vision",
+   "sku": "60106",
+   "printed_each": "3.02",
+   "printed_box": "20.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "3.99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 41,
+   "item": "Uniball Vision Elite",
+   "sku": "61231",
+   "printed_each": "",
+   "printed_box": "31.08",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "4.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": ""
+    },
+    {
+     "value": "4.08",
+     "ink": "black",
+     "position": "inside col-1 (each) cell, hand-lettered where printed value would be",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "Black pen, handwriting style (not printed typeface); trailing period after the 8 and a stray dot below it."
+    }
+   ],
+   "comment": "Col-1 cell contains hand-lettered black '4.08'; no printed-typeface value visible, so printed_each left blank."
+  },
+  {
+   "col": "R",
+   "seq": 42,
+   "item": "Vis-à-vis",
+   "sku": "16001",
+   "printed_each": "1.43",
+   "printed_box": "13.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": "2.49",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "stray red dot below the last 9"
+    }
+   ],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 43,
+   "item": "Zarasa Metallic",
+   "sku": "",
+   "printed_each": "1.69",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 44,
+   "item": "Zebra Bible Highlighter",
+   "sku": "",
+   "printed_each": "1.99",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": "Printed 1.99 is in a bold sans-serif face unlike the serif numerals elsewhere (probably re-typed/patched)."
+  },
+  {
+   "col": "R",
+   "seq": 45,
+   "item": "Zebra LiteRite",
+   "sku": "81150",
+   "printed_each": "1.99",
+   "printed_box": "21.99",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 46,
+   "item": "Zebra Sarasa",
+   "sku": "",
+   "printed_each": "1.39",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 47,
+   "item": "Zebra Zazzle Brights",
+   "sku": "71050",
+   "printed_each": "1.65",
+   "printed_box": "14.49",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [],
+   "comment": ""
+  },
+  {
+   "col": "R",
+   "seq": 48,
+   "item": "Zebra Z grip pencil",
+   "sku": "",
+   "printed_each": ".99",
+   "printed_box": "",
+   "each_struck": false,
+   "box_struck": false,
+   "row_struck": false,
+   "handwritten": [
+    {
+     "value": ".99",
+     "ink": "red",
+     "position": "left of col 1",
+     "applies_to": "each",
+     "struck": false,
+     "confidence": "high",
+     "alt_readings": [],
+     "note": "stray red tick below the decimal point; same value as printed .99; printed value NOT struck"
+    }
+   ],
+   "comment": ""
+  }
+ ],
+ "loose_notes": [
+  {
+   "text": "Bic Velocity",
+   "location": "above table, top-left, above the L column (left of the red 1.75)",
+   "ink": "black",
+   "confidence": "high",
+   "alt_readings": [
+    "pencil/pen cursive, thin"
+   ]
+  },
+  {
+   "text": "1.75",
+   "location": "above table, over the col-1 area of the L column (above the 'Bic 4 Color' each cell)",
+   "ink": "red",
+   "confidence": "medium",
+   "alt_readings": [
+    ".75",
+    "1.75 (black pen/pencil under the red)"
+   ],
+   "note": "Red digits traced over dark pencil/pen strokes; leading 1 looks like black + red. Appears to be a price for 'Bic Velocity' (note to its left) - association is my inference, not certain."
+  },
+  {
+   "text": "Pentel Twi... ...Erase(?)  [cut off by top edge of page; only the lower halves of letters visible]",
+   "location": "top edge of page, above the R column, about x=1125-1740 on the full-res page",
+   "ink": "black",
+   "confidence": "low",
+   "alt_readings": [
+    "Pentel Twin Erase",
+    "Pentel Twist Erase"
+   ]
+  },
+  {
+   "text": "[price cut off by top edge of page - only lower halves of ~3-4 heavy marker glyphs visible, a swoosh-shaped first glyph then two rounded/stem shapes and a trailing dot]",
+   "location": "top edge of page, above the R column, about x=2020-2350 on the full-res page",
+   "ink": "black",
+   "confidence": "low",
+   "alt_readings": [
+    "2.??"
+   ]
+  },
+  {
+   "text": "Pentel/Energel 3.49",
+   "location": "left margin of L table, written sideways (reads bottom-to-top); 'Pentel' starts beside the Papermate Inkjoy/Profile rows and '3.49' ends beside the Hi-liter pen style/Icy Pentel rows",
+   "ink": "black",
+   "confidence": "medium",
+   "alt_readings": [
+    "Pentel/Emergel 3.49",
+    "Pentel / Energel 3,49"
+   ]
+  },
+  {
+   "text": "Twist Erase express  2.09",
+   "location": "below L table, under 'Pilot G-2 metallic'; name at left, price at right under col 1",
+   "ink": "black",
+   "confidence": "medium",
+   "alt_readings": [
+    "Twist Erase express 209"
+   ],
+   "note": "A faint dot at baseline between 2 and 0 suggests 2.09; very small."
+  },
+  {
+   "text": "Twist Erase GT  266",
+   "location": "below L table, under 'Twist Erase express' line; name at left, price at right under col 1",
+   "ink": "black",
+   "confidence": "medium",
+   "alt_readings": [
+    "2.66",
+    "2.60"
+   ],
+   "note": "No decimal point visible. Last glyph is a faint 6 (open on the right) that could pass for 0."
+  },
+  {
+   "text": "Pilot 6 Tec Pen  2.64 ea",
+   "location": "below R table, left side, under Zebra rows",
+   "ink": "black",
+   "confidence": "medium",
+   "alt_readings": [
+    "Pilot G Tec Pen 2.64 ea",
+    "Pilot 6 Tec Pen 2.69 ea"
+   ],
+   "note": "The character after 'Pilot' is drawn like a 6 (likely a G)."
+  }
+ ]
+}

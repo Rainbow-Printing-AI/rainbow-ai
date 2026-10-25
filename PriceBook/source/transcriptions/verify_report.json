@@ -1,0 +1,190 @@
+{
+ "checked_price_rows": 403,
+ "checked_contacts": 65,
+ "discrepancies": [
+  {
+   "id": "pen-bic-widebody-scwb11-bk-box",
+   "field": "price",
+   "csv_value": "11.99",
+   "scan_value": "struck (no price)",
+   "page": "p06 (row L5)",
+   "confidence": "high",
+   "note": "Red pen line runs through the item name, the 1.35 and the 11.99 on the current sheet. The row is struck, so the box price should be blank like the other struck rows (Ergotwist, Twist Erase QE107A, Sanford Calligraphy, which have no box row). CSV keeps 11.99 on the box row."
+  },
+  {
+   "id": "lf-color-18x24",
+   "field": "price",
+   "csv_value": "(blank, status unpriced)",
+   "scan_value": "7.95 (first digit heavily overwritten)",
+   "page": "p01",
+   "confidence": "low",
+   "note": "Purple pen '?.95 Color' beside 18x24. The '.95' is clear. The first digit is a heavy block with a 7-shaped diagonal stroke on top, so the most legible reading is 7.95. The CSV note says '7.95 or 9.95'; nothing in the scan shows a 9 (no loop). Leaving it unpriced is defensible because the digit is overwritten, but it is not blank or struck: owner should confirm. A stray pen tick sits above the '4' of '24' (not part of the price)."
+  },
+  {
+   "id": "bw-8.5x11-simplex-100up",
+   "field": "notes",
+   "csv_value": "Printed .06/.08 (struck digit unclear)",
+   "scan_value": ".06",
+   "page": "p03",
+   "confidence": "medium",
+   "note": "Struck printed value reads .06 (closed lower loop, consistent with .10/.07/.06 pattern and .13/.09/.08, .20/.14/.12 for the other sizes). Price field blank is correct (blue scribble, no readable replacement); only the note text is off."
+  },
+  {
+   "id": "pen-papermate-flair-8430152",
+   "field": "notes",
+   "csv_value": "Printed 1.33 (struck)",
+   "scan_value": "1.35 (struck)",
+   "page": "p06 (row L31)",
+   "confidence": "low",
+   "note": "Last digit of the struck printed price looks like a 5 (flat top bar with hook), not a 3. Note text only; price 2.52 (black pen) and box 19.99 (black pen, 14.91 struck) are correct."
+  },
+  {
+   "id": "ncr-8.5x11-2ndside-250",
+   "field": "price",
+   "csv_value": "103.22",
+   "scan_value": "103.23 (cost 41.29 x 2.5 = 103.225, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "ncr-8.5x11-2ndside-addl-1000",
+   "field": "price",
+   "csv_value": "465.72",
+   "scan_value": "465.73 (cost 186.29 x 2.5 = 465.725, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "ncr-8.5x14-2ndside-250",
+   "field": "price",
+   "csv_value": "103.22",
+   "scan_value": "103.23 (cost 41.29 x 2.5 = 103.225, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "ncr-8.5x14-2ndside-addl-1000",
+   "field": "price",
+   "csv_value": "465.72",
+   "scan_value": "465.73 (cost 186.29 x 2.5 = 465.725, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "env-wove-addl-1000",
+   "field": "price",
+   "csv_value": "130.07",
+   "scan_value": "130.08 (cost 52.03 x 2.5 = 130.075, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-2s-black-1std-250",
+   "field": "price",
+   "csv_value": "149.97",
+   "scan_value": "149.98 (cost 59.99 x 2.5 = 149.975, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-2color-250",
+   "field": "price",
+   "csv_value": "187.47",
+   "scan_value": "187.48 (cost 74.99 x 2.5 = 187.475, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-1s-1ink-500",
+   "field": "price",
+   "csv_value": "74.97",
+   "scan_value": "74.98 (cost 29.99 x 2.5 = 74.975, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-2s-black-1std-500",
+   "field": "price",
+   "csv_value": "167.47",
+   "scan_value": "167.48 (cost 66.99 x 2.5 = 167.475, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-2color-500",
+   "field": "price",
+   "csv_value": "202.47",
+   "scan_value": "202.48 (cost 80.99 x 2.5 = 202.475, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-2s-black-1std-1000",
+   "field": "price",
+   "csv_value": "212.47",
+   "scan_value": "212.48 (cost 84.99 x 2.5 = 212.475, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-2color-1000",
+   "field": "price",
+   "csv_value": "237.47",
+   "scan_value": "237.48 (cost 94.99 x 2.5 = 237.475, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  },
+  {
+   "id": "bc-trade-1s-1ink-addl-1000",
+   "field": "price",
+   "csv_value": "224.97",
+   "scan_value": "224.98 (cost 89.99 x 2.5 = 224.975, rounded half-up)",
+   "page": "p12",
+   "confidence": "low",
+   "note": "Half-cent case. CSV rounded DOWN here but rounds UP on other half-cent rows (env-wove-500 124.03, env-laid-addl-1000 226.88, env-white-catalog-500 247.38, env-white-catalog-1000 359.98, bc-trade-1s-1ink-1000 124.98), so the rule is inconsistent (looks like float rounding). Cost column matches the sheet."
+  }
+ ],
+ "missing_from_csv": [
+  {
+   "page": "p06",
+   "text": "'Elite: 2.33' (black pen next to Papermate Profile 89465)",
+   "note": "Only appears inside the notes of pen-papermate-profile-89465; no row of its own. Low priority (red 1.99 is the current value)."
+  },
+  {
+   "page": "p10",
+   "text": "Paper types 'Glossy Photo Paper / Semi Gloss Matte Paper / Heavy Weight Matte Paper' and 'Additional Charges: resize to non-standard size, crop or stretch, correct lighting/resolution'",
+   "note": "Unpriced service lines; additional-charges list is mentioned in photo-touchup note, paper types are not captured anywhere. Not prices."
+  },
+  {
+   "page": "p03",
+   "text": "Blue handwriting '<- Versant 180' beside the document-feedable scan row",
+   "note": "Not a price. It sits next to the 8.5x11-11x17 scan row (and its 'Multiple saves, $3.00 each CD'), not the copy tables; CSV only tags Versant 180 on color copies as 'inferred'."
+  }
+ ],
+ "notes": [
+  "All 403 price rows and 65 contacts were checked against the page images (300 dpi crops, enlarged). Every price, cost, qty tier, size, side and unit not listed in discrepancies matched the scan.",
+  "Pens: all 97 table rows (L1-L49, R1-R48) checked for red/black/printed values and box column. Every 'each' and 'box' price matched except the struck Widebody box row. The 5 handwritten-note rows match (Bic Velocity 1.75, Pentel/Energel 3.49 margin note, Twist Erase Express 2.09, Twist Erase GT 2.66 (decimal not visible, reads 266), Pilot G Tec Pen 2.64 ea).",
+  "Ambiguous handwriting checked with red-ink isolation: R26 Sharpie Super Twin Tip reads 3.69 (glyph is a hooked-top 3, and a 2.69 would be a decrease from printed 2.74); R32 Uniball Deluxe reads 4.39 (clear 3); L35 Papermate Profile red reads 1.99 over black 'Elite: 2.33'; R10 Sakura 2.89 is in the box column but is clearly a single price. All agree with CSV.",
+  "Struck/unpriced rows confirmed: bw-8.5x11-simplex-21-99 and -100up (blue scribble obliterates replacement, nothing legible), lf-bw-24x36-walkin ($2.50 struck blue, no replacement), Ergotwist, Twist Erase QE107A, Sanford Calligraphy, Bic Widebody (see discrepancy). lf-color-18x24: see discrepancy (overwritten but probably 7.95).",
+  "Laminating verified: card 1.50 (.75 scribbled out), 8.5x11 pencil 2.00, 8.5x14 pencil 3.00, 11x17 pen 4.00 (3.00 struck, pencil replacement scribbled out). lf-bw-30x42-walkin pencil reads 350 (3.50), $3.25 struck; 30x42 account $3.00 has the table grid line through it, not a strike.",
+  "Trade sheet: all 68 cost cells (NCR 8.5x11 and 8.5x14 x 2/3/4-part/2nd side x 125/250/500/1000/2ND 1000, envelopes x 4 stocks x 250/500/1000/2ND 1000, bus cards x 3 x 250/500/1000/2ND 1000) and the 5 special-ink cells match, with correct row and column mapping. 125 row is blank for envelopes and bus cards on the sheet and CSV has no rows there. Sheet says 'Multiply x 2.5' at top and 'Times 2.5' at bottom. 'Close reg 20.00 M' is per 1000 (CSV unit per 1000 is right).",
+  "Unsupported attributes (not on the scan, stated as fact in the CSV): B/W copy rows stock '20# bond' (p03 gives no paper weight); LF B/W rows stock 'bond' (p03 only labels bond/photo for LF color); color copy rows sides=1 'single-sided' (p03 color table has no sides column); duplex 'price per sheet, both sides' (inference from .20=2x.10); trade bus-card size 2x3.5 (trade sheet has no size); pen 'box / dozen' label for the unlabeled 2nd column. Probably all reasonable, but they are inferences.",
+  "p06 L43 Pentel WOW: the new .95 is written in grey pencil over a red smudge; CSV mark says 'red pen'. Value .95 is right.",
+  "p03 left edge is cropped: the row labels of the color-copy table and the scan section are partly cut off, but no price cells are cut. The pasted 'COLOR SCAN $10 FIRST PAGE $5 EACH PAGE AFTER' strip covers whatever was printed in the Color Large format row; p01 carries the same strip.",
+  "Ghost handwriting under 'Britannia' on p15 is faint and unreadable; it looks like login-type text, nothing copied. Logins/passwords/tax IDs on p15/p16 were not reported and are not in this report.",
+  "p07 and p13 are the same sheet; all business card prices match on both. p05 and s149 (older pen list) agree with p06 printed values; the older copy has the same handwritten notes, so the handwritten-note rows are supported by all three scans.",
+  "Contacts: every phone, fax, cell, toll-free, extension, address, email, web and account number digit-compared to p15/p16/p17 and the p07/p02 letterheads. No mismatches. Formatting only: Kim Cichy prints as 1-916-3170488 (stored 1-916-317-0488; same digits and matches p16), Store Supply Warehouse address stored with 'NV' and Reno Essendant address with '[Reno, NV]' (inferred, not printed)."
+ ]
+}

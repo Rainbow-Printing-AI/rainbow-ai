@@ -1,0 +1,275 @@
+<title>Rainbow Price Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: counter-lookup tool. One sticky search bar, results grouped by price-sheet section, tap a row for provenance. */
+:root {
+  --bg: #f4f6f7; --panel: #ffffff; --ink: #15191d; --muted: #5a646d; --rule: #d8dde2;
+  --accent: #006fa8; --accent-ink: #ffffff; --chip: #e7ecef;
+  --warn: #8f5200; --warn-bg: #fff1d9; --none: #a32920; --none-bg: #fde8e6;
+  --c: #00a0dc; --m: #d4147f; --y: #f2c500; --k: #15191d;
+  --display: "Barlow Semi Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #101316; --panel: #171b1f; --ink: #e7ebee; --muted: #9ba5ae; --rule: #2b3238;
+  --accent: #53b6e8; --accent-ink: #0b1216; --chip: #22282e;
+  --warn: #f2b660; --warn-bg: #2e2413; --none: #ff8a80; --none-bg: #341a18; --k: #e7ebee; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #101316; --panel: #171b1f; --ink: #e7ebee; --muted: #9ba5ae; --rule: #2b3238;
+  --accent: #53b6e8; --accent-ink: #0b1216; --chip: #22282e;
+  --warn: #f2b660; --warn-bg: #2e2413; --none: #ff8a80; --none-bg: #341a18; --k: #e7ebee; color-scheme: dark }
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; margin: 0 }
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 16px; padding-block: 0 48px }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg);
+  border-bottom: 1px solid var(--rule); padding-block: 12px 10px }
+.brand { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap }
+.brand h1 { font-family: var(--display); font-weight: 700; font-size: 1.55rem; letter-spacing: .01em; margin: 0; text-wrap: balance }
+.reg { display: inline-flex; gap: 3px; transform: translateY(-2px) }
+.reg i { width: 9px; height: 9px; display: block }
+.reg i:nth-child(1) { background: var(--c) } .reg i:nth-child(2) { background: var(--m) }
+.reg i:nth-child(3) { background: var(--y) } .reg i:nth-child(4) { background: var(--k) }
+.meta { color: var(--muted); font-size: .82rem }
+.searchrow { display: flex; gap: 8px; margin-top: 10px }
+#q { flex: 1; min-width: 0; font: inherit; font-size: 1.08rem; padding: 11px 14px; border-radius: 10px;
+  border: 1.5px solid var(--rule); background: var(--panel); color: var(--ink) }
+#q:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent) }
+.tabs { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap }
+.chip { font: inherit; font-size: .82rem; border: 1px solid transparent; background: var(--chip); color: var(--ink);
+  padding: 5px 10px; border-radius: 999px; cursor: pointer; white-space: nowrap }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink) }
+.chip:focus-visible, .row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+.banner { margin-top: 14px; background: var(--warn-bg); color: var(--ink); border-left: 4px solid var(--warn);
+  padding: 9px 12px; border-radius: 6px; font-size: .88rem }
+.banner b { color: var(--warn) }
+.examples { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; align-items: center }
+.examples span { color: var(--muted); font-size: .82rem; margin-right: 2px }
+section.cat { margin-top: 22px }
+section.cat h2 { font-family: var(--display); font-weight: 600; font-size: 1.05rem; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; display: flex; justify-content: space-between; gap: 8px }
+section.cat h2 small { font-family: var(--body); text-transform: none; letter-spacing: 0; font-weight: 400 }
+.catnote { color: var(--muted); font-size: .8rem; margin: -2px 0 8px }
+.list { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; overflow: hidden }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; padding: 10px 14px;
+  border-top: 1px solid var(--rule); cursor: pointer }
+.row:first-child { border-top: 0 }
+.row:hover { background: color-mix(in srgb, var(--chip) 55%, transparent) }
+.item { font-weight: 700; min-width: 0 }
+.det { color: var(--muted); font-size: .86rem; min-width: 0 }
+.price { font-family: var(--mono); font-weight: 600; font-size: 1.06rem; text-align: right; white-space: nowrap;
+  font-variant-numeric: tabular-nums; grid-row: span 2; align-self: center }
+.price small { font-family: var(--body); font-weight: 400; font-size: .74rem; color: var(--muted); margin-left: 3px }
+.pill { display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .03em; padding: 1px 7px;
+  border-radius: 999px; margin-left: 6px; vertical-align: 1px; white-space: nowrap }
+.pill.pending { background: var(--warn-bg); color: var(--warn); border: 1px solid var(--warn) }
+.pill.none { background: var(--none-bg); color: var(--none); border: 1px solid var(--none) }
+.row.pending { box-shadow: inset 3px 0 0 var(--warn) }
+.row.unpriced { box-shadow: inset 3px 0 0 var(--none) }
+.more { grid-column: 1 / -1; font-size: .82rem; color: var(--muted); border-top: 1px dashed var(--rule);
+  margin-top: 6px; padding-top: 6px; display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px }
+.more dt { font-weight: 700; color: var(--ink) } .more dd { margin: 0; min-width: 0; overflow-wrap: anywhere }
+.empty { margin-top: 30px; color: var(--muted); text-align: center }
+.contacts .row { cursor: default }
+.contacts .price { font-size: .95rem; font-weight: 500; user-select: all }
+footer { margin-top: 36px; color: var(--muted); font-size: .78rem; border-top: 1px solid var(--rule); padding-top: 10px }
+@media (max-width: 620px) { .brand h1 { font-size: 1.3rem } .price { font-size: .98rem }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <span class="reg" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <h1>Rainbow Price Book</h1>
+      <span class="meta" id="meta"></span>
+    </div>
+    <div class="searchrow">
+      <input id="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Try: 24x36 color, b/w letter 150 duplex, laminate 11x17, sharpie" aria-label="Search prices">
+    </div>
+    <div class="tabs" id="tabs" role="toolbar" aria-label="Sections"></div>
+  </header>
+  <div id="banner"></div>
+  <div class="examples" id="examples"></div>
+  <main id="out" aria-live="polite"></main>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+(function () {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const money = v => v === "" || v == null ? "" : "$" + Number(v).toLocaleString("en-US", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  const NOTES = {
+    "Copies - B/W": "Per side (total page count). Double-sided = 2 sides; no duplex discount.",
+    "Copies - Color": "Per side (total page count). Double-sided = 2 sides; lower rate from 21 sides up.",
+    "Large Format - B/W": "No separate account pricing.",
+    "Labels": "Avery 5160 white, 30/sheet, includes type/set-up. Same or next day.",
+    "Business Cards": "3.5x2. Other sizes: special quote. Artwork/layout extra. In-house with bleed: 8-up (20% fewer) + $5 cutting.",
+    "Signs & Banners (4over)": "Ordered through 4over. About 1 week. Artwork extra.",
+    "NCR Forms": "Trade pricing x 2.5 (see question C11).", "Envelopes": "Trade pricing x 2.5 (see question C11).",
+    "Pens & Markers": "Current = the red-pen sheet. Box prices are the old second column (question C22).",
+    "Computer & File Services": "File printing is plus the copy charge."
+  };
+  const NAMED = {"letter":"8.5x11","legal":"8.5x14","tabloid":"11x17","ledger":"11x17","arch c":"18x24","arch d":"24x36",
+                 "arch e":"36x48","business card":"2x3.5","postcard":"4x6"};
+  const SYN = {"bw":"b/w","b&w":"b/w","mono":"b/w","colour":"color","double-sided":"duplex","2-sided":"duplex","two-sided":"duplex",
+    "double":"duplex","single-sided":"single","1-sided":"single","simplex":"single","laminate":"laminat","lamination":"laminat",
+    "laminating":"laminat","laminated":"laminat","blueprints":"blueprint","carbonless":"ncr","acct":"account","walkin":"walk-in"};
+  const STOP = new Set("price prices for of a an the how much is what whats cost costs do we charge on in per at and to our".split(" "));
+  const LIVE = new Set(["active","pending","unpriced"]);
+
+  function fnum(s) {
+    s = s.replace(/"/g, "").replace("½", ".5").replace("¼", ".25").replace("¾", ".75").trim();
+    const m = s.match(/^(\d+)[ -](\d+)\/(\d+)$/);
+    return m ? +m[1] + m[2] / m[3] : parseFloat(s);
+  }
+  function normSize(s) {
+    if (!s) return null;
+    const t = s.toLowerCase().trim();
+    if (NAMED[t]) return NAMED[t];
+    const m = t.match(/^([\d.]+(?:[ -]\d+\/\d+)?)\s*"?\s*(?:x|×|by)\s*([\d.]+(?:[ -]\d+\/\d+)?)\s*"?$/);
+    if (!m) return null;
+    const [a, b] = [fnum(m[1]), fnum(m[2])].sort((x, y) => x - y);
+    if (isNaN(a) || isNaN(b)) return null;
+    const f = x => String(+x.toFixed(2));
+    return f(a) + "x" + f(b);
+  }
+  function hay(r) {
+    let s = [r.id, r.category, r.item, r.variant, r.brand, r.sku, r.stock, r.color, r.fulfillment, r.keywords, r.notes, r.unit].join(" ");
+    if (r.sides === "2") s += " duplex double-sided";
+    if (r.sides === "1") s += " single";
+    if (/^(b\/w|black ink)$/i.test(r.color)) s += " b/w black";
+    return s.toLowerCase();
+  }
+  DATA.prices.forEach(r => { r._h = hay(r); r._s = normSize(r.size) || ""; });
+
+  function parse(q) {
+    let low = " " + q.toLowerCase() + " ";
+    const sizes = [], qtys = [], words = [];
+    low = low.replace(/(\d+(?:\.\d+)?(?:[ -]\d\/\d)?)\s*"?\s*[x×]\s*(\d+(?:\.\d+)?(?:[ -]\d\/\d)?)\s*"?/g, (m) => {
+      const n = normSize(m); if (n) sizes.push(n); return " ";
+    });
+    for (const k in NAMED) { const re = new RegExp("\\b" + k + "\\b", "g"); if (re.test(low)) { sizes.push(NAMED[k]); low = low.replace(re, " "); } }
+    low = low.replace(/black (and|&) white/g, "b/w");
+    for (let tok of low.split(/[\s,]+/)) {
+      tok = tok.replace(/^[?.!:;()]+|[?.!:;()]+$/g, "");
+      if (!tok || STOP.has(tok)) continue;
+      if (/^\d{1,4}$/.test(tok)) { qtys.push(+tok); continue; }
+      words.push(SYN[tok] || tok);
+    }
+    return {sizes, qtys, words};
+  }
+  const stem = w => w.length > 3 && w.endsWith("s") ? w.slice(0, -1) : w;
+  function match(r, p, loose) {
+    if (p.sizes.length && !p.sizes.includes(r._s)) return false;
+    if (p.qtys.length && (r.qty_min || r.qty_max)) {
+      const lo = r.qty_min ? +r.qty_min : 0, hi = r.qty_max ? +r.qty_max : 1e9;
+      if (r.unit === "lot" && !r.id.includes("addl")) { if (!p.qtys.some(q => q === lo)) return false; }
+      else if (!p.qtys.some(q => q >= lo && q <= hi)) return false;
+    }
+    if (!p.words.length) return true;
+    return loose ? p.words.some(w => r._h.includes(stem(w))) : p.words.every(w => r._h.includes(stem(w)));
+  }
+  function qtyLabel(r) {
+    const a = r.qty_min, b = r.qty_max;
+    if (!a && !b) return "";
+    if (r.unit === "lot") return r.id.includes("addl") ? "each add'l 1,000" : Number(a).toLocaleString("en-US");
+    if (a && b) return a === b ? a : a + "–" + b;
+    return a ? a + "+" : "up to " + b;
+  }
+  const UNIT = {"each":"ea","lot":"","sq ft":"/sq ft","linear ft":"/lin ft","per 1000":"/1,000","per 500":"/500","hour":"/hr","minute":"/min"};
+  const unitLabel = r => (r.unit in UNIT ? UNIT[r.unit] : "/" + r.unit);
+
+  let cat = "All", view = "prices";
+  const order = DATA.order;
+  const cats = ["All", ...order.filter(c => DATA.prices.some(r => r.category === c))];
+
+  function renderTabs() {
+    const t = $("#tabs");
+    t.innerHTML = cats.map(c => `<button class="chip" type="button" data-cat="${esc(c)}" aria-pressed="${view === "prices" && c === cat}">${esc(c)}</button>`).join("")
+      + `<button class="chip" type="button" data-view="contacts" aria-pressed="${view === "contacts"}">Phone list</button>`;
+  }
+  function rowHTML(r) {
+    const det = [r.variant, r.size, (r.color === "Black ink" || r.color === "Color ink") ? r.color : "", qtyLabel(r) ? "qty " + qtyLabel(r) : "",
+                 r.min_charge ? "min " + money(r.min_charge) : ""].filter(Boolean).join(" · ");
+    let price;
+    if (r.price) price = money(r.price) + (r.price_max ? "–" + money(r.price_max) : "") + `<small>${esc(unitLabel(r))}</small>`;
+    else price = /estimate/i.test(r.notes) ? "estimate" : "—";
+    const pill = r.status === "pending" ? `<span class="pill pending">PENDING ${esc(r.cards)}</span>`
+               : r.status === "unpriced" ? `<span class="pill none">NO PRICE ${esc(r.cards)}</span>` : "";
+    const more = [["Notes", r.notes], ["Stock", r.stock], ["Made by", r.fulfillment], ["Turnaround", r.turnaround],
+                  ["SKU", r.sku], ["Question", r.cards && (DATA.cards.find(c => r.cards.split(" ").includes(c.id)) || {}).title], ["id", r.id]]
+      .filter(x => x[1]).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("");
+    return `<div class="row ${r.status}" tabindex="0" role="button" aria-expanded="false">
+      <div class="item">${esc(r.item)}${pill}</div>
+      <div class="price">${price}</div>
+      <div class="det">${esc(det)}</div>
+      <dl class="more" hidden>${more}</dl></div>`;
+  }
+  function render() {
+    renderTabs();
+    const q = $("#q").value.trim();
+    const out = $("#out");
+    $("#examples").hidden = !!q || view !== "prices";
+    if (view === "contacts") {
+      const words = q.toLowerCase().split(/\s+/).filter(Boolean);
+      const cs = DATA.contacts.filter(c => words.every(w => Object.values(c).join(" ").toLowerCase().includes(w)));
+      out.innerHTML = `<section class="cat contacts"><h2>Phone list <small>${cs.length} entries · vendors and businesses</small></h2><div class="list">` +
+        (cs.map(c => `<div class="row"><div class="item">${esc(c.name)}${c.organization && !c.name.includes(c.organization) ? ` <span class="det">· ${esc(c.organization)}</span>` : ""}${c.status === "pending" ? `<span class="pill pending">${esc(c.cards)}</span>` : ""}</div>
+          <div class="price">${esc(c.value)}</div><div class="det">${esc([c.kind, c.role, c.notes].filter(Boolean).join(" · "))}</div></div>`).join("")
+          || `<div class="row"><div class="det">No match.</div></div>`) + `</div></section>`;
+      return;
+    }
+    const p = parse(q);
+    let rows = DATA.prices.filter(r => LIVE.has(r.status) && (cat === "All" || r.category === cat));
+    let hit = rows.filter(r => match(r, p, false)), partial = false;
+    if (!hit.length && p.words.length) { hit = rows.filter(r => match(r, p, true)); partial = hit.length > 0; }
+    if (!q && cat === "All") hit = hit.filter(r => r.unit !== "box");
+    const groups = new Map();
+    for (const c of order) groups.set(c, []);
+    hit.forEach(r => { if (!groups.has(r.category)) groups.set(r.category, []); groups.get(r.category).push(r); });
+    const key = r => [(r.family || r.id), r.unit === "box" ? 1 : 0, String(+r.qty_min || 0).padStart(6, "0"), r.id].join("|");
+    let html = partial ? `<p class="empty">No exact match — showing partial matches.</p>` : "";
+    for (const [c, rs] of groups) {
+      if (!rs.length) continue;
+      rs.sort((a, b) => key(a) < key(b) ? -1 : 1);
+      html += `<section class="cat"><h2>${esc(c)} <small>${rs.length}</small></h2>${NOTES[c] ? `<p class="catnote">${esc(NOTES[c])}</p>` : ""}<div class="list">${rs.map(rowHTML).join("")}</div></section>`;
+    }
+    out.innerHTML = html || `<p class="empty">Nothing matches “${esc(q)}”. Try fewer words, or a size like 24x36.</p>`;
+  }
+
+  $("#meta").textContent = `updated ${DATA.generated} · ${DATA.prices.filter(r => LIVE.has(r.status)).length} prices`;
+  if (DATA.cards.length) {
+    $("#banner").innerHTML = `<div class="banner"><b>${DATA.cards.length} open question${DATA.cards.length === 1 ? "" : "s"}:</b> ${DATA.cards.map(c => esc(c.id + " " + c.title)).join("; ")}. <b>PENDING</b> rows are waiting on that decision; <b>NO PRICE</b> means none on file yet. Tap a row for details.</div>`;
+  }
+  $("#examples").innerHTML = `<span>Try</span>` + ["24x36", "b/w letter 150 duplex", "color 11x17", "laminate", "business cards 500",
+    "banner", "photo 16x20", "comb binding", "sharpie", "scan"].map(e => `<button class="chip" type="button" data-ex="${esc(e)}">${esc(e)}</button>`).join("");
+  $("#foot").innerHTML = `Generated from the shop's price data on ${esc(DATA.generated)}. To change a price, tell Claude in the Rainbow project: “24x36 color is now $14.95.” Sizes are inches, either orientation. Prices exclude sales tax.`;
+
+  document.addEventListener("click", e => {
+    const b = e.target.closest("button.chip");
+    if (b) {
+      if (b.dataset.ex) { $("#q").value = b.dataset.ex; cat = "All"; view = "prices"; }
+      else if (b.dataset.view) { view = "contacts"; }
+      else { cat = b.dataset.cat; view = "prices"; }
+      render(); return;
+    }
+    const r = e.target.closest(".row[role=button]");
+    if (r) toggle(r);
+  });
+  document.addEventListener("keydown", e => {
+    const r = e.target.closest && e.target.closest(".row[role=button]");
+    if (r && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); toggle(r); }
+  });
+  function toggle(r) { const m = r.querySelector(".more"); m.hidden = !m.hidden; r.setAttribute("aria-expanded", String(!m.hidden)); }
+  let t; $("#q").addEventListener("input", () => { clearTimeout(t); t = setTimeout(render, 90); });
+  render();
+})();
+</script>

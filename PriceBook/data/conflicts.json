@@ -1,0 +1,1295 @@
+{
+ "version": 1,
+ "created": "2026-09-30",
+ "rules": {
+  "R1": "Handwriting beats print on the same sheet.",
+  "R2": "In a chain of strike-throughs, the last value written wins.",
+  "R3": "Newer sheet beats older (logo-header sheets over the older typed sheets; the red-pen pen list is current).",
+  "R4": "Struck with nothing written in, or unreadable: no proposal, you decide.",
+  "R5": "Two independent transcriptions agree, but the handwriting is ambiguous: please confirm."
+ },
+ "cards": [
+  {
+   "id": "C01",
+   "section": "Large Format",
+   "kind": "conflict",
+   "title": "B/W 24x36, walk-in price",
+   "context": [
+    "Copy-services sheet (p3): no-account $2.50 is struck in blue, nothing written in. Account price $2.00.",
+    "Older Large Format sheet (p1): 24x36 $2.50, with 'B/W' written in pen."
+   ],
+   "crops": [
+    {
+     "file": "p03_lf_tables.jpg",
+     "caption": "Copy-services sheet p3, large format tables",
+     "h": 1.0
+    },
+    {
+     "file": "p01_2436.jpg",
+     "caption": "Older LF sheet p1"
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "24x36 B/W, walk-in (no account)",
+     "target": "lf-bw-24x36-walkin",
+     "proposed": null,
+     "rule": "R4: struck, nothing written in",
+     "allow_remove": false,
+     "answer": "2.50"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "2.50"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C02",
+   "section": "Large Format",
+   "kind": "conflict",
+   "title": "B/W 30x42, walk-in price",
+   "context": [
+    "p3: $3.25 struck, '350' in pencil beside it.",
+    "Older LF sheet p1: $3.25."
+   ],
+   "crops": [
+    {
+     "file": "p03_lf_tables.jpg",
+     "caption": "p3",
+     "h": 1.0
+    },
+    {
+     "file": "p01_3042.jpg",
+     "caption": "p1"
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "30x42 B/W, walk-in (no account)",
+     "target": "lf-bw-30x42-walkin",
+     "proposed": "3.50",
+     "rule": "R1: pencil beats print",
+     "allow_remove": false,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C03",
+   "section": "Large Format",
+   "kind": "conflict",
+   "title": "B/W large format, other sizes: per sq ft or per linear ft?",
+   "context": [
+    "p3 (newer): '$1.25 per sq ft otherwise on B/W large format'.",
+    "p1 (older LF sheet): 'Otherwise ... charged at $1.25 per linear foot'.",
+    "At 36 in. wide, 1 linear ft = 3 sq ft, so the per-sq-ft rule costs 3x as much."
+   ],
+   "crops": [
+    {
+     "file": "p03_lf_tables.jpg",
+     "caption": "p3",
+     "h": 1.0
+    },
+    {
+     "file": "p01_3648_linft.jpg",
+     "caption": "p1"
+    }
+   ],
+   "options": [
+    "$1.25 per sq ft (p3)",
+    "$1.25 per linear foot (p1)",
+    "Other: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "R3: newer sheet wins",
+   "targets": [
+    "lf-bw-other-sqft",
+    "lf-bw-other-linft"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C04",
+   "section": "Large Format",
+   "kind": "conflict",
+   "title": "Color large format: flat prices vs. per sq ft",
+   "context": [
+    "p1 has flat color prices handwritten in pen: 24x36 $12.95, 30x42 $15.95, 36x48 $19.95 (18x24 see C05).",
+    "p3 prices color by area: bond $3/sq ft, photo $6/sq ft. At $3/sq ft: 24x36 = $18.00, 30x42 = $26.25, 36x48 = $36.00.",
+    "Proposal: pen prices for the standard sizes; $3/sq ft bond only for non-standard sizes."
+   ],
+   "crops": [
+    {
+     "file": "p01_lf_block.jpg",
+     "caption": "p1 with pen color prices",
+     "h": 1.55
+    },
+    {
+     "file": "p03_lf_tables.jpg",
+     "caption": "p3",
+     "h": 1.0
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "24x36 color (bond)",
+     "target": "lf-color-24x36",
+     "proposed": "12.95",
+     "rule": "R1: pen beats print",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "30x42 color (bond)",
+     "target": "lf-color-30x42",
+     "proposed": "15.95",
+     "rule": "R1",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "c",
+     "label": "36x48 color (bond)",
+     "target": "lf-color-36x48",
+     "proposed": "19.95",
+     "rule": "R1",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "d",
+     "label": "Other sizes, color bond, per sq ft",
+     "target": "lf-color-bond-sqft",
+     "proposed": "3.00",
+     "rule": "only rule for other sizes",
+     "allow_remove": false,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok",
+    "b": "ok",
+    "c": "ok",
+    "d": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C05",
+   "section": "Large Format",
+   "kind": "verify",
+   "title": "Color 18x24: first digit overwritten",
+   "context": [
+    "Purple pen '_.95 Color' over the 18x24 line; the first digit is written over another digit.",
+    "Two of three independent reads say 7.95 (the other allows 9.95). Stray pen tick above the '24' in '18 x 24'."
+   ],
+   "crops": [
+    {
+     "file": "p01_1824.jpg",
+     "caption": "p1, 18x24 line"
+    }
+   ],
+   "options": [
+    "$7.95",
+    "$9.95",
+    "Other: $________"
+   ],
+   "proposed_option": 0,
+   "rule": "R5",
+   "targets": [
+    "lf-color-18x24"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C06",
+   "section": "Copies",
+   "kind": "conflict",
+   "title": "B/W 8.5x11 single-sided, 21-99 and 100+",
+   "context": [
+    "Printed .07 (21-99) and .06 or .08 (100+) are struck; the blue replacements are scribbled out.",
+    "Duplex (.13 / .11) is unchanged. For reference 8.5x14 single is .09 / .08."
+   ],
+   "crops": [
+    {
+     "file": "p03_bw_8511.jpg",
+     "caption": "p3, B/W copies"
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "8.5x11 B/W single, 21-99",
+     "target": "bw-8.5x11-simplex-21-99",
+     "proposed": null,
+     "rule": "R4",
+     "allow_remove": false,
+     "answer": "0.15"
+    },
+    {
+     "key": "b",
+     "label": "8.5x11 B/W single, 100 & up",
+     "target": "bw-8.5x11-simplex-100up",
+     "proposed": null,
+     "rule": "R4",
+     "allow_remove": false,
+     "answer": "0.15"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "0.15",
+    "b": "0.15"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C07",
+   "section": "Labels",
+   "kind": "conflict",
+   "title": "Avery 5160 labels: two sheets disagree on every price",
+   "context": [
+    "Newer 'Personal Label Printing' sheet (p11), black / color: 120 $17.56 / $20.60, 250 $25.76 / $32.59, 500 $37.23 / $49.37, 1000 $54.99 / $80.80, clear stock $1.50/sheet.",
+    "Older sheet (p2): 120 $15.96 / $18.72, 250 $23.41 / $29.62, 500 $33.84 / $44.88, 1000 $49.99 / $73.45, clear $1.00.",
+    "Logo +$5 and other-template +$10 agree on both."
+   ],
+   "crops": [
+    {
+     "file": "p11_labels_new.jpg",
+     "caption": "Newer sheet p11",
+     "h": 1.45
+    },
+    {
+     "file": "p02_labels_old.jpg",
+     "caption": "Older sheet p2",
+     "h": 1.45
+    }
+   ],
+   "options": [
+    "Newer sheet (p11) prices",
+    "Older sheet (p2) prices",
+    "Other (write on the sheet)"
+   ],
+   "proposed_option": 0,
+   "rule": "R3: newer sheet wins",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C08",
+   "section": "Photo Prints",
+   "kind": "conflict",
+   "title": "Photo prints: 3 sizes priced differently",
+   "context": [
+    "Newer 'Photo Print Pricing' sheet (p9/p14) vs. older upside-down 'PHOTO PRINTS' sheet (p10)."
+   ],
+   "crops": [
+    {
+     "file": "p09_photo_new.jpg",
+     "caption": "Newer p9",
+     "h": 1.35
+    },
+    {
+     "file": "p10_photo_old.jpg",
+     "caption": "Older p10",
+     "h": 1.35
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "12x18  (older sheet $12.99)",
+     "target": "photo-12x18",
+     "proposed": "14.99",
+     "rule": "R3",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "18x24  (older sheet $18.99)",
+     "target": "photo-18x24",
+     "proposed": "19.99",
+     "rule": "R3",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "c",
+     "label": "24x36  (older sheet $36.99)",
+     "target": "photo-24x36",
+     "proposed": "36.00",
+     "rule": "R3",
+     "allow_remove": false,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok",
+    "b": "ok",
+    "c": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C09",
+   "section": "Photo Prints",
+   "kind": "question",
+   "title": "Sizes only on the older photo sheet: keep or drop?",
+   "context": [
+    "The newer sheet dropped these sizes. Note 11x17 ($11.99) is cheaper than 11x14 ($12.99) on the newer sheet.",
+    "See the older-sheet crop on C08."
+   ],
+   "crops": [],
+   "lines": [
+    {
+     "key": "a",
+     "label": "8.5x11 photo",
+     "target": "photo-8.5x11",
+     "proposed": "5.99",
+     "rule": "keep at older price",
+     "allow_remove": true,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "10x14 photo",
+     "target": "photo-10x14",
+     "proposed": "11.99",
+     "rule": "keep",
+     "allow_remove": true,
+     "answer": "remove"
+    },
+    {
+     "key": "c",
+     "label": "11x17 photo",
+     "target": "photo-11x17",
+     "proposed": "11.99",
+     "rule": "keep",
+     "allow_remove": true,
+     "answer": "remove"
+    },
+    {
+     "key": "d",
+     "label": "36x48 photo",
+     "target": "photo-36x48",
+     "proposed": "72.99",
+     "rule": "keep",
+     "allow_remove": true,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok",
+    "b": "remove",
+    "c": "remove",
+    "d": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C10",
+   "section": "Photo Prints",
+   "kind": "question",
+   "title": "Photo paper on large format: list or $6/sq ft?",
+   "context": [
+    "p3: large format color on photo paper $6/sq ft. The photo list prices the same sizes separately.",
+    "$6/sq ft gives 18x24 = $18.00 (list $19.99), 24x36 = $36.00 (list $36.00), 36x48 = $72.00 (older list $72.99).",
+    "See the p3 large-format crop on C01."
+   ],
+   "crops": [],
+   "options": [
+    "Photo list for listed sizes; $6/sq ft only for custom sizes",
+    "$6/sq ft for everything 11x17 and up",
+    "Other: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "more specific price wins",
+   "targets": [
+    "lf-color-photo-sqft"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C11",
+   "section": "Trade Sheet",
+   "kind": "question",
+   "title": "Blue trade sheet (NCR, envelopes, bus cards, inks): still live?",
+   "context": [
+    "Handwritten 'Multiply x 2.5' / 'Times 2.5'. Read as trade cost; retail = listed x 2.5.",
+    "Example: 250 8.5x11 2-part NCR listed $52.80 -> $132.00. Special inks: PMS $40 -> $100.",
+    "Its business-card block (250 1-side $27.00 -> $67.50) clashes with the business-card sheet (in-house $52.25, 4over $59.99).",
+    "Proposal: NCR, envelopes and special inks live at x2.5; its business-card block retired."
+   ],
+   "crops": [
+    {
+     "file": "p12_trade_all.jpg",
+     "caption": "Blue trade sheet p12",
+     "h": 3.1
+    }
+   ],
+   "options": [
+    "Live at x2.5 (NCR, envelopes, inks); retire its business-card block",
+    "Live, but multiplier is x______",
+    "Archive the whole sheet (quote these jobs individually)",
+    "Other: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "handwritten note",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C12",
+   "section": "Trade Sheet",
+   "kind": "question",
+   "title": "What does the '2ND 1000' row mean?",
+   "context": [
+    "Read as 'each additional 1,000'. Fits NCR 2-part (1000 $151.80, 2nd 1000 $117.48) and envelopes.",
+    "Does not fit NCR 2nd side (1000 $126.76, 2nd 1000 $186.29) or trade bus cards (1000 $49.99, 2nd 1000 $89.99)."
+   ],
+   "crops": [
+    {
+     "file": "p12_trade_top.jpg",
+     "caption": "p12, top half",
+     "h": 1.55
+    }
+   ],
+   "options": [
+    "Each additional 1,000 (as read)",
+    "Price for 2,000 total",
+    "Other: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "best reading",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C13",
+   "section": "Bindery",
+   "kind": "verify",
+   "title": "Laminating: confirm the pencil / pen prices",
+   "context": [
+    "Card: .75 struck, 1.50 beside it. 8.5x11: 1.50 struck, pencil 2.00. 8.5x14: 2.50 struck, pencil 3.00.",
+    "11x17: 3.00 struck, a pencil value scribbled out, then 4.00 in pen."
+   ],
+   "crops": [
+    {
+     "file": "p04_lam.jpg",
+     "caption": "p4, laminating"
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "Laminate card size",
+     "target": "laminate-card",
+     "proposed": "1.50",
+     "rule": "R2",
+     "allow_remove": false,
+     "answer": "1.85"
+    },
+    {
+     "key": "b",
+     "label": "Laminate 8.5x11",
+     "target": "laminate-8.5x11",
+     "proposed": "2.00",
+     "rule": "R1",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "c",
+     "label": "Laminate 8.5x14",
+     "target": "laminate-8.5x14",
+     "proposed": "3.00",
+     "rule": "R1",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "d",
+     "label": "Laminate 11x17",
+     "target": "laminate-11x17",
+     "proposed": "4.00",
+     "rule": "R2",
+     "allow_remove": false,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "1.85",
+    "b": "ok",
+    "c": "ok",
+    "d": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C14",
+   "section": "Bindery",
+   "kind": "question",
+   "title": "Scoring minimum is higher than the 500 price",
+   "context": [
+    "Scoring: $50/1,000, $30/500, $35 minimum. Perfing on the same sheet: $50/1,000, $30/500, $20 minimum."
+   ],
+   "crops": [
+    {
+     "file": "p04_num_fold_score_perf.jpg",
+     "caption": "p4",
+     "h": 1.15
+    }
+   ],
+   "options": [
+    "Keep as printed ($35 minimum, so up to 500 = $35)",
+    "Scoring minimum is $______"
+   ],
+   "proposed_option": 0,
+   "rule": "as printed",
+   "targets": [
+    "scoring-per-1000",
+    "scoring-per-500"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C15",
+   "section": "Bindery",
+   "kind": "question",
+   "title": "Numbering: two prices on one line",
+   "context": [
+    "'50.00 per 1,000; copy cost plus .03 per page'.",
+    "Same bindery page as C14."
+   ],
+   "crops": [],
+   "options": [
+    "Two methods: numbering machine $50/1,000, or numbers printed on the press = copy cost + $0.03/page",
+    "One method: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "best reading",
+   "targets": [
+    "numbering-per-1000",
+    "numbering-per-page"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C16",
+   "section": "Signs & Banners",
+   "kind": "question",
+   "title": "4over signage prices current? 10 mm coroplast = 4 mm?",
+   "context": [
+    "All sq-ft prices from the 4-Over sheet. 4 mm and 10 mm coroplast are both $8.00/sq ft (likely a typo).",
+    "Mark does the 4over ordering, so he can confirm."
+   ],
+   "crops": [
+    {
+     "file": "p08_signs.jpg",
+     "caption": "p8",
+     "h": 1.5
+    }
+   ],
+   "options": [
+    "All current as printed",
+    "Ask Mark to re-check against 4over",
+    "10 mm coroplast = $______ /sq ft"
+   ],
+   "proposed_option": 0,
+   "rule": "as printed",
+   "targets": [
+    "banner-13oz",
+    "banner-8oz-mesh",
+    "foam-core",
+    "coroplast-4mm",
+    "coroplast-10mm",
+    "aluminum-sandwich",
+    "car-magnet"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "2"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 1,
+   "manual": [
+    "option 2 ('Ask Mark to re-check against 4over') is not the proposal - apply by hand, then: pricebook.py close C16"
+   ],
+   "status_note": "4over signage prices - Mark to re-check"
+  },
+  {
+   "id": "C17",
+   "section": "Scanning",
+   "kind": "question",
+   "title": "Scan delivery: 'includes 1 CD', '$3.00 each CD'",
+   "context": [
+    "Document scans include 1 CD; multiple saves $3.00 each (CD). Large-format multiple saves $3.00 each."
+   ],
+   "crops": [
+    {
+     "file": "p03_scan.jpg",
+     "caption": "p3, scan to electronic file",
+     "h": 0.9
+    }
+   ],
+   "options": [
+    "Any delivery copy (CD, USB, email): first included, $3.00 each extra",
+    "CD only; email / USB no charge",
+    "Other: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "best reading",
+   "targets": [
+    "scan-lf-extra-save",
+    "scan-doc-extra-save"
+   ],
+   "lines": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "3",
+    "text": "Remove. We don't burn CDs anymore"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 2,
+   "manual": [
+    "option 3 ('Other: ____________________') is not the proposal - apply by hand, then: pricebook.py close C17"
+   ]
+  },
+  {
+   "id": "C18",
+   "section": "Pens & Markers",
+   "kind": "verify",
+   "title": "Pen prices that are hard to read",
+   "context": [
+    "Current (red-pen) sheet. Two independent reads agreed on these, but the handwriting is ambiguous."
+   ],
+   "crops": [
+    {
+     "file": "pen_profile.jpg",
+     "caption": "Papermate Profile 89465"
+    },
+    {
+     "file": "pen_twin.jpg",
+     "caption": "Sharpie Super Twin Tip"
+    },
+    {
+     "file": "pen_deluxe.jpg",
+     "caption": "Uniball Deluxe"
+    },
+    {
+     "file": "pen_sakura.jpg",
+     "caption": "Sakura Micron"
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "Papermate Profile 89465 (black note 'Elite: 2.33'; red 1.99, or 1.89 / 1.39?)",
+     "target": "pen-papermate-profile-89465",
+     "proposed": "1.99",
+     "rule": "R5",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "Sharpie Super Twin Tip 36201 (3.69 or 2.69?)",
+     "target": "pen-sharpie-super-twin-tip-36201",
+     "proposed": "3.69",
+     "rule": "R5",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "c",
+     "label": "Uniball Deluxe 60052 (4.39 or 4.59?)",
+     "target": "pen-uniball-deluxe-60052",
+     "proposed": "4.39",
+     "rule": "R5",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "d",
+     "label": "Sakura Micron (no red; black marker 2.89 over blacked-out price)",
+     "target": "pen-sakura-micron-xsdk005-49",
+     "proposed": "2.89",
+     "rule": "R1",
+     "allow_remove": false,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok",
+    "b": "ok",
+    "c": "ok",
+    "d": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C19",
+   "section": "Pens & Markers",
+   "kind": "question",
+   "title": "Handwritten pen notes: add as new items?",
+   "context": [
+    "Notes written around the table, not in a row. 'Pentel Twist Erase ... 2.09' is also at the clipped top edge."
+   ],
+   "crops": [
+    {
+     "file": "pens_top.jpg",
+     "caption": "Top of sheet",
+     "h": 0.5
+    },
+    {
+     "file": "pens_margin.jpg",
+     "caption": "Left margin (rotated)"
+    },
+    {
+     "file": "pens_bottom.jpg",
+     "caption": "Bottom of sheet",
+     "h": 0.5
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "Bic Velocity (pen)",
+     "target": "pen-bic-velocity",
+     "proposed": "1.75",
+     "rule": "handwritten",
+     "allow_remove": true,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "Pentel Energel, model? ____ (row BL57A is $3.75)",
+     "target": "pen-pentel-energel-margin",
+     "proposed": "3.49",
+     "rule": "handwritten",
+     "allow_remove": true,
+     "answer": "ok"
+    },
+    {
+     "key": "c",
+     "label": "Pentel Twist-Erase Express",
+     "target": "pen-pentel-twist-erase-express",
+     "proposed": "2.09",
+     "rule": "handwritten",
+     "allow_remove": true,
+     "answer": "ok"
+    },
+    {
+     "key": "d",
+     "label": "Pentel Twist-Erase GT",
+     "target": "pen-pentel-twist-erase-gt",
+     "proposed": "2.66",
+     "rule": "handwritten",
+     "allow_remove": true,
+     "answer": "ok"
+    },
+    {
+     "key": "e",
+     "label": "Pilot G-Tec pen",
+     "target": "pen-pilot-g-tec",
+     "proposed": "2.64",
+     "rule": "handwritten",
+     "allow_remove": true,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok",
+    "b": "ok",
+    "c": "ok",
+    "d": "ok",
+    "e": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C20",
+   "section": "Pens & Markers",
+   "kind": "question",
+   "title": "Struck-out pens: discontinue?",
+   "context": [
+    "Struck on the current sheet with no new price."
+   ],
+   "crops": [
+    {
+     "file": "pen_struck_widebody.jpg",
+     "caption": "Bic Widebody"
+    },
+    {
+     "file": "pen_struck_ergotwist.jpg",
+     "caption": "Ergotwist"
+    },
+    {
+     "file": "pen_struck_twisterase.jpg",
+     "caption": "Pentel Twist Erase QE107A"
+    },
+    {
+     "file": "pen_struck_calligraphy.jpg",
+     "caption": "Sanford Calligraphy"
+    }
+   ],
+   "lines": [
+    {
+     "key": "a",
+     "label": "Bic Widebody SCWB11-BK (was $1.35)",
+     "target": "pen-bic-widebody-scwb11-bk",
+     "proposed": "retire",
+     "rule": "R4",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "Ergotwist BK99A-A (was $6.45)",
+     "target": "pen-ergotwist-bk99a-a",
+     "proposed": "retire",
+     "rule": "R4",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "c",
+     "label": "Pentel Twist Erase QE107A (was $0.95)",
+     "target": "pen-pentel-twist-erase-qe107a",
+     "proposed": "retire",
+     "rule": "R4",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "d",
+     "label": "Sanford Calligraphy (was $1.49)",
+     "target": "pen-sanford-calligraphy",
+     "proposed": "retire",
+     "rule": "R4",
+     "allow_remove": false,
+     "answer": "ok"
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "a": "ok",
+    "b": "ok",
+    "c": "ok",
+    "d": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01"
+  },
+  {
+   "id": "C21",
+   "section": "Pens & Markers",
+   "kind": "question",
+   "title": "23 pens got no red-pen update",
+   "context": [
+    "Unchanged, or just not checked yet? Circle any that need re-pricing."
+   ],
+   "list_items": [
+    "Client Pen BK910A-A  $5.25",
+    "Client Pencil AL905A  $5.59",
+    "Expo dry erase 83001  $1.81",
+    "Expo finepoint 84001  $1.48",
+    "Expo w/eraser 80788  $2.45",
+    "Flexgrip Elite 85582  $1.59",
+    "Itoya Doubleheader CL10BK  $2.59",
+    "Liquid Expo 89081  $2.37",
+    "Liquid Expresso 31001BH  $2.33",
+    "Marvy Erasable 6666SYW  $2.19",
+    "Papermate Flexgrip Ultra, w/cap 9630131  $1.65",
+    "Papermate Inkjoy 1781580  $1.95",
+    "Pentel HyperG KL257C  $2.29",
+    "Pentel RSVP RT  $1.25",
+    "Pentel Vicuna  $2.20",
+    "Pentel e-sharp  $2.68",
+    "Pilot G-2 mini  $1.98",
+    "Uniball Insight 1802658  $2.10",
+    "Zarasa Metallic  $1.69",
+    "Zebra Bible Highlighter  $1.99",
+    "Zebra LiteRite 81150  $1.99",
+    "Zebra Sarasa  $1.39",
+    "Zebra Zazzle Brights 71050  $1.65"
+   ],
+   "crops": [],
+   "options": [
+    "All unchanged: keep printed prices",
+    "Re-check the circled ones",
+    "Re-check all of them"
+   ],
+   "proposed_option": 0,
+   "rule": "as printed",
+   "lines": [],
+   "targets": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C22",
+   "section": "Pens & Markers",
+   "kind": "question",
+   "title": "Second price column (box / dozen) was never updated",
+   "context": [
+    "72 items have a second price. Single prices went up 20-100% in red; the second column did not change.",
+    "Example: Bic 4 Color single $2.89 -> $3.74, second column still $30.12."
+   ],
+   "crops": [
+    {
+     "file": "pen_box_sample.jpg",
+     "caption": "Rows 1-4",
+     "h": 0.75
+    }
+   ],
+   "options": [
+    "Drop the second-column prices; sell by the each",
+    "Keep them as printed",
+    "I'll re-price them"
+   ],
+   "proposed_option": 0,
+   "rule": "stale",
+   "extra_question": "Column 2 is:   [ ] box   [ ] dozen   [ ] other: ________",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "on_accept": "retire",
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C23",
+   "section": "Phone List",
+   "kind": "question",
+   "title": "7-digit phone numbers",
+   "context": [
+    "Most numbers on the phone list have no area code (e.g. Mark 831-xxxx, Horizon 858-2300)."
+   ],
+   "crops": [],
+   "options": [
+    "All 7-digit numbers are 775",
+    "Some aren't (mark them on the phone list)"
+   ],
+   "proposed_option": 0,
+   "rule": "local numbers",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C24",
+   "section": "Phone List",
+   "kind": "question",
+   "title": "Reno store and Reno accounts",
+   "context": [
+    "Phone list has Rainbow Reno 770-2276 / fax 770-2273, Essendant Reno acct (335 Edison Way Suite 8), SPR Reno acct."
+   ],
+   "crops": [
+    {
+     "file": "p15_reno.jpg",
+     "caption": "p15"
+    },
+    {
+     "file": "p15_essendant_reno.jpg",
+     "caption": "p15, Essendant",
+     "h": 0.75
+    },
+    {
+     "file": "p15_spr.jpg",
+     "caption": "p15, SPR",
+     "h": 0.55
+    }
+   ],
+   "options": [
+    "Reno still active: keep all",
+    "Reno closed: drop Reno phone/fax and Reno accounts"
+   ],
+   "proposed_option": 0,
+   "rule": "as printed",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "2"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 1,
+   "manual": [
+    "option 2 ('Reno closed: drop Reno phone/fax and Reno accounts') is not the proposal - apply by hand, then: pricebook.py close C24"
+   ]
+  },
+  {
+   "id": "C25",
+   "section": "Phone List",
+   "kind": "question",
+   "title": "Inland Business Systems sticker (M11387)",
+   "context": [
+    "Service/supplies sticker: Sacramento 916-928-0804, toll free 888-249-3551, inlandbusiness.us, M11387.",
+    "Inland / Lucas / Sierra is a Xerox dealer, so this is probably the Versant 180."
+   ],
+   "crops": [
+    {
+     "file": "p17_inland.jpg",
+     "caption": "p17",
+     "h": 1.1
+    }
+   ],
+   "options": [
+    "Versant 180 service; M11387 = machine / customer #",
+    "Other machine: ____________________"
+   ],
+   "proposed_option": 0,
+   "rule": "best reading",
+   "lines": [],
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "resolved",
+   "answer": {
+    "opt": "1"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "answer_option": 0
+  },
+  {
+   "id": "C26",
+   "section": "Missing",
+   "kind": "gap",
+   "title": "No price on any sheet: fill in or leave blank",
+   "context": [
+    "Leave a line blank to keep it unpriced."
+   ],
+   "crops": [],
+   "lines": [
+    {
+     "key": "a",
+     "label": "Color copies, duplex (proposal: 2x the single-sided price)",
+     "target": "",
+     "proposed": "2x single",
+     "rule": "gap",
+     "allow_remove": false,
+     "answer": "ok"
+    },
+    {
+     "key": "b",
+     "label": "Vellum 30x42",
+     "target": "vellum-30x42",
+     "proposed": null,
+     "rule": "gap",
+     "allow_remove": false
+    },
+    {
+     "key": "c",
+     "label": "Vellum 36x48",
+     "target": "vellum-36x48",
+     "proposed": null,
+     "rule": "gap",
+     "allow_remove": false
+    },
+    {
+     "key": "d",
+     "label": "Sales tax rate for quotes (%)",
+     "target": "",
+     "proposed": null,
+     "rule": "gap",
+     "allow_remove": false
+    }
+   ],
+   "options": [],
+   "proposed_option": null,
+   "targets": [],
+   "list_items": [],
+   "extra_question": "",
+   "status": "open",
+   "answer": {
+    "a": "ok"
+   },
+   "sheet_version": 1,
+   "answered": "2026-10-01",
+   "manual": [
+    "line a (Color copies, duplex (proposal: 2x the single-sided price)): OK '2x single' - no price row, apply by hand"
+   ],
+   "status_note": "Vellum 30x42 / 36x48 and sales tax rate not set"
+  }
+ ]
+}

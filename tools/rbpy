@@ -1,0 +1,9 @@
+#!/bin/bash
+# Runs a Rainbow script with the Rainbow Python (3.12 + pdftoppm on PATH).
+# Usage: tools/rbpy tools/impose.py file.pdf --trim 5x7 --nup 2 --sheet letter
+ENV="$HOME/.rainbow/env"
+if [ ! -x "$ENV/bin/python" ]; then
+  echo "Rainbow Python not installed. Run: bash ~/Downloads/Rainbow/tools/setup-mac.sh" >&2; exit 1
+fi
+export PATH="$ENV/bin:$PATH"
+exec "$ENV/bin/python" "$@"

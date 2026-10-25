@@ -1,0 +1,50 @@
+{
+ "sheet": {
+  "num": "04",
+  "name": "Bindery",
+  "title": "BINDERY PRICES",
+  "source": "scan_147 p04",
+  "covers": [
+   "Bindery & Finishing",
+   "Laminating",
+   "Labor & Design"
+  ]
+ },
+ "docx": "Rainbow_Sheet_04_Bindery.docx",
+ "generated": "2026-10-17T18:02:17",
+ "prices_csv": "/sessions/rcw-01qwgb3xtuqqp2grtkcucyet/mnt/Rainbow/PriceBook/data/prices.csv",
+ "used_ids": [
+  "cutting",
+  "padding-base",
+  "padding-per-pad",
+  "numbering-per-1000",
+  "numbering-per-page",
+  "folding-per-1000",
+  "scoring-per-1000",
+  "scoring-per-500",
+  "perfing-per-1000",
+  "perfing-per-500",
+  "drilling",
+  "sorting-manual",
+  "stapling-manual",
+  "comb-half-inch",
+  "coil-half-inch",
+  "shrink-wrap",
+  "booklet-making",
+  "corner-round-per-1000",
+  "corner-round-per-500",
+  "mounting",
+  "labor-hourly",
+  "graphic-services",
+  "laminate-card",
+  "laminate-8.5x11",
+  "laminate-8.5x14",
+  "laminate-11x17",
+  "laminate-24in-sqft"
+ ],
+ "pending_ids": [],
+ "excluded": {},
+ "rev": "2026-10-01",
+ "pdf": "Rainbow_Sheet_04_Bindery.pdf",
+ "pages": 1
+}
