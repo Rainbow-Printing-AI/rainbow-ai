@@ -18,9 +18,15 @@ Rainbow Printing & Office Supply, Incline Village NV. Andrew runs production; ow
 - Everything else at the root is a customer job folder or loose email attachment. Treat as customer files: never modify originals; write outputs beside them or in a `PRINT READY/` subfolder.
 
 ## Standing print rules (the scripts encode these; don't override without being told)
-- Bleed 0.1 in per side. Crop marks 0.125 in, hairline, start exactly at the bleed edge, never into the bleed. 1-up sheet = trim + 2×bleed + 2×marks, no extra white, unless an output sheet size is given.
-- Bleed and crop marks only when a job asks for them (`--bleed 0.1`, `--marks`); plain impositions get neither.
-- Art is never scaled or cropped to fit a trim — stop and report the measured size.
+- Bleed 0.1 in per side unless Andrew names a different amount. Crop marks 0.125 in, hairline, start exactly at the bleed edge, never into the bleed. 1-up sheet = trim + 2×bleed + 2×marks, no extra white, unless an output sheet size is given.
+- When bleed + crop marks go on by default (`--bleed 0.1 --marks`), unless Andrew says otherwise in the request:
+  - Business cards: always.
+  - Any N-up (2-up, 3-up, 4-up, …) on 8.5x11 or 11x17: yes.
+  - Final output page 4x6 or 5x7: no. That goes to the full-bleed photo printer.
+  - Handbills: no (see below).
+  - Anything else: only when the job asks for them.
+- Handbills = quarter-sheet flyers: 4 identical copies on 8.5x11, cut once in half the short way and once the long way into four 4.25x5.5 pieces. Every piece gets an even 1/8 in white margin all round (it matches the Versant's 1/8 in unprintable edge on the full sheet), so the art is scaled to fit 4.0x5.25 in. No bleed, no crop marks. Say the scale %. If the file has too little bleed to keep the margin even (most plain 8.5x11 flyers), use `--uneven`: 1/8 in on the tight axis, a bit more on the other (about 5/32 in top/bottom for letter). Never crop. Report the margins.
+- Art is never scaled or cropped to fit a trim (handbills are the one exception). Otherwise stop and report the measured size.
 - Long side of the art goes with the long side of the trim.
 - Duplex: page 1 fronts, page 2 backs, backs mirrored for the flip edge (long-edge default).
 - Output names: `<job>_<trim>_<Nup>_<sheet>[_cropmarks][_duplex].pdf`.

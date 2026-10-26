@@ -45,3 +45,38 @@ Newest at the bottom. Every build session appends an entry: date · step · what
 - **Problem found:** `bash tools/tests/run_tests.sh` now fails at the first test — Windows refuses to start `pdftoppm.exe` (exit `0xC0E90002`, code-integrity block, almost certainly Smart App Control on Windows 11 Home). Passed on 2026-10-22. Not caused by this step (no `tools/` changes).
 - Andrew learned: repo, commit, staging, push/pull, remote/`origin`, branch, allow-list `.gitignore`, why secrets and personal numbers never go in git (history keeps them even after deletion), line endings, amending an unpushed commit.
 - **Next:** fix the `pdftoppm` block (Smart App Control / Windows Security → App & browser control) and get `run_tests.sh` green again; then step 0.4 — skills into `.claude/skills/`.
+
+## 2026-10-25 · pdftoppm block fixed — tests green
+- Cause: Smart App Control is **on** (not evaluation). Code Integrity log showed every poppler tool (pdftoppm, pdftotext, pdfinfo, pdftocairo, pdffonts, pdfimages) blocked for one reason: loading `C:\Tools\poppler\poppler-26.09.0\Library\bin\lcms2.dll` (unsigned). Blocks started 2026-10-25 3:21 PM; nothing before.
+- Not a bad file: a byte-identical copy of the poppler folder ran fine elsewhere. Windows had cached a "blocked" verdict on that one file on disk. Replaced `lcms2.dll` with a fresh copy of itself (same SHA-256; original kept as `lcms2.dll.bak`). All six tools start; SAC stays on. No `tools/` changes.
+- `bash tools/tests/run_tests.sh`: exit 0, 46 PASS, 0 FAIL.
+- Added a "poppler stops starting" fix-it note to `docs/windows-port.md` in case it happens again.
+- Andrew learned: Smart App Control judges each program file by signature/reputation and remembers its verdict per file; the Code Integrity event log names exactly which file it blocked.
+- **Next:** step 0.4 — skills into `.claude/skills/`.
+
+## 2026-10-25 · Step 0.4 — skills in the repo
+- Copied the six Cowork skills (`rainbow-print-imposition`, `-photo-print-prep`, `-print-order-packet`, `-email-digest`, `-email-reply`, `-pricebook`) from the account's synced copy (`~\.claude\skills\synced\…`) into `C:\Rainbow\.claude\skills\`.
+- Made the four layout/price skills machine-neutral: Mac/VM paths (`~/Downloads/Rainbow/tools/`, `device_bash`, `$HOME/mnt/Rainbow`) now say "repo root; `py` on Windows, `tools/rbpy` on Mac, `python3` in the VM". Print rules untouched. The two email skills got a note at the top: they need the Gmail connector, so they're interactive-only until the Gmail API rewire (step 0.6 / Phase 1).
+- `CLAUDE.md` already existed (the "project instructions → CLAUDE.md" half of the step was done on 2026-10-20). Two small CLAUDE.md edits and a `.claude/settings.json` (allow `py tools/*`) were held back for Andrew's OK: Claude Code won't change its own permissions or standing orders on its own.
+- Done-test passed. Andrew ran `claude -p "/rainbow-print-imposition make tools/card_source.pdf 2-up on letter with marks" --model sonnet --allowedTools "Bash(py tools/*)" "PowerShell(py tools/*)"` and got `tools/card_source_3.38x2.17333_2up_letter_cropmarks.pdf`. `verify_print.py` re-run independently: RESULT PASS (0 fail, 1 warn = crush lift of the navy #001427/#031428/#011327, reported as TELL ANDREW). That PDF is a test output: not committed.
+- Open question for Andrew: the imposition skill says "Bleed 0.1 in per side, always", but CLAUDE.md says bleed only when the job asks for it. The runtime followed CLAUDE.md (no bleed). One of them should be changed so they agree.
+- Andrew learned: a skill is a folder with a SKILL.md; `claude -p` runs headless and can't ask for permission, so allowed tools are given up front (`--allowedTools` or `.claude/settings.json`).
+- **Next:** decide the settings.json and bleed-wording questions; then step 0.5 — the runtime credential (subscription token).
+
+## 2026-10-25 · Bleed/marks defaults and handbills (Andrew's rules)
+- Resolved the bleed question from step 0.4. Written into `CLAUDE.md` (standing print rules) and `rainbow-print-imposition`; the photo rule also went into `rainbow-photo-print-prep`:
+  - Bleed is 0.1 in per side unless Andrew names another amount.
+  - Bleed + marks by default for business cards (always) and for any N-up on 8.5x11 or 11x17. A 4x6 or 5x7 final output page (full-bleed photo printer) gets neither unless asked. Anything else gets them only when asked.
+  - Handbills = 4 identical quarter-sheet flyers on 8.5x11 (cut half short way, half long way, giving 4.25x5.5), with an even 1/8 in white margin on every piece to match the Versant's 1/8 in edge. Art scaled to fit 4.0x5.25, no bleed or marks. Margin changed from the skill's old 3/16 to 1/8.
+- `impose.py` still defaults to no bleed/marks (unchanged); the skill now tells Claude to pass `--bleed 0.1 --marks` when these rules call for them.
+- **Problem found:** `tools/fitpage.py` (the skill's tool for handbills and scaled cut-apart pieces) isn't on RAINBOW-AI and was never committed. It's probably still only on the Mac, written after the 2026-10-20 kit. Handbills can't run on Windows until it's brought over.
+- The account copies of the skills (used by Cowork) still have the old wording. Update them from the repo copies.
+- **Next:** get `fitpage.py` from the Mac (or rebuild it), test a handbill end to end; then step 0.5.
+
+## 2026-10-25 · fitpage.py tested on Windows (handbills)
+- Andrew copied `tools/fitpage.py` over from the Mac. Tested on made-up letter flyers in scratch: with 0.125 in bleed it fits the art at 47.06% to 4.0x5.25 with margins of exactly 0.125 on all four sides; `impose.py --nup 4 --sheet letter --gutter 0` → verify PASS. Measured from a 300 dpi render: all four quarters have identical margins (0.123 in; the 2 px gap is the antialiased edge). On a no-bleed flyer it STOPS (correct: no live art cropped); `--uneven` gives 0.125 L/R and 0.162 T/B.
+- Added to `run_tests.sh`: the handbill pipeline (exact 1/8 margins plus verify) and the no-bleed stop. New fixtures `tests/t_flyer_bleed.pdf` and `tests/t_flyer_nobleed.pdf`. Added a `tools/README.md` line. Tests: exit 0, 48 PASS.
+- **Open question for Andrew:** most customer flyers arrive with no bleed, and then an even 1/8 margin is impossible without cropping (letter is a hair taller than the 4.0x5.25 window). Choose the default: `--uneven` (1/8 sides, ~5/32 top/bottom, art untouched) or generate mirrored bleed first so the margin stays an even 1/8.
+- **Next:** that decision; then step 0.5.
+- Decided (Andrew): option 1. A handbill from a no-bleed flyer uses `fitpage.py --uneven` (letter: 0.125 L/R, ~0.162 T/B); never crop, never invent bleed. Written into `CLAUDE.md` and `rainbow-print-imposition`.
+- **Next:** step 0.5, the runtime credential.

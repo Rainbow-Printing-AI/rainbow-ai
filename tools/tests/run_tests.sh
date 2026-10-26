@@ -29,6 +29,8 @@ py impose.py "$T/../photopage_tmp.pdf" --nup 2 --sheet letter --marks --out "$T/
 py booklet.py tests/t_deck6.pdf --binding top --fit --blanks end --out "$T/booklet_top_long.pdf" >/dev/null
 py booklet.py tests/t_deck6.pdf --binding side --fit --blanks after-cover --flip short --out "$T/booklet_side_short.pdf" >/dev/null
 py booklet.py tests/t_deck6.pdf --binding top --fit --order "1,3,2,b,6" --blanks end --out "$T/booklet_order.pdf" >/dev/null
+py fitpage.py tests/t_flyer_bleed.pdf --page 4.25x5.5 --margin 0.125 --out "$T/../handbill_fit_tmp.pdf" | grep -q "margins L 0.1250  R 0.1250  B 0.1250  T 0.1250" || { echo "FAIL  fitpage handbill margins not an even 1/8 in"; exit 1; }
+py impose.py "$T/../handbill_fit_tmp.pdf" --nup 4 --sheet letter --gutter 0 --out "$T/handbill_4.25x5.5_4up_letter.pdf" >/dev/null
 "$PY" -W ignore -c "from PIL import Image,ImageDraw;im=Image.new('RGB',(1200,1600),(235,232,225));d=ImageDraw.Draw(im);d.ellipse((400,300,800,900),fill=(200,150,120));im.save('tests/passport_synth.jpg',quality=92)"
 py passport.py tests/passport_synth.jpg --crown 300 --chin 900 --cx 600 --eyes 560 --out-dir "$T" | tail -1 | grep -q "PASSPORT  PASS" || { echo "FAIL  passport.py synthetic head"; exit 1; }
 fail=0
@@ -52,6 +54,7 @@ for b in booklet_top_long booklet_side_short; do
   py verify_print.py "$T/$b.pdf" --source tests/t_deck6.pdf | grep -q "fold check.*all 8 pages read in order and upright" && echo "PASS  $b fold check" || { echo "FAIL  $b fold check"; fail=1; }
 done
 py booklet.py tests/t_deck6.pdf --binding top --fit >/dev/null 2>&1 && { echo "FAIL  booklet added blanks without being told where"; fail=1; } || echo "PASS  booklet stops when blanks are needed"
+py fitpage.py tests/t_flyer_nobleed.pdf --page 4.25x5.5 --margin 0.125 --out "$T/../handbill_nobleed_tmp.pdf" >/dev/null 2>&1 && { echo "FAIL  fitpage cropped or faked an even margin on a no-bleed flyer"; fail=1; } || echo "PASS  fitpage stops when the bleed can't keep the margin even"
 py booklet.py tests/t_deck6.pdf --binding top --fit --blanks end --flip short --out "$T/../booklet_lie_tmp.pdf" >/dev/null
 "$PY" -W ignore -c "import pikepdf,json,sys;p=pikepdf.open(sys.argv[1],allow_overwriting_input=True);l=json.loads(str(p.docinfo['/RainbowLayout']));l['flip']='long';p.docinfo['/RainbowLayout']=json.dumps(l);p.save(sys.argv[1])" "$T/../booklet_lie_tmp.pdf"
 py verify_print.py "$T/../booklet_lie_tmp.pdf" --source tests/t_deck6.pdf | grep -q "fold check.*wrong" && echo "PASS  fold check rejects a booklet printed with the wrong flip" || { echo "FAIL  fold check missed a wrong-flip booklet"; fail=1; }

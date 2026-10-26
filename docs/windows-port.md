@@ -24,3 +24,6 @@ Kit built on the Mac: `Rainbow/Claude outputs/Windows kit 2026-10-17/`
 
 ## Rule after cut-over
 One master: once the Windows check passes, price changes happen on Windows only; the Mac PriceBook is a 2026-10-17 snapshot.
+
+## If poppler stops starting (exit 0xC0E90002)
+Smart App Control (on, Windows 11 Home) can cache a "blocked" verdict on one unsigned poppler DLL; every `pdf*.exe` then fails at launch. Find the DLL: Event Viewer → Applications and Services Logs → Microsoft → Windows → CodeIntegrity → Operational, events 3033/3077 ("attempted to load …"). Fix without turning SAC off: in that DLL's folder, copy it, rename the original to `.bak`, rename the copy to the original name — the fresh copy is re-checked and passes. Happened 2026-10-25 with `C:\Tools\poppler\poppler-26.09.0\Library\bin\lcms2.dll`.
