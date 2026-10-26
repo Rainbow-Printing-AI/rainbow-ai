@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py tools/*)",
+      "PowerShell(py tools/*)",
+      "Bash(tools/rbpy tools/*)"
+    ]
+  }
+}

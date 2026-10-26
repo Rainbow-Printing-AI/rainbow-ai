@@ -80,3 +80,9 @@ Newest at the bottom. Every build session appends an entry: date · step · what
 - **Next:** that decision; then step 0.5.
 - Decided (Andrew): option 1. A handbill from a no-bleed flyer uses `fitpage.py --uneven` (letter: 0.125 L/R, ~0.162 T/B); never crop, never invent bleed. Written into `CLAUDE.md` and `rainbow-print-imposition`.
 - **Next:** step 0.5, the runtime credential.
+
+## 2026-10-25 · Step 0.4 loose ends
+- Deleted the 0.4 test output `tools/card_source_3.38x2.17333_2up_letter_cropmarks.pdf` (never committed).
+- Account skills: `~\.claude\skills\synced\` is a one-way download cache from the claude.ai account (it gets overwritten on every sync), so editing it would not update Cowork. Zipped the six repo skills into `Claude outputs/skill-uploads-2026-10-25/` for Andrew to upload in claude.ai → Settings → Capabilities → Skills (replacing the old ones). The repo wording is machine-neutral, so it works in Cowork as-is.
+- `.claude/settings.json` (allow `py tools/*`, `tools/rbpy tools/*`): Claude Code blocked Claude from writing its own permissions file, as designed. Andrew creates it himself from a copy-paste.
+- **Next:** step 0.5 — runtime credential.
