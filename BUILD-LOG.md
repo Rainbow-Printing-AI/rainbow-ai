@@ -97,3 +97,15 @@ Newest at the bottom. Every build session appends an entry: date · step · what
 - Token lasts one year: renew by about 2027-10-26 (`claude setup-token` + the same `read`/`setx` line).
 - Andrew learned: environment variables, tokens (treat like a password), why `--bare` can't use this token (API keys only), why the test has to hide the normal login.
 - **Next:** step 0.6 — Google OAuth for Gmail + Drive. (0.7 needs the Fiery system version from CWS → Server Info; 0.8 can come any time now.)
+
+## 2026-10-26 · Step 0.6 — Google OAuth for Gmail + Drive
+- The real shop mailbox is the Google Workspace account **print@rainbowofficesupply.com** (Business Starter, set up for Dave's supplier account); rainbowincline@gmail.com delivers into the same inbox. The program logs in as print@.
+- Google Cloud: project "Rainbow AI" under the rainbowofficesupply.com organization. First tries failed with `resourcemanager.projects.create` missing: the Cloud organization had just been created and print@ had no roles on it yet. Andrew granted the org roles and the project went through. No billing, no free trial: Gmail and Drive APIs are free.
+- Gmail API + Drive API enabled; consent screen **Internal** (no "publish", no 7-day token expiry, no unverified-app warning); Desktop OAuth client → `secrets/credentials.json`.
+- New code: `app/intake/google_auth.py` (shared login: loads `secrets/token.json`, refreshes it, never opens a browser, clear message if it's missing or refused), `app/intake/authorize.py` (one-time browser login, checks both scopes granted and that it's the shop account), `app/intake/gmail_test.py` (read-only check), `app/requirements.txt`. Installed google-api-python-client 2.201, google-auth-oauthlib 1.5, google-auth-httplib2 0.4 (`py -m pip install --user -r app/requirements.txt`).
+- Scopes: `gmail.modify` (read + labels; can't send) and `drive.readonly`.
+- Done-test passed: `py app/intake/gmail_test.py` → account print@rainbowofficesupply.com, 5 newest inbox threads, Drive read-only OK, `RESULT PASS`. `secrets/` confirmed git-ignored.
+- Hiccup: the desktop app's terminal is PowerShell, which rejects `&&`. Commands for that terminal are given as single lines.
+- Plan, architecture and glossary updated (Internal instead of External/In production; print@ as the account).
+- Andrew learned: OAuth (credentials.json = the program's ID card, token.json = the permission slip with a refresh key), scopes, Workspace organization vs personal Gmail, Cloud IAM roles, Internal vs External consent screens.
+- **Next:** step 0.7 (Fiery hot folders; needs the Fiery system version from CWS → Server Info) or 0.8 (repo sync) any time.

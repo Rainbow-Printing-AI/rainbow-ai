@@ -72,7 +72,7 @@ Each step: **Goal · You · Claude · Done when · You'll learn.** Steps inside 
 
 #### 0.6 Google OAuth for Gmail + Drive
 - **Goal:** The program can read the shop Gmail, apply labels, and download files from Drive links shared with the shop.
-- **You:** In Google Cloud Console (logged in as the shop account): create project "Rainbow AI", enable Gmail API and Drive API, configure the OAuth consent screen (External, then set publishing status to **In production** — otherwise the login expires every 7 days), create a Desktop OAuth client, download `credentials.json` to `C:\Rainbow\secrets\`. Run Claude's one-time `authorize.py` and click Allow.
+- **You:** In Google Cloud Console (logged in as the shop account, **print@rainbowofficesupply.com**, the Workspace mailbox rainbowincline@gmail.com delivers into): create project "Rainbow AI" under the rainbowofficesupply.com organization, enable Gmail API and Drive API, configure the OAuth consent screen as **Internal** (no publishing step, no 7-day expiry, no unverified-app warning), create a Desktop OAuth client, download `credentials.json` to `C:\Rainbow\secrets\`. Run Claude's one-time `authorize.py` and click Allow. *(Done 2026-10-26.)*
 - **Claude:** Writes `authorize.py`, confirms a token file appears, lists the 5 newest threads as the test.
 - **Done when:** `py app/intake/gmail_test.py` prints 5 subjects.
 - **You'll learn:** OAuth = "let this program act as me without my password"; scopes; refresh tokens.

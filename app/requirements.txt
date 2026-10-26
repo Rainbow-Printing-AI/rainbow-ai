@@ -1,0 +1,5 @@
+# Python packages the Rainbow AI app needs (tools/ has its own setup).
+# Install: py -m pip install --user -r app/requirements.txt
+google-api-python-client>=2.201
+google-auth-oauthlib>=1.5
+google-auth-httplib2>=0.4

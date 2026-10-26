@@ -67,7 +67,7 @@ Read this when a word in the plan or architecture doc is new. Claude adds entrie
 
 - **OAuth** — "let this program act as this account, without giving it the password, for these permissions only". You click Allow once; the program gets a **refresh token** it can keep using.
 - **Scope** — the permission list (`gmail.modify` = read mail and change labels; `drive.readonly`). The consent screen shows them.
-- **Google Cloud project / consent screen / client ID** — the paperwork Google requires before it issues OAuth tokens. One-time, clicking through a website. **Testing vs In production** — a project left in *Testing* hands out tokens that expire every 7 days; we set *In production*.
+- **Google Cloud project / consent screen / client ID** — the paperwork Google requires before it issues OAuth tokens. One-time, clicking through a website. **Testing vs In production** — a project left in *Testing* hands out tokens that expire every 7 days. Ours is **Internal** (only rainbowofficesupply.com accounts can use it), which skips that problem entirely. **Organization** — the company container Google Cloud makes for a Workspace domain; projects live under it.
 - **App Password** — the simpler Plan B: a 16-character password Google generates for one program (needs 2-Step Verification on). Works with **IMAP**, the old standard mail-reading protocol.
 - **Label** — Gmail's folders/tags, visible to the API. **Star colours** are not exposed as a property, but Gmail *search* knows `has:red-star`.
 
