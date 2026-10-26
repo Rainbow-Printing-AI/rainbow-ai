@@ -86,3 +86,14 @@ Newest at the bottom. Every build session appends an entry: date · step · what
 - Account skills: `~\.claude\skills\synced\` is a one-way download cache from the claude.ai account (it gets overwritten on every sync), so editing it would not update Cowork. Zipped the six repo skills into `Claude outputs/skill-uploads-2026-10-25/` for Andrew to upload in claude.ai → Settings → Capabilities → Skills (replacing the old ones). The repo wording is machine-neutral, so it works in Cowork as-is.
 - `.claude/settings.json` (allow `py tools/*`, `tools/rbpy tools/*`): Claude Code blocked Claude from writing its own permissions file, as designed. Andrew creates it himself from a copy-paste.
 - **Next:** step 0.5 — runtime credential.
+
+## 2026-10-26 · Plan: step 0.8 added (one repo, every device)
+- Andrew's goal: change skills/tools from any device; every Claude surface (Claude Code, desktop app, Cowork, phone, shop runtime) uses the latest from the repo; new skills/tools made anywhere get saved to the repo. Written into `docs/rainbow-ai-plan.md` as step 0.8 (plus a "Decisions" line, Phase 6.3 reworded, new open question) and `docs/rainbow-ai-architecture.md` §12. Key point: account skills (Cowork) and repo skills are two separate places; a plugin from the repo, or `package_skills.py` zips as the fallback, joins them.
+
+## 2026-10-26 · Step 0.5 — runtime credential
+- Andrew ran `claude setup-token` and stored the token as the user environment variable `CLAUDE_CODE_OAUTH_TOKEN` (`read -rsp … && setx …`, so it's not on screen or in shell history).
+- Two tries went wrong. First paste was cut short (99 chars → 401 invalid token). Second was pasted twice (217 chars, the same 108-char token twice with a space). Claude saved one copy (108 chars). Checks only ever printed length/prefix, never the token.
+- Done-test passed. Claude ran `claude -p "say ok" --model sonnet` with an empty `CLAUDE_CONFIG_DIR` (no saved browser login, so the token is the only way in): "ok", exit 0.
+- Token lasts one year: renew by about 2027-10-26 (`claude setup-token` + the same `read`/`setx` line).
+- Andrew learned: environment variables, tokens (treat like a password), why `--bare` can't use this token (API keys only), why the test has to hide the normal login.
+- **Next:** step 0.6 — Google OAuth for Gmail + Drive. (0.7 needs the Fiery system version from CWS → Server Info; 0.8 can come any time now.)
