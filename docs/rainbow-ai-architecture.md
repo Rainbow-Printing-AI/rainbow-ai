@@ -149,6 +149,7 @@ Thresholds live in `app/color_rules.json`. Monthly: dump `overrides` → adjust 
 - Repo = `C:\Rainbow` with an allow-list `.gitignore`. Tracked: `tools/`, `PriceBook/` (minus `private/`), `.claude/`, `app/` (minus `data/`), `docs/`, `CLAUDE.md`, `BUILD-LOG.md`. Everything else (jobs, secrets, hot folders, customer files, `__pycache__`, `.bak`) ignored.
 - Mac: second clone. Claude commits/pushes from whichever machine the change was made on; the other machine `git pull`s (the service pulls on a timer and re-runs `tests/run_tests.sh` before swapping in new tools — if tests fail it keeps the old version and shows it on the health page).
 - Price book data is in the DB on Windows and edited through the app; the repo holds only the sheet templates and generator scripts.
+- **Every Claude surface reads the repo (plan step 0.8):** Claude Code on a clone reads `.claude/skills/` + `CLAUDE.md` directly, kept current by a SessionStart hook (`tools/repo_sync.py`, `git pull --ff-only`, warns on dirty/diverged). Changes are saved with the `rainbow-save` skill (tests green → commit → push). Cowork/claude.ai use account skills, fed from the repo by a plugin marketplace in the repo, with `tools/package_skills.py` as the zip fallback and stale-check. Phone/browser edits go through Claude Code on the web as pull requests.
 
 ## 13. Backups and safety
 

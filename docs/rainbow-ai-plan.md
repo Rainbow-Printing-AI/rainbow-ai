@@ -15,6 +15,7 @@ A program on the Windows 11 shop computer ("RAINBOW-AI") that watches the shop G
 - **Gmail via OAuth on the shop account** (Mark and Dave OK'd it), Drive API on the same consent.
 - **Windows box is the master.** Price book is edited in the web app (nothing to sync). Code/skills/tools live in a private GitHub repo; the Mac is a second clone.
 - **Everything in `tools/` stays as-is.** The app calls the scripts; it doesn't replace them.
+- **The repo is the one source of truth for skills, tools and standing orders** (added 2026-10-26). Any device can change it; every Claude surface (Claude Code, the desktop app, Cowork, the shop runtime) uses what's in the repo, and new skills/tools are saved into the repo, not only to the account. Step 0.8.
 
 ## How build sessions work (the contract)
 
@@ -83,6 +84,22 @@ Each step: **Goal · You · Claude · Done when · You'll learn.** Steps inside 
 - **Claude:** Writes `app/presets.json` mapping each folder to its media/sides/color so the datasheet and the Print button can use them.
 - **Done when:** dropping a test PDF into a folder lands it in Held with the right properties.
 - **You'll learn:** what the Hot Folders app actually does (it watches a folder and submits with a saved preset); Held vs Print queue.
+
+#### 0.8 One repo, every device (skills + tools stay in sync)
+Can be done any time after 0.5; best before Phase 1 gets busy. May take two sessions (Windows side, then Mac side).
+- **Goal:** Change a skill, tool or `CLAUDE.md` from any device, and every Claude you use picks up the latest from the repo with no manual copying. New skills and tools made anywhere end up in the repo.
+- **How each place gets the repo:**
+  - **Claude Code (terminal, VS Code, the desktop app's Code tab) on a machine with a clone:** already reads `.claude/skills/`, `CLAUDE.md` and `tools/` straight from the folder. The only gap is keeping the clone current, so a SessionStart hook in `.claude/settings.json` runs `tools/repo_sync.py`: `git pull --ff-only` at session start and a loud warning (not a silent fix) if the folder has uncommitted changes or has diverged.
+  - **Saving:** a `rainbow-save` skill: run `tools/tests/run_tests.sh`, then commit with a plain-English message and push. A red test run never gets pushed. "Save it to the repo" at the end of a session is all you say.
+  - **Cowork / claude.ai chat (no local repo):** these use the skills on your account. The repo's skills get packaged as a Claude plugin with a marketplace file in the repo (`.claude-plugin/`), installed in the desktop app from the GitHub repo, so the account picks up updates from GitHub. First test whether the desktop app can install a plugin from a *private* GitHub repo. **Fallback:** `tools/package_skills.py` builds the upload zips (as done by hand on 2026-10-25), and `--check` compares the account's synced copies (`~/.claude/skills/synced/`) with the repo and names every stale or missing skill.
+  - **New skills made in Cowork:** these land on the account, not in git. Preferred habit: make new skills in the desktop app's Code tab on the Rainbow folder, so they're files in `.claude/skills/` from the start. Safety net: `package_skills.py --check` also lists account-only `rainbow-*` skills, and `--import` copies them into the repo for `rainbow-save` to push.
+  - **Phone or any browser:** Claude Code on the web (claude.ai/code) connected to the GitHub repo. It works on a branch and opens a pull request; you tap Merge in GitHub, and the machines pull it on their next session.
+  - **The shop runtime (Phase 2 on):** the service pulls on a timer and runs the tests before using new tools (architecture doc §12).
+  - **The Mac:** `~/Downloads/Rainbow` becomes a real clone *without losing anything*: back up the folder, then link it to GitHub (`git init`, add the remote, fetch, check out `main`), keeping every Mac-only file (customer jobs, `private/`) as ignored files. Phone list and built books travel by USB like `private/` (decision from 0.3). Then install the same hook and save skill.
+- **You:** Approve the hook in `.claude/settings.json` (Claude can't write its own permissions, so you paste it, like in 0.4). Install the plugin in the desktop app. On the Mac, run the clone lines Claude hands you. Connect GitHub to claude.ai/code once.
+- **Claude:** Writes `repo_sync.py`, the `rainbow-save` skill, the plugin/marketplace files, `package_skills.py` (with tests in `run_tests.sh`), and the Mac clone steps.
+- **Done when:** (1) you change one line of a skill on the Mac and say "save it"; it's in GitHub. (2) On RAINBOW-AI the next Claude session uses the new wording without you typing any git. (3) Cowork shows the new version (or `package_skills.py --check` names it as stale and the fallback zip fixes it). (4) A new test skill made in the desktop app's Code tab shows up in GitHub. (5) A one-line change made from your phone at claude.ai/code reaches both machines after you merge it.
+- **You'll learn:** pull vs push, what a hook is, why the account skills and the repo skills are two separate places (and how the plugin joins them), pull requests, fast-forward vs conflict.
 
 ---
 
@@ -198,7 +215,7 @@ Each step: **Goal · You · Claude · Done when · You'll learn.** Steps inside 
 
 - 6.1 Monthly override review → tune `color_rules.json`.
 - 6.2 Nightly backup of `rainbow.sqlite` + `Jobs/` to shop storage.
-- 6.3 Mac clone of the repo; `git pull` habit; Claude commits from either machine.
+- 6.3 Sync health check: confirm every device and the account are on the latest repo version (the Mac clone and the sync itself moved up to step 0.8).
 - 6.4 Logging, error emails to you, a "what broke" page.
 
 ## Feature backlog (suggestions — pick what you want, in any order)
@@ -219,3 +236,4 @@ Each step: **Goal · You · Claude · Done when · You'll learn.** Steps inside 
 - Windows 11 Home or Pro on RAINBOW-AI (only matters for Remote Desktop; the web UI removes the need).
 - Does the Gmail API honor `has:red-star` in `q`? (Step 1.2 test.)
 - Which hot-folder configurations are "common" — your list in 0.7.
+- Can the Claude desktop app (Cowork) install a plugin from a private GitHub repo, and does it pick up updates automatically? Decides plugin vs zip fallback in 0.8.
