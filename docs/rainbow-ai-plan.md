@@ -236,4 +236,4 @@ Can be done any time after 0.5; best before Phase 1 gets busy. May take two sess
 - Windows 11 Home or Pro on RAINBOW-AI (only matters for Remote Desktop; the web UI removes the need).
 - Does the Gmail API honor `has:red-star` in `q`? (Step 1.2 test.)
 - Which hot-folder configurations are "common" — your list in 0.7.
-- Can the Claude desktop app (Cowork) install a plugin from a private GitHub repo, and does it pick up updates automatically? Decides plugin vs zip fallback in 0.8.
+- Can the Claude desktop app (Cowork) install a plugin from a private GitHub repo, and does it pick up updates automatically? Decides plugin vs zip fallback in 0.8. **Answered 2026-10-26:** yes per the docs (Customize → Plugins → Add marketplace; private repos need the Claude GitHub App on the org; "Sync automatically" for updates). Claude Code CLI install from the private repo tested OK. Plugin is the route, zips stay as the fallback. See `docs/repo-sync.md`.
