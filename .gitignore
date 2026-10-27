@@ -15,6 +15,7 @@
 !/app/
 !/PriceBook/
 !/.claude/
+!/.claude-plugin/
 
 # --- Carve-outs inside allowed folders ---
 /PriceBook/private/
@@ -27,6 +28,7 @@ credentials*.json
 token*.json
 __pycache__/
 .venv/
+.DS_Store
 
 # --- Personal phone numbers (owners/staff) stay out of git for now ---
 /PriceBook/data/contacts.csv

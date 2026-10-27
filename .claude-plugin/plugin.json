@@ -1,0 +1,7 @@
+{
+  "name": "rainbow",
+  "description": "Rainbow Printing shop skills from the rainbow-ai repo. The repo's .claude/skills/ folder is the only copy; edit it there and push.",
+  "author": { "name": "Rainbow Printing & Office Supply" },
+  "repository": "https://github.com/Rainbow-Printing-AI/rainbow-ai",
+  "skills": "./.claude/skills/"
+}

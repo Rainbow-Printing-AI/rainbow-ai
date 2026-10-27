@@ -72,4 +72,32 @@ printf 'Company,RepName,Address1,Address2,City,State,Zip\nAcme Long Name Holding
 py mergelabels.py "$T/../merge_t.csv" --grid avery5160 --out "$T/merge_5160.pdf" > "$T/../merge_t.log"
 grep -q "SKIPPED (1)" "$T/../merge_t.log" && grep -q "Reno, NV 00895" "$T/merge_5160_merge.csv" && grep -q "10 Main St #2" "$T/merge_5160_merge.csv" && ! grep -q "pat@x.com" "$T/merge_5160_merge.csv" && echo "PASS  mergelabels cleanup/skip" || { echo "FAIL  mergelabels cleanup/skip"; fail=1; }
 py verify_print.py "$T/merge_5160.pdf" --grid avery5160 | tail -1 | grep -q PASS && echo "PASS  mergelabels (die-cut)" || { echo "FAIL  mergelabels die-cut"; fail=1; }
+# --- repo sync tools (step 0.8): throwaway skill folders and git repos in a temp dir outside the Rainbow folder ---
+S=$(mktemp -d)
+mkdir -p "$S/repo/.claude/skills/rainbow-a" "$S/repo/.claude/skills/rainbow-b" "$S/repo/.claude/skills/rainbow-c" "$S/acct/rainbow-a" "$S/acct/rainbow-b" "$S/acct/rainbow-d/scripts" "$S/acct/other-skill"
+printf 'a\nsame\n' > "$S/repo/.claude/skills/rainbow-a/SKILL.md"; printf 'a\r\nsame\r\n' > "$S/acct/rainbow-a/SKILL.md"
+printf 'b new\n' > "$S/repo/.claude/skills/rainbow-b/SKILL.md"; printf 'b old\n' > "$S/acct/rainbow-b/SKILL.md"
+printf 'c\n' > "$S/repo/.claude/skills/rainbow-c/SKILL.md"; printf 'd\n' > "$S/acct/rainbow-d/SKILL.md"; printf 'x\n' > "$S/acct/rainbow-d/scripts/x.py"; printf 'o\n' > "$S/acct/other-skill/SKILL.md"
+rc=0; py package_skills.py --check --repo "$S/repo" --synced "$S/acct" > "$S/check.txt" || rc=$?
+[ "$rc" -eq 2 ] && grep -q "^OK *rainbow-a" "$S/check.txt" && grep -q "^STALE *rainbow-b: differs: SKILL.md" "$S/check.txt" && grep -q "^MISSING *rainbow-c" "$S/check.txt" && grep -q "^ACCOUNT-ONLY *rainbow-d" "$S/check.txt" && ! grep -q other-skill "$S/check.txt" && echo "PASS  package_skills --check names stale/missing/account-only (CRLF ignored)" || { echo "FAIL  package_skills --check"; cat "$S/check.txt"; fail=1; }
+py package_skills.py --import --repo "$S/repo" --synced "$S/acct" >/dev/null
+[ -f "$S/repo/.claude/skills/rainbow-d/scripts/x.py" ] && grep -q "b new" "$S/repo/.claude/skills/rainbow-b/SKILL.md" && echo "PASS  package_skills --import copies account-only, never overwrites the repo" || { echo "FAIL  package_skills --import"; fail=1; }
+py package_skills.py --repo "$S/repo" --out "$S/zips" >/dev/null
+"$PY" -c "import zipfile,sys;n=zipfile.ZipFile(sys.argv[1]).namelist();sys.exit(0 if sorted(n)==['rainbow-d/SKILL.md','rainbow-d/scripts/x.py'] else 1)" "$S/zips/rainbow-d.zip" && [ "$(ls "$S/zips" | wc -l)" -eq 4 ] && echo "PASS  package_skills builds one upload zip per skill" || { echo "FAIL  package_skills zips"; fail=1; }
+if command -v git >/dev/null 2>&1; then
+  G() { git -c user.name=t -c user.email=t@t -c init.defaultBranch=main -c commit.gpgsign=false "$@" >/dev/null 2>&1; }
+  G init --bare "$S/origin.git"; G clone "$S/origin.git" "$S/a"; printf 'one\n' > "$S/a/f.txt"; G -C "$S/a" add f.txt; G -C "$S/a" commit -m one; G -C "$S/a" push origin main; G clone "$S/origin.git" "$S/b"
+  printf 'two\n' >> "$S/a/f.txt"; G -C "$S/a" commit -am two; G -C "$S/a" push origin main
+  py repo_sync.py --repo "$S/b" | grep -q "Pulled 1 new commit" && grep -q two "$S/b/f.txt" && echo "PASS  repo_sync fast-forwards a clean clone" || { echo "FAIL  repo_sync pull"; fail=1; }
+  printf 'three\n' >> "$S/a/f.txt"; G -C "$S/a" commit -am three; G -C "$S/a" push origin main; printf 'edit\n' >> "$S/b/f.txt"; printf 'n\n' > "$S/b/new.txt"
+  rc=0; py repo_sync.py --repo "$S/b" > "$S/sync.txt" || rc=$?
+  [ "$rc" -eq 1 ] && grep -q "REPO SYNC WARNING" "$S/sync.txt" && grep -q "UNSAVED CHANGES: 2 file" "$S/sync.txt" && grep -q "^     M f.txt" "$S/sync.txt" && grep -q "1 newer commit(s) that were NOT pulled" "$S/sync.txt" && ! grep -q three "$S/b/f.txt" && grep -q edit "$S/b/f.txt" && echo "PASS  repo_sync warns on a dirty tree and changes nothing" || { echo "FAIL  repo_sync dirty tree"; cat "$S/sync.txt"; fail=1; }
+  py repo_sync.py --repo "$S/b" --hook | "$PY" -c "import json,sys;d=json.load(sys.stdin);sys.exit(0 if 'UNSAVED' in d['systemMessage'] and d['hookSpecificOutput']['hookEventName']=='SessionStart' else 1)" && echo "PASS  repo_sync --hook shows the warning (exit 0)" || { echo "FAIL  repo_sync --hook"; fail=1; }
+  G -C "$S/b" commit -am local; rm "$S/b/new.txt"
+  rc=0; py repo_sync.py --repo "$S/b" > "$S/sync.txt" || rc=$?
+  [ "$rc" -eq 1 ] && grep -q "diverged" "$S/sync.txt" && echo "PASS  repo_sync warns when diverged, no merge" || { echo "FAIL  repo_sync diverged"; cat "$S/sync.txt"; fail=1; }
+else
+  echo "SKIP  repo_sync tests (git not installed here)"
+fi
+rm -rf "$S"
 exit $fail

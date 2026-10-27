@@ -1,0 +1,11 @@
+{
+  "name": "rainbow-printing",
+  "owner": { "name": "Rainbow Printing & Office Supply" },
+  "plugins": [
+    {
+      "name": "rainbow",
+      "source": "./",
+      "description": "Rainbow print shop skills (imposition, photo prep, order packets, email digest/reply, price book), straight from the rainbow-ai repo."
+    }
+  ]
+}
