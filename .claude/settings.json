@@ -5,5 +5,19 @@
       "PowerShell(py tools/*)",
       "Bash(tools/rbpy tools/*)"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && if command -v py >/dev/null 2>&1; then py tools/repo_sync.py --hook; else tools/rbpy tools/repo_sync.py --hook; fi",
+            "timeout": 90
+          }
+        ]
+      }
+    ]
   }
 }
