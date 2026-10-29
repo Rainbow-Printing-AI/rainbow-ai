@@ -63,15 +63,16 @@ REPO SYNC WARNING.
 2. The repo is private: when it asks, **Connect GitHub** and install the **Claude GitHub App** on the
    `Rainbow-Printing-AI` organization with access to `rainbow-ai` (only that repo is enough).
 3. Install the plugin **rainbow** from the marketplace **rainbow-printing**. Turn on **Sync automatically** for that marketplace.
-4. In claude.ai → Settings → Capabilities → Skills, **delete the six old uploaded `rainbow-*` skills**. Otherwise
-   Cowork has two copies of each, and the uploaded ones are out of date (as of 2026-10-26 they're still the
-   2026-10-22 wording). The plugin's copies are named `rainbow:rainbow-print-imposition` and so on.
+4. **Don't delete the six old `rainbow-*` skills yet** (Andrew's call, 2026-10-28): the Mac uses them every day
+   until it's linked to the repo. Both sets side by side do no harm. The plugin's copies are named
+   `rainbow:rainbow-print-imposition` and so on; name those to get the current wording. The old ones go in Mac
+   step 10, after a real job has worked on the Mac with the new skills.
 
 Done when: a Cowork chat lists `rainbow:rainbow-save` among its skills, and after a push the plugin shows the
 new version (Check for updates, or wait for the automatic sync).
 If the GitHub App step won't work: use the zip fallback above and tell Claude, so the build log records it.
 
-Note: after step 4, `package_skills.py --check` reports the plugin's skills as MISSING. That's expected: it only
+Note: once the old ones are deleted, `package_skills.py --check` reports the plugin's skills as MISSING. That's expected: it only
 sees uploaded skills. It still catches ACCOUNT-ONLY skills made in Cowork.
 
 ## Mac side: runbook for the session "Rainbow AI step 0.8, Mac side"
@@ -81,6 +82,8 @@ Goal: make that folder a real git clone of `main` **without losing anything**. T
 `PriceBook/private/`, the phone-list files and built books that GitHub does not have and must never get.
 Claude: explain each step to Andrew before doing it; he types only the lines you hand him (macOS Terminal is zsh,
 so `&&` is fine there). Never use `git clean`, `git checkout -f`, `git reset --hard` or `git stash` in this folder.
+The Mac folder doesn't have this file until it's linked: do steps 1–4 up to `git fetch origin` from the session
+prompt, then read the rest with `git show origin/main:docs/repo-sync.md`.
 
 **Before starting:** on RAINBOW-AI the hook `settings.json` (Windows step 1) should be saved to GitHub. Check on
 github.com, or later in step 5 with `git show origin/main:.claude/settings.json | grep repo_sync`. If it isn't
@@ -144,7 +147,13 @@ there, do the rest anyway and add the hook last.
      shop): the hook pulls it, with no git typed.
    - (3) Cowork shows the new wording through the plugin, or `package_skills.py --check` names it STALE and the zip fixes it.
    - (4)/(5) A new test skill from the Code tab and a phone edit via claude.ai/code can be done any time later.
-10. **Build log:** append the Mac-side entry to `BUILD-LOG.md` and save it to the repo. The backup folder stays
+10. **Retire the old account skills, last.** Do this only after Andrew has run a real job on the Mac with the new
+    skills (folder copy or `rainbow:` plugin copy) and it came out right. In the desktop app (Customize → Plugins,
+    or Customize → Skills / claude.ai → Settings → Capabilities → Skills), remove the six `rainbow-*` skills
+    **without** the `rainbow:` prefix. The account lists them as coming from an older plugin, so uninstalling that old
+    plugin may be the way. Never remove the plugin **rainbow** from marketplace **rainbow-printing**. Also check the
+    Mac's desktop app shows the `rainbow` plugin; if not, add the marketplace there too (Windows step 2).
+11. **Build log:** append the Mac-side entry to `BUILD-LOG.md` and save it to the repo. The backup folder stays
     until Andrew has worked from the Mac for a week; then he can delete it himself.
 
 Phone list and built books (`contacts.csv`, `contacts_v1.py`, `scan_*.pdf`, `p15_*` crops, `build/*.pdf|xlsx`) stay
