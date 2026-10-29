@@ -37,7 +37,7 @@ Thresholds live in press.json next to this script (l_crush, l_fix, c_min, flat_m
 impose.py and labels.py call this automatically (--no-crush-fix to disable);
 verify_print.py fails a file that still carries crush colors.
 """
-import argparse, json, os, sys, zlib
+import argparse, io, json, os, sys, zlib
 from collections import OrderedDict
 
 import numpy as np
@@ -360,9 +360,65 @@ def scan_vectors(pdf, press, fix=False):
 
 
 # --------------------------------------------------------------------------- images
+_cmyk_srgb_tf = None
+
+
+def cmyk_srgb_transform():
+    """CMYK->sRGB through the same CMYK profile cmyk_transform() uses, or None."""
+    global _cmyk_srgb_tf
+    if _cmyk_srgb_tf is not None:
+        return _cmyk_srgb_tf or None
+    try:
+        from PIL import ImageCms
+        for p in CMYK_PROFILES:
+            if os.path.exists(p):
+                _cmyk_srgb_tf = ImageCms.buildTransform(ImageCms.getOpenProfile(p), ImageCms.createProfile("sRGB"),
+                                                        "CMYK", "RGB", renderingIntent=1)
+                return _cmyk_srgb_tf
+    except Exception:
+        pass
+    _cmyk_srgb_tf = False
+    return None
+
+
+def cmyk_pil(x):
+    """8-bit DeviceCMYK (or ICC N=4) image XObject -> CMYK PIL image with the file's own numbers,
+    or None. pikepdf's as_pil_image() turns a CMYK image carrying an SMask into RGBA with a naive
+    conversion, which reads dark CMYK far darker than it prints (IGC Mock Meet, 2026-10-29:
+    71/44/73/73 read as L*14, through cmyk.icc it is L*25)."""
+    try:
+        cs = x.get("/ColorSpace")
+        is_cmyk = (cs == "/DeviceCMYK" or (isinstance(cs, pikepdf.Array) and len(cs) > 1 and cs[0] == "/ICCBased"
+                                            and int(cs[1].get("/N", 3)) == 4))
+        if not is_cmyk or int(x.get("/BitsPerComponent", 8)) != 8 or "/Decode" in x:
+            return None
+        filt = x.get("/Filter")
+        if filt == "/DCTDecode" or (isinstance(filt, pikepdf.Array) and len(filt) == 1 and filt[0] == "/DCTDecode"):
+            im = Image.open(io.BytesIO(x.read_raw_bytes()))   # PIL undoes Adobe CMYK inversion
+            im.load()
+            return im if im.mode == "CMYK" else None
+        raw = x.read_bytes()
+        w, h = int(x.Width), int(x.Height)
+        if len(raw) < w * h * 4:
+            return None
+        return Image.frombytes("CMYK", (w, h), raw[:w * h * 4])
+    except Exception:
+        return None
+
+
+def cmyk_to_rgb_pil(im):
+    """CMYK PIL -> sRGB PIL through the shop CMYK profile (naive PIL convert if no profile)."""
+    tf = cmyk_srgb_transform()
+    if tf:
+        from PIL import ImageCms
+        return ImageCms.applyTransform(im, tf)
+    return im.convert("RGB")
+
+
 def image_lab(im, max_px=400):
-    """PIL image -> (Lab array (h,w,3) downsampled, rgb01 array)."""
-    im = im.convert("RGB")
+    """PIL image -> (Lab array (h,w,3) downsampled, rgb01 array). CMYK goes through the
+    shop CMYK profile, same as CMYK vector colors."""
+    im = cmyk_to_rgb_pil(im) if im.mode == "CMYK" else im.convert("RGB")
     s = max(im.size) / max_px
     if s > 1:
         im = im.resize((max(1, int(im.width / s)), max(1, int(im.height / s))), Image.BILINEAR)
@@ -388,7 +444,7 @@ def analyse_image(im, press):
 
 def lift_image(im, press):
     """Smooth shadow lift on chromatic pixels only (neutrals untouched). Returns RGB PIL image."""
-    rgb = np.asarray(im.convert("RGB")).astype(np.float64) / 255
+    rgb = np.asarray(cmyk_to_rgb_pil(im) if im.mode == "CMYK" else im.convert("RGB")).astype(np.float64) / 255
     lab = srgb_to_lab(rgb)
     L, C = lab[..., 0], chroma(lab)
     l_hi = press["l_fix"] + 10.0
@@ -418,8 +474,10 @@ def scan_images(pdf, press, mode="auto"):
     out = []
     for pno, name, x in walk_images(pdf):
         try:
-            pim = pikepdf.PdfImage(x)
-            im = pim.as_pil_image()
+            im = cmyk_pil(x)
+            if im is None:
+                pim = pikepdf.PdfImage(x)
+                im = pim.as_pil_image()
         except Exception as e:
             out.append({"page": pno, "name": name, "skipped": str(e)[:60]}); continue
         if im.mode in ("1", "L", "LA", "I", "I;16"):
@@ -427,9 +485,9 @@ def scan_images(pdf, press, mode="auto"):
         share, flats = analyse_image(im, press)
         rec = {"page": pno, "name": name, "w": im.width, "h": im.height, "share": share, "flats": flats, "fixed": False}
         want = mode == "always" or (mode == "auto" and flats)
-        can = im.mode in ("RGB", "RGBA", "P", "L", "LA") and "/Mask" not in x and "/Decode" not in x
+        can = im.mode in ("RGB", "RGBA", "P", "L", "LA", "CMYK") and "/Mask" not in x and "/Decode" not in x
         if want and share > 0 and can:
-            new = lift_image(im, press)
+            new = lift_image(cmyk_to_rgb_pil(im) if im.mode == "CMYK" else im, press)
             raw = new.tobytes()
             x.write(zlib.compress(raw, 6), filter=pikepdf.Name("/FlateDecode"))
             x.Width, x.Height = new.width, new.height

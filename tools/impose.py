@@ -37,7 +37,7 @@ Examples
 Sizes are inches: "5x7", "8.5x11", or a name (letter, tabloid, 12x18, 13x19).
 """
 from __future__ import annotations
-import argparse, io, json, os, subprocess, sys, tempfile
+import argparse, io, json, os, shutil, subprocess, sys, tempfile, zlib
 # Mac: find pdftoppm in ~/.rainbow (setup-mac.sh); harmless elsewhere
 os.environ["PATH"] = os.path.expanduser("~/.rainbow/env/bin") + os.pathsep + os.environ.get("PATH", "")
 from dataclasses import dataclass, asdict
@@ -110,6 +110,7 @@ class Piece:
     pdf_page: object = None
     bleed_fill: dict = None  # generated bleed per side: {'left': 'reflect'|'edge', ...}
     bleed_why: dict = None   # sides switched to edge: {side: (run_in, col_px)}
+    cmyk_bleed: bool = False # generated bleed rendered straight to CMYK (Ghostscript)
 
 
 def load_source(path, pdf_out, trim_pt, bleed_pt, bleed_mode, dpi, raster_dpi):
@@ -209,7 +210,16 @@ def load_pdf(path, pdf_out, trim_pt, bleed_pt, bleed_mode, raster_dpi):
         piece.origin = (offx, offy)
         if not has_bleed and bleed_mode != "white" and bleed_pt > 0:
             img = render_page(src, i, raster_dpi)
-            piece.strips, piece.bleed_fill, piece.bleed_why = make_strips(img, bleed_pt, raster_dpi, rotate, bleed_mode)
+            ink = None
+            if page_is_cmyk(src.pages[i]):
+                ink = render_page_cmyk(src, i, raster_dpi, img.size)
+                if ink is None:
+                    print(f"WARNING: {os.path.basename(path)} p{i+1} is CMYK but Ghostscript isn't installed — "
+                          f"bleed strips rendered RGB (naive CMYK->RGB); bleed color may not match the trim",
+                          file=sys.stderr)
+                else:
+                    piece.cmyk_bleed = True
+            piece.strips, piece.bleed_fill, piece.bleed_why = make_strips(img, bleed_pt, raster_dpi, rotate, bleed_mode, ink=ink)
         pieces.append(piece)
     pieces[0].trim_pt = trim_pt
     return pieces
@@ -254,6 +264,141 @@ def render_page(src, index, dpi):
         return img
 
 
+
+RGB_CS = {"/DeviceRGB", "/CalRGB", "/Lab"}
+OK_CS = {"/DeviceCMYK", "/DeviceGray", "/CalGray"}
+
+
+def _cs_ok(cs, resources):
+    """True when a color space resolves to CMYK/gray only (Separation/DeviceN/Pattern -> False:
+    leave those to the RGB path rather than guess)."""
+    try:
+        if isinstance(cs, pikepdf.Name):
+            n = str(cs)
+            if n in OK_CS:
+                return True
+            if n in RGB_CS or n == "/Pattern":
+                return False
+            named = resources.get("/ColorSpace", {}) if resources is not None else {}
+            if n in named:
+                return _cs_ok(named[n], resources)
+            return False
+        if isinstance(cs, pikepdf.Array) and len(cs):
+            fam = str(cs[0])
+            if fam == "/ICCBased":
+                return int(cs[1].get("/N", 3)) in (1, 4)
+            if fam == "/Indexed":
+                return _cs_ok(cs[1], resources)
+            if fam in OK_CS:
+                return True
+    except Exception:
+        pass
+    return False
+
+
+def page_is_cmyk(page):
+    """True when every color on the page (content, nested forms, images, shadings, transparency
+    group) is DeviceCMYK / DeviceGray (or ICC N=4/1). Such a page's bleed is rendered straight to
+    CMYK so the strips carry the file's own numbers instead of pdftoppm's naive CMYK->RGB guess,
+    which renders dark CMYK far darker than it prints (IGC Mock Meet, 2026-10-29: 71/44/73/73
+    drawn as L*16 instead of L*25)."""
+    seen = set()
+    has_cmyk = [False]
+
+    def group_ok(obj):
+        g = obj.get("/Group")
+        return g is None or "/CS" not in g or _cs_ok(g.CS, None)
+
+    def walk(stream_owner, resources, depth=0):
+        if depth > 12:
+            return False
+        try:
+            ops = pikepdf.parse_content_stream(stream_owner)
+        except Exception:
+            return False
+        res = resources if resources is not None else pikepdf.Dictionary()
+        for ins in ops:
+            operands, o = ins.operands, str(ins.operator)
+            if o in ("rg", "RG"):
+                return False
+            if o in ("k", "K"):
+                has_cmyk[0] = True
+            if o in ("cs", "CS") and operands and not _cs_ok(operands[0], res):
+                return False
+            if o == "sh":
+                sh = res.get("/Shading", {}).get(str(operands[0])) if operands else None
+                if sh is None or not _cs_ok(sh.get("/ColorSpace"), res):
+                    return False
+            if o == "Do" and operands:
+                x = res.get("/XObject", {}).get(str(operands[0]))
+                if x is None:
+                    continue
+                key = x.objgen
+                if key in seen and key != (0, 0):
+                    continue
+                seen.add(key)
+                st = str(x.get("/Subtype"))
+                if st == "/Image":
+                    if x.get("/ImageMask", False):
+                        continue
+                    cs = x.get("/ColorSpace")
+                    if cs is None or not _cs_ok(cs, res):
+                        return False
+                    if str(cs) == "/DeviceCMYK" or (isinstance(cs, pikepdf.Array) and _cs_ok(cs, res)):
+                        has_cmyk[0] = has_cmyk[0] or str(cs) != "/DeviceGray"
+                elif st == "/Form":
+                    if not group_ok(x) or not walk(x, x.get("/Resources", res), depth + 1):
+                        return False
+        return True
+
+    try:
+        if not group_ok(page.obj):
+            return False
+        # soft masks in ExtGStates carry their own groups — only gray/CMYK ones are safe
+        for gs_ in page.Resources.get("/ExtGState", {}).values():
+            sm = gs_.get("/SMask")
+            if isinstance(sm, pikepdf.Dictionary) and "/G" in sm and not group_ok(sm.G):
+                return False
+        return walk(page, page.obj.get("/Resources")) and has_cmyk[0]
+    except Exception:
+        return False
+
+
+def ghostscript():
+    for c in ("gs", "gswin64c", "gswin32c"):
+        p = shutil.which(c)
+        if p:
+            return p
+    return None
+
+
+def render_page_cmyk(src, index, dpi, size):
+    """Render one page straight to an 8-bit CMYK PIL image with Ghostscript (tiff32nc), sized
+    exactly `size` (the RGB render's size) so modes picked on the RGB raster apply pixel for pixel.
+    DeviceCMYK content passes through with its own numbers. None when gs isn't installed."""
+    gs = ghostscript()
+    if gs is None:
+        return None
+    pw, ph = size
+    with tempfile.TemporaryDirectory() as td:
+        tmp = os.path.join(td, "page.pdf")
+        one = pikepdf.new()
+        one.pages.append(src.pages[index])
+        one.save(tmp)
+        out = os.path.join(td, "p.tif")
+        subprocess.run([gs, "-q", "-dNOPAUSE", "-dBATCH", "-dSAFER", "-sDEVICE=tiff32nc",
+                        f"-r{dpi}", "-dUseCropBox", "-dOverrideICC=false", f"-sOutputFile={out}", tmp],
+                       check=True, capture_output=True)
+        img = Image.open(out)
+        img.load()
+        if img.mode != "CMYK":
+            return None
+        if img.size != (pw, ph):
+            img = img.crop((0, 0, min(img.width, pw), min(img.height, ph)))
+            if img.size != (pw, ph):
+                img = img.resize((pw, ph), Image.LANCZOS)
+        return img
+
 OVERLAP_PX = 2  # bleed strips tuck this far under the art (px at --raster-dpi)
 
 
@@ -291,28 +436,36 @@ def pad_bleed(a, pad, modes):
     return p
 
 
-def make_strips(img, bleed_pt, dpi, rotate, mode="auto"):
+def make_strips(img, bleed_pt, dpi, rotate, mode="auto", ink=None):
     """Mirror- (or edge-) extend the raster edges by `bleed` and return the 4 outer strips.
     Coordinates are in bleed-box space (origin bottom-left of bleed box, points),
     for the art *as rotated* into the trim orientation."""
     if rotate == 90:
         img = img.transpose(Image.Transpose.ROTATE_90)  # CCW, same as PDF +90
+        if ink is not None:
+            ink = ink.transpose(Image.Transpose.ROTATE_90)
     a = np.asarray(img)
     pad = int(round(bleed_pt / IN * dpi))
     pad = max(1, min(pad, a.shape[0] - 1, a.shape[1] - 1))
-    modes, why = side_modes(a, pad, mode, dpi)
-    p = pad_bleed(a, pad, modes)
+    modes, why = side_modes(a, pad, mode, dpi)   # chosen on the RGB raster
+    # ink: the CMYK render of the same page (same size) — pad that instead, so the strips carry
+    # the file's CMYK numbers; Image.fromarray of an HxWx4 array comes back as a CMYK image.
+    p = pad_bleed(np.asarray(ink) if ink is not None else a, pad, modes)
     H, W = p.shape[:2]
     s = IN / dpi  # points per pixel
     # Each strip runs `ov` px inside the trim (a raster of the same art) and is drawn over the
     # vector art, so the trim/bleed join never shows an antialiased hairline.
     ov = max(0, min(OVERLAP_PX, (H - 2 * pad) // 2 - 1, (W - 2 * pad) // 2 - 1))
     strips = []
+    if p.shape[2] == 4:
+        Image_fromarray = lambda arr: Image.fromarray(np.ascontiguousarray(arr), mode="CMYK")
+    else:
+        Image_fromarray = Image.fromarray
     # top (full width), bottom (full width), left, right (between, overlapping top/bottom)
-    strips.append((Image.fromarray(p[:pad + ov, :]), 0, (H - pad - ov) * s, W * s, (pad + ov) * s))
-    strips.append((Image.fromarray(p[H - pad - ov:, :]), 0, 0, W * s, (pad + ov) * s))
-    strips.append((Image.fromarray(p[pad - ov:H - pad + ov, :pad + ov]), 0, (pad - ov) * s, (pad + ov) * s, (H - 2 * pad + 2 * ov) * s))
-    strips.append((Image.fromarray(p[pad - ov:H - pad + ov, W - pad - ov:]), (W - pad - ov) * s, (pad - ov) * s, (pad + ov) * s, (H - 2 * pad + 2 * ov) * s))
+    strips.append((Image_fromarray(p[:pad + ov, :]), 0, (H - pad - ov) * s, W * s, (pad + ov) * s))
+    strips.append((Image_fromarray(p[H - pad - ov:, :]), 0, 0, W * s, (pad + ov) * s))
+    strips.append((Image_fromarray(p[pad - ov:H - pad + ov, :pad + ov]), 0, (pad - ov) * s, (pad + ov) * s, (H - 2 * pad + 2 * ov) * s))
+    strips.append((Image_fromarray(p[pad - ov:H - pad + ov, W - pad - ov:]), (W - pad - ov) * s, (pad - ov) * s, (pad + ov) * s, (H - 2 * pad + 2 * ov) * s))
     return strips, modes, why
 
 
@@ -375,6 +528,12 @@ def load_image(path, pdf_out, trim_pt, bleed_pt, bleed_mode, dpi):
 
 
 def image_xobject(pdf_out, img, quality=95):
+    if img.mode == "CMYK":
+        # lossless, plain (non-inverted) DeviceCMYK — no JPEG Adobe-inversion ambiguity
+        return pdf_out.make_stream(zlib.compress(img.tobytes(), 9), Type=pikepdf.Name.XObject,
+                                   Subtype=pikepdf.Name.Image, Width=img.width, Height=img.height,
+                                   ColorSpace=pikepdf.Name.DeviceCMYK, BitsPerComponent=8,
+                                   Filter=pikepdf.Name.FlateDecode)
     buf = io.BytesIO()
     img.convert("RGB").save(buf, format="JPEG", quality=quality, dpi=(300, 300))
     return pdf_out.make_stream(buf.getvalue(), Type=pikepdf.Name.XObject, Subtype=pikepdf.Name.Image,
@@ -483,7 +642,16 @@ def build_sheet(pdf, pieces_for_sheet, slots, geom, args_mark_w, bleed):
         # bleed strips (raster) drawn OVER the art's edge: each strip tucks OVERLAP_PX inside the
         # trim with a raster of the same art, so the join sits on matching pixels. Drawn under the
         # art instead, the art's antialiased clip edge conflates into a light hairline at the trim.
+        # A PDF piece turned 90 to the trim AND sitting in a cell turned 90 for the sheet is drawn
+        # at 0 (rot_total is mod 180), but its strips were built for the 90-turned art and get the
+        # cell's 90 on top: 180 off, so each side's bleed lands on the opposite side
+        # (IGC Mock Meet 5x7 2-up letter, 2026-10-29). Turn those strips 180 in their bleed box.
+        flip180 = piece.kind == "pdf" and piece.rotate == 90 and geom["rot_cells"]
+        ubw, ubh = (ch, cw) if geom["rot_cells"] else (cw, ch)   # strip frame (unrotated bleed box)
         for j, (im, sx, sy, swid, shei) in enumerate(piece.strips or []):
+            if flip180:
+                im = im.transpose(Image.Transpose.ROTATE_180)
+                sx, sy = ubw - sx - swid, ubh - sy - shei
             sname = f"/Im{k}_{j}"
             res_x[sname] = image_xobject(pdf, im)
             ops.append(place_ops(sname, sx, sy, swid, shei, bx, by, cw, ch, 90 if geom["rot_cells"] else 0))
@@ -527,6 +695,11 @@ def mat(m):
 
 # --------------------------------------------------------------------------- main
 def bleed_desc(p, mode):
+    d = _bleed_desc(p, mode)
+    return d + (" (CMYK, file's own numbers)" if getattr(p, "cmyk_bleed", False) and mode != "white" else "")
+
+
+def _bleed_desc(p, mode):
     if mode == "white":
         return "bleed white"
     f = p.bleed_fill or {}

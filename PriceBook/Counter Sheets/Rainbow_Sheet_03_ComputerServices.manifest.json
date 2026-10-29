@@ -15,8 +15,8 @@
   ]
  },
  "docx": "Rainbow_Sheet_03_ComputerServices.docx",
- "generated": "2026-10-17T18:02:17",
- "prices_csv": "/sessions/rcw-01qwgb3xtuqqp2grtkcucyet/mnt/Rainbow/PriceBook/data/prices.csv",
+ "generated": "2026-10-21T16:47:42",
+ "prices_csv": "/sessions/rcw-01j8mxmtvcggvudy1wxuxqqk/mnt/Rainbow/PriceBook/data/prices.csv",
  "used_ids": [
   "file-print-no-changes",
   "file-print-changes-base",
@@ -41,6 +41,7 @@
   "bw-8.5x11-side",
   "bw-8.5x14-side",
   "bw-11x17-side",
+  "copy-addon-punch-staple",
   "lf-color-18x24",
   "lf-color-24x36",
   "lf-color-30x42",
@@ -60,7 +61,7 @@
  ],
  "pending_ids": [],
  "excluded": {},
- "rev": "2026-10-17",
+ "rev": "2026-10-21",
  "pdf": "Rainbow_Sheet_03_ComputerServices.pdf",
  "pages": 1
 }

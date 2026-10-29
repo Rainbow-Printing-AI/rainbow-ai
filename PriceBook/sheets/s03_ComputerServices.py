@@ -159,13 +159,15 @@ def build(pb: L.Prices):
            size=10, italic=True)
 
     grid(bt)
+    L.para(doc, f"Hole punching or stapling: add {m('copy-addon-punch-staple', dollar=False, cents_style='leading')} per page to the copy charge",
+           align="center", before=1, after=0, font=S, size=10, bold=True)
 
     # ---- Large format
     outer = L.table(doc, 1, 2, widths_in=[3.9, 3.6], borders=None)
     lc, rc = outer.rows[0].cells
     p = lc.paragraphs[0]
     p.paragraph_format.alignment = L.ALIGN["center"]
-    p.paragraph_format.space_before = Pt(5)
+    p.paragraph_format.space_before = Pt(3)
     L.add_run(p, "Large Format Color", font=S, size=HEAD, color=RED)
     ft = L.table(lc, 7, 3, widths_in=[1.5, 1.25, 1.15], borders="all", border_sz=6)
     shrink_trailing(lc)
@@ -187,7 +189,7 @@ def build(pb: L.Prices):
 
     p = rc.paragraphs[0]
     p.paragraph_format.alignment = L.ALIGN["center"]
-    p.paragraph_format.space_before = Pt(5)
+    p.paragraph_format.space_before = Pt(3)
     L.add_run(p, "Large Format B/W", font=S, size=HEAD, color=RED)
     L.add_run(p, "   each", font=S, size=HEAD - 1, italic=True)
     bt = L.table(rc, 4, 2, widths_in=[1.7, 1.7], borders="all", border_sz=6)

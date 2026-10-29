@@ -50,6 +50,7 @@ import numpy as np
 import bleedscan
 import pikepdf
 from PIL import Image
+Image.MAX_IMAGE_PIXELS = None  # our own pdftoppm renders; banners at SEAM_DPI exceed PIL's bomb limit (2026-10-28)
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import crushcheck  # noqa: E402
@@ -285,6 +286,9 @@ def check_seams(path, layout, rep):
 
 
 ART_DPI = 300   # bleed-artifact check render
+CONT_OFF_PX = 2          # continuity check: compare the lines this far outside / inside the trim
+CONT_DIFF = 60           # max channel difference (0-255) that still counts as the same art
+CONT_MAX_SHARE = 0.03    # share of an edge allowed to differ (antialiased features crossing it)
 
 
 def check_bleed_artifacts(path, layout, rep):
@@ -295,7 +299,7 @@ def check_bleed_artifacts(path, layout, rep):
     bleed_pt = layout["bleed_in"] * IN
     if bleed_pt <= 0 or not any(pc.get("bleed_fill") for sh in layout["sheets"] for pc in sh["pieces"]):
         return
-    bad = []
+    bad, breaks = [], []
     d = ART_DPI / IN
     with tempfile.TemporaryDirectory() as td:
         for i, sheet in enumerate(layout["sheets"]):
@@ -327,11 +331,31 @@ def check_bleed_artifacts(path, layout, rep):
                     run, col = bleedscan.hard_edge(band, ART_DPI)
                     if run >= bleedscan.MIN_RUN_IN:
                         bad.append(f"p{i+1} piece {k+1} {side} ({run:.2f} in, {col/ART_DPI:.3f} in out from trim)")
+                # continuity: generated bleed (mirror or edge-extend) must carry on the art at the
+                # trim — the line just outside matches the line just inside. A strip placed on the
+                # wrong side or turned 180 (impose.py rot 90 + rotated cells, 2026-10-29) fails here.
+                o = CONT_OFF_PX
+                lines = {
+                    "left": (img[ra:rb, int(c0) - o - 1], img[ra:rb, int(np.ceil(c0)) + o]),
+                    "right": (img[ra:rb, int(np.ceil(c1)) + o], img[ra:rb, int(c1) - o - 1]),
+                    "top": (img[int(r0) - o - 1, ca:cb], img[int(np.ceil(r0)) + o, ca:cb]),
+                    "bottom": (img[int(np.ceil(r1)) + o, ca:cb], img[int(r1) - o - 1, ca:cb]),
+                }
+                for side, (out_l, in_l) in lines.items():
+                    diff = np.abs(out_l.astype(int) - in_l.astype(int)).max(axis=1)
+                    share = float((diff > CONT_DIFF).mean()) if diff.size else 0.0
+                    if share > CONT_MAX_SHARE:
+                        breaks.append(f"p{i+1} piece {k+1} {side} ({share:.0%} of the edge)")
     if bad:
         rep.fail(f"hard edge copied into generated bleed (box/QR/rule mirrored from inside the trim): "
                  f"{'; '.join(bad[:6])}{' …' if len(bad) > 6 else ''} — re-impose with --bleed-mode auto/edge")
     else:
         rep.ok("generated bleed: nothing from inside the trim mirrored into the bleed")
+    if breaks:
+        rep.fail(f"generated bleed doesn't continue the art at the trim (wrong side / rotated strip): "
+                 f"{'; '.join(breaks[:6])}{' …' if len(breaks) > 6 else ''}")
+    else:
+        rep.ok("generated bleed: continues the art across every trim edge")
 
 
 def imposition_mode(args, pdf, rep):

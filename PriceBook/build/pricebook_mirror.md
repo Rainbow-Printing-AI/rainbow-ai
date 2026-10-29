@@ -1,6 +1,6 @@
-# Rainbow price book (mirror, generated 2026-10-17)
+# Rainbow price book (mirror, generated 2026-10-21)
 
-Read-only copy for price lookups from claude.ai. The master data is on Andrew's Mac at ~/Downloads/Rainbow/PriceBook/data/prices.csv (pricebook.py). Price changes made from chat go in claude/pricebook-pending.md and are applied in the next Cowork session with the Mac connected.
+Read-only copy for price lookups from claude.ai. The master data is on Andrew's Mac at Rainbow/PriceBook/data/prices.csv (pricebook.py). Price changes made from chat go in claude/pricebook-pending.md and are applied in the next Cowork session with the Mac connected.
 
 Status: PENDING Cxx = proposed from the scans, awaiting the conflict sheet; NO PRICE = no usable price on file. Sizes are inches, short side first. Prices exclude sales tax.
 
@@ -15,6 +15,7 @@ Charged per side (total page count). Double-sided = 2 sides; no duplex discount,
 | B/W copy / print | per side (double-sided = 2 sides) | 8.5x11 |  | $0.15 /side |  | bw-8.5x11-side |
 | B/W copy / print | per side (double-sided = 2 sides) | 8.5x14 |  | $0.20 /side |  | bw-8.5x14-side |
 | B/W copy / print | per side (double-sided = 2 sides) | 11x17 |  | $0.30 /side |  | bw-11x17-side |
+| Copy add-on: hole punching or stapling | per page, added to copy/print charge |  |  | $0.01 /page |  | copy-addon-punch-staple |
 
 ## Copies - Color
 
@@ -250,6 +251,7 @@ Trade (outside printer) pricing; retail = listed x 2.5 - see card C11.
 | Perfing |  |  |  | $30.00 /500 (min $20.00) |  | perfing-per-500 |
 | Scoring |  |  |  | $50.00 /1,000 (min $35.00) |  | scoring-per-1000 |
 | Scoring |  |  |  | $30.00 /500 (min $35.00) |  | scoring-per-500 |
+| Separator sheet | inserted between documents/sections |  |  | $0.20 /sheet |  | separator-sheet |
 | Shrink wrapping | per 500 sheets |  |  | $1.00 /500 |  | shrink-wrap |
 | Sorting (manual) |  |  |  | $0.05 /page |  | sorting-manual |
 | Spiral binding (Ibico comb) | per book, any thickness, covers included |  |  | $4.88 /book |  | comb-half-inch |

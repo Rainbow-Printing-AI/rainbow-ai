@@ -11,7 +11,7 @@ pypdf/pikepdf/reportlab/Pillow/numpy + poppler are all present there), and nativ
 |---|---|
 | `impose.py` | 1-up or N-up on a sheet, duplex — **no bleed, no crop marks by default**; `--bleed 0.1` / `--marks` (0.125 in from the bleed edge) only when a job asks. A source that carries bleed is clipped to trim. Vector art stays vector; bleed is mirrored from the edges when the file has none. Bleed mode `auto` (default) mirrors each side but edge-extends (repeats the outermost pixels outward) any side where a hard edge — box, QR code, rule, big type — sits within the bleed width of the trim, so it isn't copied into the bleed; the run says which sides and why. `--bleed-mode reflect|edge|white` forces one method. Writes a `/RainbowLayout` record into the PDF. |
 | `bleedscan.py` | Library (no CLI) used by `impose.py` and `verify_print.py`: finds hard edges running parallel to a trim edge within the bleed width. |
-| `verify_print.py` | Renders the finished PDF and measures it: page box, every crop mark, no ink in gutters, bleed coverage, no light hairline where mirrored bleed meets the art (600 dpi, no antialias), nothing from inside the trim (box/QR/rule) copied into generated bleed, duplex alignment. Also checks die-cut label sheets (`--grid avery8395` etc.) and prints alignment test pages. Exit 0 = PASS. |
+| `verify_print.py` | Renders the finished PDF and measures it: page box, every crop mark, no ink in gutters, bleed coverage, no light hairline where mirrored bleed meets the art (600 dpi, no antialias), nothing from inside the trim (box/QR/rule) copied into generated bleed, generated bleed continues the art across every trim edge, duplex alignment. Also checks die-cut label sheets (`--grid avery8395` etc.) and prints alignment test pages. Exit 0 = PASS. |
 | `pdfinspect.py` | What the customer sent: page boxes in inches, rotation, trim guess, placed-image dpi, unembedded fonts, Quartz warning. `--clean` rewrites a fresh linearized copy (the Acrobat error 109 fix). |
 | `labels.py` | Raster art → every label of an Avery die-cut preset (`--grid avery22877`, `avery8395`, …), centered, aspect-fit, clipped to the die (round presets clip to the circle). `--bleed 0.1` floods the art's flat border color past the die for print-to-the-edge stock; verify with `verify_print.py OUT --grid PRESET --flood 0.1`. |
 | `textlabels.py` | Vector text on every label of an Avery preset (`--grid avery5167` = 8167 etc.). Black Helvetica-Bold auto-fit with 0.08 in clearance; repeat `--text` to split the sheet into equal row blocks (`--split cols` for columns). Verify with `verify_print.py OUT --grid PRESET`. |
@@ -24,7 +24,7 @@ pypdf/pikepdf/reportlab/Pillow/numpy + poppler are all present there), and nativ
 | `photopage.py` | Photos onto fixed pages, one per page, white around them — e.g. landscape photo on a portrait 5x7 with 1/8 in L/R margins (`--page 5x7 --margin-x 0.125`). Fit inside the margins, centered, never cropped; keeps its own orientation (`--match` for long side to long side). JPEGs embedded untouched with their ICC (Adobe RGB kept). Then `impose.py` for N-up/marks. |
 | `passport.py` | Passport / ID photo. `--grid` writes a pixel-grid preview to read crown/chin/eyes/centre off; then `--crown --chin --cx --eyes` builds the square crop (head 62%, 10% headroom; US spec head 50-69%, eyes 56-69% up), lays it out at exactly 2x2 on 4x6 via photopage -> impose (`--nup 2` = two copies), runs `verify_print.py`, then measures the placed image matrix and the 600 dpi ink box itself. Fails on off-centre/no-headroom/< 200 dpi. `PASSPORT PASS` / exit 0 or it doesn't ship. Writes `_preview.jpg` with the spec bands drawn. |
 | `photo_prep.py` | Folder of photos → cropped to 4x6/5x7/8x10/…, long side to long side, dpi flagged, contact sheet. |
-| `fetch_links.py` | Customer share links → original files. Paste the email text (`--from-file`, or `pbpaste | ... -`) or URLs; OneDrive personal links (1drv.ms / onedrive.live.com, files) download full-res with original names via the anonymous Badger token — tested 2026-10-08. Dropbox / Google Drive / SharePoint paths are best-effort, untested. Never overwrites; checks size against the API. Private Google Drive links (shared only with the shop) FAIL here with "got a web page" — those, and Gmail attachments (the connector has no bytes), come through Chrome. |
+| `fetch_links.py` | Customer share links → original files. Paste the email text (`--from-file`, or `pbpaste | ... -`) or URLs. **Tested:** OneDrive personal links (1drv.ms / onedrive.live.com, files; anonymous Badger token, 2026-10-08) and WeTransfer (wetransfer.com/downloads/… and we.tl short links, each file saved separately, 2026-10-23; expired, deleted, and password-protected transfers FAIL with the reason). **Untested:** Box file/folder links (app.box.com/s/…; "owner turned downloads off" detected), iCloud Drive file links (icloud.com/iclouddrive/…), Dropbox, Google Drive, SharePoint. iCloud Photos links and shared albums FAIL with a note (shared albums are ~2048 px, not print-res). Never overwrites; checks size against the server; the same link repeated in an email downloads once. Private Google Drive links (shared only with the shop) FAIL with "got a web page". Those, and Gmail attachments (the connector has no bytes), come through Chrome. |
 | `repo_sync.py` | **Repo sync (step 0.8).** `git pull --ff-only` of the Rainbow repo at Claude session start (SessionStart hook in `.claude/settings.json`, `--hook` = JSON for the hook). Never fixes anything itself: uncommitted/new files, a diverged branch, not on `main`, or GitHub unreachable → loud `REPO SYNC WARNING` and no pull. `--no-pull` checks only. Exit 1 = warning (always 0 with `--hook`). |
 | `package_skills.py` | **Account skills vs repo (step 0.8).** No flags: one upload zip per `.claude/skills/rainbow-*` skill into `Claude outputs/skill-uploads-DATE/` (the zip fallback for Cowork/claude.ai). `--check`: compares the account's synced copies (`~/.claude/skills/synced/<bucket>/`) with the repo, CRLF ignored, and names STALE / MISSING / ACCOUNT-ONLY skills (exit 2 if any). `--import`: copies ACCOUNT-ONLY skills into the repo, never overwrites one. See `docs/repo-sync.md`. |
 | `collect_downloads.py` | After Chrome downloads files (Chrome on the shop Mac saves to the Rainbow folder root): waits for `*.crdownload` to finish, moves the named files (or `--any --since T`) into the job folder without overwriting, and rejects HTML sign-in/error pages posing as files. Flags small PNGs as possible logos. Exit 1 lists anything missing or bad. Used by the `rainbow-email-download` skill ("download everything from this email"). |
@@ -56,6 +56,17 @@ pypdf/pikepdf/reportlab/Pillow/numpy + poppler are all present there), and nativ
   5.5x8.5 page (box not at the origin) to 1651 px with a blank last column, which mirrored into a white
   hairline exactly on the trim. The raster is now forced to box x dpi, and `verify_print.py` FAILS any
   trim edge lighter than the art on both sides of it (`tests/t_canva_offset.pdf` covers it).
+- **CMYK bleed + rotated strips (2026-10-29, IGC Mock Meet).** (1) pdftoppm converts CMYK to RGB naively, so
+  a dark CMYK green (71/44/73/73, L*25 through `cmyk.icc`) came out of the bleed render at L*16 — bleed far
+  darker than the trim, and a false crush FAIL. `impose.py` now renders pages whose color is all
+  DeviceCMYK/Gray with **Ghostscript** straight to CMYK and embeds the strips as DeviceCMYK (log says
+  `bleed mirrored (CMYK, file's own numbers)`); RGB or mixed pages keep the pdftoppm path. No gs → WARNING
+  and the old RGB path. (2) `crushcheck.py` judged CMYK *images* by naive conversion too (and pikepdf turns a
+  masked CMYK image into naive RGBA) — it now reads the raw CMYK and goes through `cmyk.icc`, same as vector
+  colors, so it no longer "lifts" CMYK logos that print fine. (3) A PDF page turned 90 to the trim *and* placed
+  in cells turned 90 for the sheet got its bleed strips 180 off (each side's bleed on the opposite side).
+  Fixed; `verify_print.py` now FAILS generated bleed that doesn't continue the art across the trim
+  (`tests/t_land_cmyk.pdf` covers all three).
 
 ## Typical runs
 
@@ -146,6 +157,9 @@ editing anything; every output must end in `RESULT  PASS`.
   `$HOME/mnt/Rainbow` on either machine). Migration steps: `windows/README-WINDOWS.md`.
   `windows/SETUP-WINDOWS.cmd` installs Python 3.12, Git, poppler, LibreOffice and the pinned
   `windows/requirements.txt` (same versions as the Mac VM), sets `PYTHONUTF8=1`, and runs every test suite.
+  **Ghostscript is also needed** (CMYK bleed render, 2026-10-29): `winget install ArtifexSoftware.GhostScript`
+  (impose.py finds `gswin64c`); without it CMYK pages fall back to RGB bleed with a WARNING and the
+  `t_land_cmyk` test fails.
   `windows/CLAUDE-CHECK-PROMPT.txt` is the paste-in check for the first Claude session on Windows.
 - `cmyk.icc` (FOGRA39L coated - the profile the crush guard was already using in the VM) and
   `fonts/LiberationSans-Regular.ttf` (mergelabels; the price book's sheet 06 has its own copy) are

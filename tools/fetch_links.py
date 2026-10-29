@@ -14,6 +14,15 @@ Supported:
   Dropbox            dropbox.com/s/..., dropbox.com/scl/fi/...           best-effort, untested
   Google Drive file  drive.google.com/file/d/<id>/..., ?id=<id>           best-effort, untested
   SharePoint (work)  *.sharepoint.com anonymous links via download=1      best-effort, untested
+  WeTransfer         wetransfer.com/downloads/..., we.tl/t-...              TESTED 2026-10-23
+                     (each file saved separately with its own name; expired/deleted
+                     transfers and password-protected ones FAIL with the reason)
+  Box                app.box.com/s/..., <company>.app.box.com/s/..., box.com/shared/static/...
+                     file links: page parse + "downloads disabled" path tested 2026-10-23,
+                     an actual download untested; folder links untested
+  iCloud Drive       icloud.com/iclouddrive/<id>#name (single files)        untested
+                     iCloud Photos links and shared albums are NOT handled (FAIL with a note):
+                     shared albums are downscaled by Apple (~2048 px long side), not print-res.
 
 How OneDrive works (no login needed for "anyone with the link" shares):
   1. POST api-badgerp.svc.ms/v1.0/token with OneDrive web's public appId -> anonymous "Badger" token
@@ -22,9 +31,14 @@ How OneDrive works (no login needed for "anyone with the link" shares):
   3. GET the downloadUrl (pre-signed, short-lived) -> original bytes; size is checked against the API.
   The plain api.onedrive.com/shares call without the token now returns 401 for migrated accounts.
 
+How WeTransfer works (no login for normal transfers):
+  POST wetransfer.com/api/v4/transfers/<id>/prepare-download {security_hash, recipient_id?}
+  -> state, password_protected, items[]; then POST .../<id>/download with intent single_file
+  and file_ids=[item id] -> direct_link per file. we.tl short links redirect to the long form.
+
 Never overwrites: an existing name gets " (2)", " (3)"... Exit code 1 if any link failed.
 """
-import argparse, base64, json, os, re, sys, urllib.parse, urllib.request
+import argparse, base64, http.cookiejar, json, os, re, sys, urllib.error, urllib.parse, urllib.request
 from email.message import Message
 
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129 Safari/537.36"
@@ -33,12 +47,13 @@ ONEDRIVE_HOSTS = ("1drv.ms", "onedrive.live.com", "photos.onedrive.com", "onedri
 OD_APPID = "5cbed6ac-a083-4e14-b191-b4ba07653de2"   # OneDrive web client's public app id
 OD_API = "https://my.microsoftpersonalcontent.com/_api/v2.0"
 _badger = None
+_opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
 
 
 def req(url, data=None, headers=None, method=None):
     h = {"User-Agent": UA}
     h.update(headers or {})
-    return urllib.request.urlopen(urllib.request.Request(url, data=data, headers=h, method=method), timeout=120)
+    return _opener.open(urllib.request.Request(url, data=data, headers=h, method=method), timeout=120)
 
 
 def get_json(url, headers=None, data=None):
@@ -57,6 +72,19 @@ def unique_path(outdir, name):
     while os.path.exists(p):
         p, n = os.path.join(outdir, f"{base} ({n}){ext}"), n + 1
     return p
+
+
+def save_url(url, outdir, name, size=None, sub=""):
+    d = os.path.join(outdir, sub)
+    os.makedirs(d, exist_ok=True)
+    with req(url) as r:
+        if r.headers.get("Content-Type", "").startswith("text/html"):
+            raise IOError(f"got a web page instead of {name}")
+        path = unique_path(d, name)
+        n = stream_to(r, path)
+    if size is not None and n != int(size):
+        raise IOError(f"size mismatch for {name}: got {n}, server says {size}")
+    return [(path, n)]
 
 
 def stream_to(resp, path):
@@ -158,6 +186,147 @@ def generic(url, outdir):
     return [(path, n)]
 
 
+# ---------- WeTransfer ----------
+WT_API = "https://wetransfer.com/api/v4/transfers"
+
+
+def wt_post(path, body):
+    try:
+        return get_json(f"{WT_API}/{path}", data=json.dumps(body).encode(),
+                        headers={"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest"})
+    except urllib.error.HTTPError as e:
+        if e.code in (401, 403, 404):
+            raise IOError(f"WeTransfer refused the link (HTTP {e.code}) - link incomplete, wrong, or not for us")
+        raise
+
+
+def wetransfer(url, outdir):
+    host = urllib.parse.urlsplit(url).hostname or ""
+    if host == "we.tl" or host.endswith(".we.tl"):
+        with req(url) as r:              # short link -> /downloads/<id>/<hash>
+            url = r.geturl()
+    m = re.search(r"/downloads/([0-9a-f]{20,})/(?:([0-9a-f]{20,})/)?([0-9a-f]{4,})(?=[/?#]|$)", url)
+    if not m:
+        raise ValueError("no transfer id in WeTransfer link")
+    tid, rid, h = m.groups()
+    body = {"security_hash": h}
+    if rid:
+        body["recipient_id"] = rid
+    info = wt_post(f"{tid}/prepare-download", body)
+    if info.get("password_protected"):
+        raise IOError("password-protected transfer - open it in Chrome with the password")
+    if info.get("state") != "downloadable":
+        gone = f", deleted {info['deleted_at'][:10]}" if info.get("deleted_at") else ""
+        raise IOError(f"transfer is {info.get('state')}{gone} - ask the customer to resend")
+    items = info.get("items") or []
+    if not items or any(i.get("item_type") != "file" for i in items):
+        dl = wt_post(f"{tid}/download", dict(body, intent="entire_transfer"))   # folders: one zip
+        return save_url(dl["direct_link"], outdir, info.get("recommended_filename") or "wetransfer.zip", info.get("size"))
+    out = []
+    for it in items:
+        dl = wt_post(f"{tid}/download", dict(body, intent="single_file", file_ids=[it["id"]]))
+        out += save_url(dl["direct_link"], outdir, it["name"], it.get("size"))
+    return out
+
+
+# ---------- Box ----------
+def box_page(url):
+    try:
+        with req(url) as r:
+            html, final = r.read().decode("utf-8", "replace"), r.geturl()
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 404):
+            raise IOError(f"Box link not found or not public (HTTP {e.code}) - removed, mistyped, or company-only")
+        raise
+    i = html.find("postStreamData")
+    if i < 0:
+        raise IOError("Box page has no shared item (needs sign-in, wrong link, or removed)")
+    data, _ = json.JSONDecoder().raw_decode(html, html.index("{", i))
+    return data, final
+
+
+def box_files(host, sn, items, outdir, sub):
+    out = []
+    for it in items:
+        if it.get("type") != "file":
+            continue
+        if it.get("canDownload") is False:
+            raise IOError(f"{it.get('name')}: the owner turned downloads off (preview only) - "
+                          "ask the customer to allow downloads or email the file")
+        q = urllib.parse.urlencode({"rm": "box_download_shared_file", "shared_name": sn, "file_id": f"f_{it['id']}"})
+        out += save_url(f"https://{host}/index.php?{q}", outdir, it["name"], it.get("itemSize"), sub)
+    return out
+
+
+def box(url, outdir, sub="", seen=None):
+    if "/shared/static/" in url:         # direct-download link
+        return generic(url, outdir)
+    data, final = box_page(url)
+    host = urllib.parse.urlsplit(final).hostname or "app.box.com"
+    si = data.get("/app-api/enduserapp/shared-item")
+    if not si:
+        raise IOError("Box page has no shared item (needs sign-in, wrong link, or removed)")
+    sn = si["sharedName"]
+    if si.get("itemType") == "file":
+        items = data.get(f"/app-api/enduserapp/item/f_{si['itemID']}", {}).get("items", [])
+        return box_files(host, sn, items, outdir, sub)
+    # folder share (untested): files on this page, then each subfolder and further pages
+    seen = seen if seen is not None else set()
+    out = []
+    for key, val in data.items():
+        if not key.startswith("/app-api/enduserapp/folder/") or not isinstance(val, dict):
+            continue
+        items = val.get("items", [])
+        out += box_files(host, sn, items, outdir, sub)
+        for it in items:
+            if it.get("type") == "folder" and it["id"] not in seen:
+                seen.add(it["id"])
+                out += box(f"https://{host}/s/{sn}/folder/{it['id']}", outdir,
+                           os.path.join(sub, safe_name(it.get("name", str(it["id"])))), seen)
+        page, pages = val.get("pageNumber", 1), val.get("pageCount", 1)
+        if page < pages:
+            base = url.split("?")[0]
+            out += box(f"{base}?page={page + 1}", outdir, sub, seen)
+    if not out:
+        raise IOError("Box folder: found no downloadable files")
+    return out
+
+
+# ---------- iCloud Drive ----------
+CK_RESOLVE = "https://ckdatabasews.icloud.com/database/1/com.apple.cloudkit/production/public/records/resolve"
+
+
+def icloud(url, outdir):
+    u = urllib.parse.urlsplit(url)
+    m = re.search(r"/iclouddrive/([0-9A-Za-z_-]{10,})", u.path)
+    if not m:
+        raise IOError("iCloud Photos links / shared albums aren't handled here - open in Chrome. "
+                      "Shared albums are downscaled by Apple (~2048 px); ask for originals for print.")
+    d = get_json(CK_RESOLVE, data=json.dumps({"shortGUIDs": [{"value": m.group(1)}]}).encode(),
+                 headers={"Content-Type": "text/plain", "Origin": "https://www.icloud.com"})
+    res = (d.get("results") or [{}])[0]
+    rec = res.get("rootRecord")
+    if not rec:
+        raise IOError(f"iCloud says: {res.get('reason')} ({res.get('serverErrorCode')}) - "
+                      "link dead, stopped sharing, or not set to 'Anyone with the link'")
+    f = rec.get("fields", {})
+    fc = (f.get("fileContent") or {}).get("value")
+    if not fc or not fc.get("downloadURL"):
+        raise IOError("iCloud Drive folder links aren't handled yet - open in Chrome")
+    name = ""
+    try:
+        name = base64.b64decode(f["encryptedBasename"]["value"]).decode("utf-8")
+    except Exception:
+        pass
+    if not name or not name.isprintable():
+        name = urllib.parse.unquote(u.fragment).replace("_", " ") or "icloud-file"
+    ext = (f.get("extension") or {}).get("value")
+    if ext and not name.lower().endswith("." + ext.lower()):
+        name += "." + ext
+    dl = fc["downloadURL"].replace("${f}", urllib.parse.quote(name))
+    return save_url(dl, outdir, name, fc.get("size"))
+
+
 def route(url):
     host = urllib.parse.urlsplit(url).hostname or ""
     if any(host == h or host.endswith("." + h) for h in ONEDRIVE_HOSTS):
@@ -168,7 +337,22 @@ def route(url):
         return gdrive
     if host.endswith("sharepoint.com"):
         return sharepoint
+    if host in ("we.tl", "wetransfer.com") or host.endswith(".we.tl") or host.endswith(".wetransfer.com"):
+        return wetransfer if ("/downloads/" in url or "we.tl" in host) else None
+    if host == "box.com" or host.endswith(".box.com"):
+        p = urllib.parse.urlsplit(url).path
+        return box if (p.startswith("/s/") or p.startswith("/v/") or "/shared/static/" in p) else None
+    if host in ("icloud.com", "www.icloud.com", "share.icloud.com"):
+        return icloud
     return None
+
+
+def link_key(u):
+    """Same transfer/file linked twice with different tracking params counts once."""
+    m = re.search(r"wetransfer\.com/downloads/([0-9a-f]{20,})", u)
+    if m:
+        return "wt:" + m.group(1)
+    return u
 
 
 def main():
@@ -187,8 +371,9 @@ def main():
     seen, links = set(), []
     for u in URL_RE.findall(text.replace("&amp;", "&")):
         u = u.rstrip(".,;")
-        if u not in seen:
-            seen.add(u)
+        k = link_key(u)
+        if k not in seen:
+            seen.add(k)
             links.append(u)
 
     os.makedirs(a.out, exist_ok=True)

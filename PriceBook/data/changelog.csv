@@ -431,3 +431,5 @@ when,who,action,table,id,field,old,new,source,note
 2026-10-08 17:46,Claude,add,prices,coroplast-4mm-24x36,price,,65.70,"Andrew, scan_200 handwritten 2026-10-08 (calculated)",Calculated: 6 sq ft x coroplast-4mm $/sq ft. Update when the sq-ft price changes.
 2026-10-08 17:46,Claude,edit,prices,coroplast-4mm-24x36,turnaround,,approx. 1 week,"Andrew, scan_200 handwritten 2026-10-08",
 2026-10-17 18:01,Claude,add,prices,stock-100lb-cover-8.5x11,price,,0.40,"Andrew, chat 2026-10-17",Added on top of the per-side copy charge.
+2026-10-21 16:42,Claude,add,prices,separator-sheet,price,,0.20,"Andrew, chat 2026-10-21",
+2026-10-21 16:47,Claude,add,prices,copy-addon-punch-staple,price,,0.01,"Andrew, chat 2026-10-21",Added on top of the per-page copy/print charge when the customer requests hole punching or stapling (e.g. 0.16 -> 0.17/pg). Applies to B/W and color print jobs.

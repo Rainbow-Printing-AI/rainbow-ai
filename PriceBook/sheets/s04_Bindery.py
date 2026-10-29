@@ -5,7 +5,7 @@ SHEET = {"num": "04", "name": "Bindery", "title": "BINDERY PRICES", "source": "s
          "covers": ["Bindery & Finishing", "Laminating", "Labor & Design"]}
 
 FS = 13          # body size (original is small Calibri-like; enlarged for the counter)
-GAP = 7            # space after each group, pt
+GAP = 6            # space after each group, pt
 
 
 def build(pb: L.Prices):
@@ -31,6 +31,7 @@ def build(pb: L.Prices):
         (["Drilling"], [f"{m('drilling')} per hole, up to 2” thick"]),
         (["Sorting (manual)"], [f"{cents('sorting-manual')} per page"]),
         (["Stapling (manual)"], [f"{cents('stapling-manual')} per staple"]),
+        (["Separator sheets"], [f"{lead('separator-sheet')} per sheet"]),
         (["Spiral Binding", "(Ibico comb)"], [f"{m('comb-half-inch')} per book,", "any thickness, covers included"]),
         (["Coil Binding"], [f"{m('coil-half-inch')} per book,", "any thickness, covers included"]),
         None,  # laminating block

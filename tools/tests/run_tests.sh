@@ -18,6 +18,8 @@ py impose.py tests/t_withbleed2.pdf --trim 5x7 --nup 2 --sheet letter --out "$T/
 py impose.py tests/t_rot90.pdf --nup 4 --sheet 12x18 --out "$T/rot_4up.pdf" >/dev/null
 py impose.py tests/t_qr_edge.png --trim 3.5x2 --bleed 0.1 --marks --out "$T/qr_edge_auto.pdf" | grep -q "edge-extended on bottom/right" || { echo "FAIL  auto bleed did not edge-extend the QR sides"; exit 1; }
 py impose.py tests/t_photo_edge.jpg --trim 3.5x2 --bleed 0.1 --marks --out "$T/photo_edge_auto.pdf" | grep -q "bleed mirrored, 300" || { echo "FAIL  auto bleed edge-extended a photo"; exit 1; }
+py impose.py tests/t_land_cmyk.pdf --trim 5x7 --bleed 0.1 --marks --nup 2 --sheet letter --duplex --out "$T/land_cmyk_2up.pdf" | grep -q "CMYK, file's own numbers" || { echo "FAIL  CMYK page bleed not rendered CMYK (Ghostscript missing?)"; exit 1; }
+py verify_print.py "$T/land_cmyk_2up.pdf" | grep -q "RESULT  PASS" || { echo "FAIL  landscape art on 5x7 trim in rotated cells: bleed strips 180 off or CMYK bleed misread"; exit 1; }
 py impose.py tests/t_crush.pdf --nup 2 --sheet letter --out "$T/crush_2up.pdf" | grep -q "were lifted" || { echo "FAIL  impose did not lift crush colors"; exit 1; }
 py labels.py tests/bc_front.png --grid avery22877 --art-size 1.6 --out "$T/round_12up.pdf" >/dev/null
 py sheetfit.py tests/t_5x7.pdf --sheet letter --out "$T/sheetfit_letter.pdf" >/dev/null
@@ -26,6 +28,9 @@ py sheetfit.py tests/t_rot90.pdf --sheet letter --landscape --rotate "1:90" --ou
 py textlabels.py --grid avery5167 --text "A side" --text "B side" --out "$T/text_5167.pdf" >/dev/null
 py photopage.py tests/bc_front.png --page 5x7 --out "$T/../photopage_tmp.pdf" >/dev/null
 py impose.py "$T/../photopage_tmp.pdf" --nup 2 --sheet letter --marks --out "$T/photopage_2up_marks.pdf" >/dev/null
+py fitpage.py tests/t_withbleed2.pdf --page 5x7 --margin 0.2 --out "$T/../fitpage_tmp.pdf" | grep -q "no live art cropped" || { echo "FAIL  fitpage did not fill the window from bleed"; exit 1; }
+py impose.py "$T/../fitpage_tmp.pdf" --nup 2 --sheet 10x7 --gutter 0 --out "$T/fitpage_2up.pdf" >/dev/null
+py fitpage.py tests/t_withbleed2.pdf --page 4.25x5.5 --margin 0.1875 --uneven --out "$T/fitpage_uneven.pdf" >/dev/null
 py booklet.py tests/t_deck6.pdf --binding top --fit --blanks end --out "$T/booklet_top_long.pdf" >/dev/null
 py booklet.py tests/t_deck6.pdf --binding side --fit --blanks after-cover --flip short --out "$T/booklet_side_short.pdf" >/dev/null
 py booklet.py tests/t_deck6.pdf --binding top --fit --order "1,3,2,b,6" --blanks end --out "$T/booklet_order.pdf" >/dev/null
@@ -37,6 +42,7 @@ fail=0
 for f in "$T"/*.pdf; do
   if py verify_print.py "$f" | tail -1 | grep -q PASS; then echo "PASS  $(basename "$f")"; else echo "FAIL  $(basename "$f")"; fail=1; fi
 done
+py fitpage.py tests/t_withbleed2.pdf --page 4.25x5.5 --margin 0.1875 --out "$T/../fitpage_stop_tmp.pdf" >/dev/null 2>&1 && { echo "FAIL  fitpage cropped live art instead of stopping"; fail=1; } || echo "PASS  fitpage stops when the bleed can't keep the margin even (3/16 in, t_withbleed2)"
 py verify_print.py tests/badges_ok.pdf --grid avery8395 | tail -1 | grep -q PASS && echo "PASS  badges_ok (die-cut)" || { echo "FAIL  badges_ok"; fail=1; }
 py verify_print.py tests/badges_bad.pdf --grid avery8395 | tail -1 | grep -q FAIL && echo "PASS  badges_bad correctly rejected" || { echo "FAIL  badges_bad not rejected"; fail=1; }
 py verify_print.py "$T/round_12up.pdf" --grid avery22877 | tail -1 | grep -q PASS && echo "PASS  labels round (die-cut)" || { echo "FAIL  labels round"; fail=1; }
@@ -100,4 +106,5 @@ else
   echo "SKIP  repo_sync tests (git not installed here)"
 fi
 rm -rf "$S"
+"$PY" -W ignore -c "import sys;sys.path.insert(0,'.');import fetch_links as f;r=f.route;W='https://wetransfer.com/downloads/3df2e4eac59feb3659ded04ab7d4a1bd20261023162521/f7468c';ok=r(W) is f.wetransfer and r('https://we.tl/t-REoFxa1Uat0kSctC') is f.wetransfer and r('https://wetransfer.com/help-center') is None and r('https://app.box.com/s/abc') is f.box and r('https://acme.app.box.com/v/abc') is f.box and r('https://www.box.com/pricing') is None and r('https://www.icloud.com/iclouddrive/0abcdefghijk#x') is f.icloud and r('https://1drv.ms/i/s!abc') is f.onedrive and f.link_key(W+'?a=1')==f.link_key(W+'?b=2');sys.exit(0 if ok else 1)" && echo "PASS  fetch_links routes WeTransfer/Box/iCloud and de-dupes tracking links" || { echo "FAIL  fetch_links routing"; fail=1; }
 exit $fail
